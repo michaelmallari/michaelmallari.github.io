@@ -1,0 +1,323 @@
+body#home #content-body {
+  padding: 0px;
+  width: 100%;
+}
+#posts-sticky {
+  
+}
+#posts-sticky ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+#posts-sticky ul > li {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+
+#posts-sticky a {
+  text-decoration: none !important;
+}
+
+
+
+#posts-sticky ul > li a .post-thumb {
+  background-blend-mode: luminosity;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 136% auto !important;
+  -moz-transition: background-size 0.24s ease;
+    -webkit-transition: background-size 0.24s ease;
+    -o-transition: background-size 0.24s ease;
+    -ms-transition: background-size 0.24s ease;
+    transition: background-size 0.24s ease;
+}
+#posts-sticky ul > li:nth-child(1) a .post-thumb,
+#posts-sticky ul > li:nth-child(4) a .post-thumb,
+#posts-sticky ul > li:nth-child(7) a .post-thumb {
+  background: rgba(183, 201, 211, 0.4);
+}
+#posts-sticky ul > li:nth-child(2) a .post-thumb,
+#posts-sticky ul > li:nth-child(5) a .post-thumb,
+#posts-sticky ul > li:nth-child(8) a .post-thumb {
+  background: rgba(183, 201, 211, 0.6);
+}
+#posts-sticky ul > li:nth-child(3) a .post-thumb,
+#posts-sticky ul > li:nth-child(6) a .post-thumb,
+#posts-sticky ul > li:nth-child(9) a .post-thumb {
+  background: rgba(183, 201, 211, 0.8);
+}
+#posts-sticky ul > li a:hover .post-thumb {
+  background-blend-mode: normal;
+  background-color: @white;
+  background-size: 148% auto !important;
+}
+
+
+
+
+#posts-sticky ul > li a .post-thumb-arrow polygon {
+  fill: @off-white;
+}
+#posts-sticky ul > li:nth-child(2) a .post-thumb-arrow polygon,
+#posts-sticky ul > li:nth-child(5) a .post-thumb-arrow polygon,
+#posts-sticky ul > li:nth-child(8) a .post-thumb-arrow polygon {
+  fill:@gray-dark;
+}
+#posts-sticky ul > li a:hover .post-thumb-arrow polygon {
+  fill: @orange;
+}
+
+
+
+
+#posts-sticky ul > li:nth-child(2) .post-details,
+#posts-sticky ul > li:nth-child(5) .post-details,
+#posts-sticky ul > li:nth-child(8) .post-details  {
+  background: @gray-dark;
+}
+#posts-sticky ul > li a:hover .post-details {
+  background: @orange;
+}
+#posts-sticky ul > li a .post-details.height-auto {
+  height: auto !important;
+}
+
+
+
+
+
+#posts-sticky ul > li a .category {
+  color: @blue;
+  line-height: 0.72rem;
+  margin: 0px;
+  padding: 2.4rem 0rem 0.64rem 0rem;
+  text-decoration: none;
+}
+#posts-sticky ul > li a:hover .category {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+
+
+#posts-sticky ul > li a .title {
+  color: @gray-dark;
+  font-family: 'Martel', serif;
+  font-size: 1.16rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1.56rem;
+  margin: 0rem 0rem 1.8rem 0rem;
+}
+#posts-sticky ul > li:nth-child(2) a .title,
+#posts-sticky ul > li:nth-child(5) a .title,
+#posts-sticky ul > li:nth-child(8) a .title  {
+  color: @white;
+}
+#posts-sticky ul > li a:hover .title {
+  color: @white;
+}
+
+
+
+
+#posts-sticky ul > li a .excerpt {
+  color: @gray-medium;
+  font-size: 0.84rem;
+  line-height: 1.28rem;
+  margin: 0px;
+  padding: 0rem 0rem 2.12rem 0rem;
+  text-decoration: none;
+}
+#posts-sticky ul > li a:hover .excerpt {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+
+
+
+
+
+@media (max-width: 374px) {
+
+}
+@media (min-width: 375px) {
+
+}
+@media (min-width: 375px) and (max-width: 413px) {
+
+}
+@media (max-width: 413px) {
+
+}
+@media (min-width: 414px) {
+
+}
+@media (min-width: 414px) and (max-width: 506px) {
+
+}
+@media (max-width: 506px) {
+
+}
+@media (min-width: 507px) {
+
+}
+@media (min-width: 507px) and (max-width: 550px) {
+
+}
+@media (max-width: 550px) {
+
+}
+@media (min-width: 551px) {
+
+}
+@media (min-width: 551px) and (max-width: 677px) {
+
+}
+@media (max-width: 677px) {
+
+}
+@media (min-width: 678px) {
+
+}
+@media (min-width: 678px) and (max-width: 767px) {
+
+}
+@media (max-width: 767px) {
+
+}
+@media (min-width: 768px) {
+  #posts-sticky ul {
+    text-align: left;
+  }
+  #posts-sticky ul > li {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #posts-sticky .container {
+    margin-right: 1.4rem;
+    margin-left: 1.4rem;
+  }
+  #posts-sticky ul > li:nth-child(odd) {
+    float: left;
+  }
+  #posts-sticky ul > li:nth-child(even) {
+    float: right;
+  }
+  #posts-sticky ul > li:nth-child(9) {
+    display: none;
+  }
+  #posts-sticky ul > li a .title {
+    font-size: 1rem;
+    line-height: 1.44rem;
+    margin: 0rem 0rem 1.8rem 0rem;
+  }
+  #posts-sticky ul > li a .excerpt {
+    font-size: 0.64rem;
+    line-height: 1rem;
+    padding: 0rem 0rem 2.2rem 0rem;
+  }
+}
+@media (max-width: 991px) {
+
+}
+@media (min-width: 992px) {
+  #posts-sticky ul > li {
+    width: 25%;
+  }
+  #posts-sticky ul > li:nth-child(5),
+  #posts-sticky ul > li:nth-child(9) {
+    width: 50%;
+  }
+  #posts-sticky ul > li:nth-child(1),
+  #posts-sticky ul > li:nth-child(4),
+  #posts-sticky ul > li:nth-child(7) {
+    float: left;
+  }
+  #posts-sticky ul > li:nth-child(3),
+  #posts-sticky ul > li:nth-child(6),
+  #posts-sticky ul > li:nth-child(9) {
+    float: right;
+  }
+  #posts-sticky ul > li:nth-child(1) {
+    margin-left: 25%;
+  }
+  #posts-sticky ul > li a .category {
+    padding: 2rem 0rem 0.76rem 0rem;
+  }
+  #posts-sticky ul > li:nth-child(1) a .category,
+  #posts-sticky ul > li:nth-child(2) a .category,
+  #posts-sticky ul > li:nth-child(3) a .category {
+    padding: 2rem 0rem 0.6rem 0rem;
+  }
+  #posts-sticky ul > li a .title {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    margin: 0rem 0rem 1.56rem 0rem;
+  }
+  #posts-sticky ul > li:nth-child(4) a .title,
+  #posts-sticky ul > li:nth-child(6) a .title,
+  #posts-sticky ul > li:nth-child(7) a .title,
+  #posts-sticky ul > li:nth-child(8) a .title {
+    font-size: 1.32rem;
+    line-height: 1.76rem;
+    margin-bottom: 2.12rem;
+  }
+  #posts-sticky ul > li:nth-child(5) a .title,
+  #posts-sticky ul > li:nth-child(9) a .title {
+    font-size: 1.44rem;
+    line-height: 1.88rem;
+    margin-bottom: 1.88rem;
+    width: 84%;
+  }
+  #posts-sticky ul > li a .excerpt {
+    font-size: 0.8rem;
+    line-height: 1.24rem;
+    padding: 0rem 0rem 1.48rem 0rem;
+  }
+  #posts-sticky ul > li:nth-child(1) a .excerpt,
+  #posts-sticky ul > li:nth-child(2) a .excerpt,
+  #posts-sticky ul > li:nth-child(3) a .excerpt {
+    font-size: 0.72rem;
+    line-height: 1.08rem;
+  }
+  #posts-sticky ul > li:nth-child(5) a .excerpt,
+  #posts-sticky ul > li:nth-child(9) a .excerpt {
+    width: 84%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023px)  {
+
+}
+@media (max-width: 1023px) {
+
+}
+@media (min-width: 1024px) {
+
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+}
+@media (max-width: 1199px) {
+
+}
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+}
+@media (max-width: 1399px) {
+
+}
+@media (min-width: 1400px) {
+
+}

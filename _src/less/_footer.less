@@ -1,0 +1,386 @@
+#footer {
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+
+
+
+#footer #posts-recent ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+#footer #posts-recent ul > li {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+#footer #posts-recent li:nth-child(1) a .post-details {
+  background: linear-gradient(rgba(183, 201, 211, 0.2), rgba(91, 103, 112, 0.2));
+}
+#footer #posts-recent li:nth-child(2) a .post-details {
+  background: linear-gradient(rgba(183, 201, 211, 0.6), rgba(91, 103, 112, 0.6));
+}
+#footer #posts-recent li:nth-child(3) a .post-details {
+  background: linear-gradient(rgba(183, 201, 211, 0.5), rgba(91, 103, 112, 0.5));
+}
+#footer #posts-recent li:nth-child(4) a .post-details {
+  background: linear-gradient(rgba(183, 201, 211, 0.4), rgba(91, 103, 112, 0.4));
+}
+#footer #posts-recent li a {
+  text-decoration: none !important;
+}
+#footer #posts-recent li a:hover .post-details {
+  background: @orange;
+}
+#footer #posts-recent .category,
+#footer #posts-recent .title {
+  margin: 0px;
+  padding: 0px;
+}
+#footer #posts-recent ul > li a .category {
+  color: @blue;
+  line-height: 0.72rem;
+  margin: 0px;
+  padding: 2.4rem 0rem 0.64rem 0rem;
+  text-decoration: none;
+}
+#footer #posts-recent ul > li a:hover .category {
+  color: rgba(255, 255, 255, 0.75);;
+}
+#footer #posts-recent ul > li a .title {
+  color: @gray-dark;
+  font-family: 'Martel', serif;
+  font-size: 1.16rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1.56rem;
+  margin: 0rem 0rem 1.8rem 0rem;
+}
+#footer #posts-recent ul > li a:hover .title {
+  color: @white;
+}
+
+
+
+
+#footer #quote {
+  background: linear-gradient(120deg, @blue, @blue-dark);  /*  PMS 3551 C to 308 C */
+  color: @white;
+  display: block;
+  margin: 0px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+#footer #quote > div {
+  margin: 0px auto;
+}
+#footer #quote p,
+#footer #quote footer {
+  display: block;
+  margin: 0px;
+}
+#footer #quote p {
+  color: @white;
+  font-family: 'Martel', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.01rem;
+  line-height: 2rem;
+}
+#footer #quote p::before { 
+  content: "“";
+}
+#footer #quote p::after { 
+  content: "”";
+}
+#footer #quote footer cite {
+  display: block;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.08rem;
+  margin: 3rem 0rem 0rem 0rem;
+  padding: 0px;
+  text-transform: uppercase;
+}
+#footer #quote footer cite::before,
+#footer #quote footer cite::after { 
+  content: "―";
+  font-weight: 400;
+}
+
+
+
+
+#footer #about {
+  padding: 4.8rem 0rem;
+}
+#footer #about .category {
+  display: block;
+  text-align: left;
+}
+#footer #about h4,
+#footer #about h4 > span {
+  display: block;
+  color: @gray-dark;
+  font-family: 'Martel', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1.92rem;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+#footer #about p {
+  color: @gray-medium;
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.4rem;
+  margin: 0px;
+  padding-bottom: 2rem;
+  text-align: left;
+}
+
+
+#footer #brands {
+  display: grid;
+  grid-auto-rows: minmax(6rem, auto);
+  grid-column-gap: 0.2rem;
+  grid-row-gap: 0.2rem;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  margin: 0px;
+  padding: 0rem 0rem 2rem 0rem;
+}
+#footer #brands li {
+  background: @white;
+  text-align: center;
+}
+#footer #brands li img {
+  filter: grayscale(100);
+  -moz-transition: filter 0.24s ease;
+    -webkit-transition: filter 0.24s ease;
+    -o-transition: filter 0.24s ease;
+    -ms-transition: filter 0.24s ease;
+    transition: filter 0.24s ease;
+  width: auto;
+}
+#footer #brands li:hover img {
+  filter: none;
+}
+#footer #brands li:nth-child(10) img,
+#footer #brands li:nth-child(12) img {
+  height: 1.6rem;
+}
+#footer #brands li:nth-child(2) img,
+#footer #brands li:nth-child(5) img,
+#footer #brands li:nth-child(9) img {
+  height: 2rem;
+}
+#footer #brands li:nth-child(6) img,
+#footer #brands li:nth-child(9) img {
+  height: 2.4rem;
+}
+#footer #brands li:nth-child(7) img {
+  height: 2.6rem;
+}
+#footer #brands li:nth-child(1) img,
+#footer #brands li:nth-child(3) img {
+  height: 3rem;
+}
+#footer #brands li:nth-child(8) img {
+  height: 3.4rem;
+}
+#footer #brands li:nth-child(4) img,
+#footer #brands li:nth-child(11) img {
+  height: 3.8rem;
+}
+
+
+#footer .btn {
+  margin-top: 1.6rem;
+}
+#footer #hello {
+  color: @gray-medium;
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+#footer #handcrafted p {
+  font-size: 0.64rem;
+}
+
+
+
+
+
+
+
+@media (max-width: 374px) {
+
+}
+@media (min-width: 375px) {
+  #footer #about p {
+    font-size: 0.8rem;
+    line-height: 1.36rem;
+  }
+}
+@media (min-width: 375px) and (max-width: 413px) {
+
+}
+@media (max-width: 413px) {
+
+}
+@media (min-width: 414px) {
+
+}
+@media (min-width: 414px) and (max-width: 506px) {
+
+}
+@media (max-width: 506px) {
+
+}
+@media (min-width: 507px) {
+
+}
+@media (min-width: 507px) and (max-width: 550px) {
+
+}
+@media (max-width: 550px) {
+
+}
+@media (min-width: 551px) {
+  #footer #quote {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  #footer #quote footer cite {
+    font-size: 0.72rem;
+  }
+  #footer #brands {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 551px) and (max-width: 677px) {
+
+}
+@media (max-width: 677px) {
+
+}
+@media (min-width: 678px) {
+  #footer #posts-recent ul {
+    text-align: left;
+  }
+  #footer #posts-recent ul > li {
+    width: 50%;
+  }
+}
+@media (min-width: 678px) and (max-width: 767px) {
+
+}
+@media (max-width: 767px) {
+
+}
+@media (min-width: 768px) {
+
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+@media (max-width: 991px) {
+
+}
+@media (min-width: 992px) {
+  #footer #posts-recent ul > li {
+    width: 25%;
+  }
+  #footer #posts-recent ul > li:nth-child(1),
+  #footer #posts-recent ul > li:nth-child(2),
+  #footer #posts-recent ul > li:nth-child(3) {
+    float: left;
+  }
+  #footer #posts-recent ul > li a .category {
+    padding: 2rem 0rem 0.6rem 0rem;
+  }
+  #footer #posts-recent ul > li a .title {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    margin: 0rem 0rem 1.56rem 0rem;
+  }
+  #footer #quote {
+    background: linear-gradient(140deg, @blue, @blue-dark);  /*  PMS 3551 C to 308 C */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    text-align: left;
+  }
+  #footer #quote > div {
+    width: 50%;
+  }
+  #footer #quote p {
+    font-size: 1.24rem;
+    line-height: 2.4rem;
+  }
+  body#category #footer #quote p {
+    font-size: 1.12rem !important;
+  }
+  #footer #quote footer cite {
+    font-size: 0.72rem;
+    font-weight: 400;
+    margin-top: 4rem;
+  }
+  #footer #quote footer cite::after { 
+    content: "";
+  }
+  #footer #about {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 6rem 0rem !important;
+    width: 50%;
+  }
+  #footer #about h4,
+  #footer #about h4 > span {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+  #footer #brands {
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0rem -7.4rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1023px)  {
+
+}
+@media (max-width: 1023px) {
+
+}
+@media (min-width: 1024px) {
+
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+}
+@media (max-width: 1199px) {
+
+}
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+}
+@media (max-width: 1399px) {
+
+}
+@media (min-width: 1400px) {
+
+}
