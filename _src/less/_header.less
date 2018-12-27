@@ -34,6 +34,9 @@ button#hamburger-menu {
   position: relative;
   right: 0px;
 }
+body#landing button#hamburger-menu {
+  display: none;
+}
 button#hamburger-menu svg {
   transform: scale(1.8);
 }
@@ -66,6 +69,9 @@ body#landing button#hamburger-menu {
     transition: right 0.32s ease;
   width: 100%;
   z-index: 99;
+}
+body#landing #header #nav {
+  display: none;
 }
 #header #nav.expanded {
   right: 0px !important;
