@@ -1,27 +1,153 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{if hasmath}} {{insert head_katex.html }}     {{end}}
-  {{if hascode}} {{insert head_highlight.html }}   {{end}}
-  <link rel="stylesheet" href="/css/franklin.css">
-  <link rel="stylesheet" href="/css/basic.css">
-  <link rel="icon" href="/assets/favicon.png">
-  {{isdef title}} <title>{{fill title}}</title>  {{end}}
-</head>
-<body>
-  <header>
-    <div class="blog-name"><a href="">Basic Template</a></div>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/menu1/">Code blocks</a></li>
-        <li><a href="/menu2/">More goodies</a></li>
-        <li><a href="/menu3/">Menu 3</a></li>
-      </ul>
-      <img src="/assets/hamburger.svg" id="menu-icon">
-    </nav>
-  </header>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head prefix="og: http://ogp.me/ns/article#">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="https://michaelmallari.github.io/img/logo-mm-pms2028c.png" />
+    <link rel="shortcut icon" href="https://michaelmallari.github.io/img/icon-mm-transparent.png" />
+    <link type="image/x-icon" rel="icon" href="https://michaelmallari.github.io/img/logo-mm-pms2028c.png" />
 
-<!-- Content appended here -->
+
+    {{ isdef title }}<title>{{ fill title }}</title>{{ end }}
+    <meta name="description" content="" />
+    <link rel="canonical" href="" />
+    <meta name="robots" content="index, follow" />
+
+
+    <meta property="og:type" content="article" />
+    {{ isdef title }}<meta property="og:title" content="{{ fill title }}" />{{ end }}
+    {{ isdef description }}<meta property="og:description" content="{{ fill description }}" />{{ end }}
+    <meta property="og:url" content="" />
+    <meta property="og:img" content="https://michaelmallari.github.io/img/feature-img-treemap.png" />
+
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MichaelMallari" />
+    {{ isdef title }}<meta name="twitter:title" content="{{ fill title }}" />{{ end }}
+    {{ isdef description }}<meta name="twitter:description" content="{{ fill description }}" />{{ end }}
+    <meta name="twitter:image" content="https://michaelmallari.github.io/img/feature-img-treemap.png" />
+
+
+    <link type="text/css" rel="stylesheet" href="https://michaelmallari.github.io/css/styles.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/solarized-dark.min.css" />
+
+
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','');
+    </script>
+  </head>
+
+
+
+
+
+
+
+
+  <body class="doing">
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+
+
+
+    <div id="page-container">
+      <header id="header">
+        <div class="container">
+          <a href="https://www.michaelmallari.com/" title="www.michaelmallari.com"><div id="logo-mm"></div></a>
+
+
+          <button id="hamburger-menu" class="toggle-hamburger-menu">
+            <label>Menu</label>
+            <svg width="12px" height="16px" viewBox="0 0 12 16">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g fill="#ffffff">
+                  <path d="M11.41,9 L0.59,9 C0,9 0,8.59 0,8 C0,7.41 0,7 0.59,7 L11.4,7 C11.99,7 11.99,7.41 11.99,8 C11.99,8.59 11.99,9 11.4,9 L11.41,9 Z M11.41,5 L0.59,5 C0,5 0,4.59 0,4 C0,3.41 0,3 0.59,3 L11.4,3 C11.99,3 11.99,3.41 11.99,4 C11.99,4.59 11.99,5 11.4,5 L11.41,5 Z M0.59,11 L11.4,11 C11.99,11 11.99,11.41 11.99,12 C11.99,12.59 11.99,13 11.4,13 L0.59,13 C0,13 0,12.59 0,12 C0,11.41 0,11 0.59,11 L0.59,11 Z" id="Shape"></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+
+
+          <nav id="nav">
+            <button id="close-menu" class="toggle-hamburger-menu">
+              <div class="container">
+                <label>Close</label>
+                <svg width="12px" height="16px" viewBox="0 0 12 16">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill="#000000">
+                      <polygon id="Shape" points="7.48 8 11.23 11.75 9.75 13.23 6 9.48 2.25 13.23 0.77 11.75 4.52 8 0.77 4.25 2.25 2.77 6 6.52 9.75 2.77 11.23 4.25"></polygon>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </button>
+
+
+            <ul class="nav-primary">
+              <li><a href="#main-content">
+                Skip to main content
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/computational/" alt="Computational Thinking + Doing" title="Computational Thinking + Doing">
+                <span class="fas fa-code"></span>
+                <label>COMP</label>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/data/" alt="Data-Informed Thinking + Doing" title="Data-Informed Thinking + Doing">
+                <span class="fas fa-chart-pie"></span>
+                <label>DATA</label>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/design/" alt="Design Thinking + Doing" title="Design Thinking + Doing">
+                <span class="fas fa-palette"></span>
+                <label>DSGN</label>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/operational/" alt="Operational Thinking + Doing" title="Operational Thinking + Doing">
+                <span class="fas fa-tasks"></span>
+                <label>OPS</label>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/product/" alt="Product Thinking + Doing" title="Product Thinking + Doing">
+                <span class="fas fa-boxes"></span>
+                <label>PROD</label>
+              </a></li>
+            </ul>
+          </nav>
+          <!--/#nav -->
+        </div>
+      </header>
+      <!--/#header -->
+
+
+
+
+      <article id="content" role="main">
+        <a name="main-content"></a>
+
+
+        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('https://michaelmallari.github.io/img/feature-img-treemap.png')">
+          <div class="container">
+            <span class="category">Computational Thinking + Doing</span>
+            {{ isdef title }}<h1 class="title">{{ fill title }}</h1>{{ end }}
+            <span class="hr-minor"></span>
+            {{ isdef description }}<h2 class="excerpt">{{ fill description }}</h2>{{ end }}
+          </div>
+        </header>
+
+
+        <div id="content-body">
+          <div class="container">

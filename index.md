@@ -1,4 +1,5 @@
-@def title = "Franklin Example"
+@def title = "Applied Computing"
+@def description = "Explore Michael's collection of software and data engineering projects and prototypes."
 @def hasmath = true
 @def hascode = true
 <!-- Note: by default hasmath == true and hascode == false. You can change this in

@@ -3,11 +3,11 @@ Add here global page variables to use throughout your
 website.
 The website_* must be defined for the RSS to work
 ------------------------------------------------------->
-@def website_title = "Franklin Template"
-@def website_descr = "Example website using Franklin"
-@def website_url   = "https://tlienart.github.io/FranklinTemplates.jl/"
+@def website_title = "Michael Mallari, BS in Computer Science"
+@def website_descr = "Explore Michael's collection of software and data engineering projects and prototypes."
+@def website_url   = "https://michaelmallari.github.io/"
 
-@def author = "Septimia Zenobia"
+@def author = "Michael Mallari"
 
 <!-----------------------------------------------------
 Add here global latex commands to use throughout your
