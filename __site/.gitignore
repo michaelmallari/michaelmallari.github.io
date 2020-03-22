@@ -1,0 +1,8 @@
+# System files
+.DS_Store
+
+# CSS-preprocessor (LESS)
+config.codekit3
+
+# IDE
+/.idea

@@ -1,5 +1,14 @@
 # System files
 .DS_Store
 
+# Distribution/public files
+/public
+
+# CSS-preprocessor (LESS)
+config.codekit3
+
+# Repository
+/.github
+
 # IDE
 /.idea
