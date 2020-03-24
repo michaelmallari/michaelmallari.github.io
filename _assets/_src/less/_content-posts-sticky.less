@@ -52,7 +52,8 @@ body#home #content-body {
 #posts-sticky ul > li:nth-child(9) a .post-thumb {
   background: rgba(183, 201, 211, 0.8);
 }
-#posts-sticky ul > li a:hover .post-thumb {
+#posts-sticky ul > li a:hover .post-thumb,
+#posts-sticky ul > li a:focus .post-thumb {
   background-blend-mode: normal;
   background-color: @white;
   background-size: 148% auto !important;
@@ -61,15 +62,22 @@ body#home #content-body {
 
 
 
-#posts-sticky ul > li a .post-thumb-arrow polygon {
+#posts-sticky ul > li a .post-thumb-arrow polygon,
+#posts-sticky ul > li a .post-thumb-arrow path {
   fill: @off-white;
 }
 #posts-sticky ul > li:nth-child(2) a .post-thumb-arrow polygon,
+#posts-sticky ul > li:nth-child(2) a .post-thumb-arrow path,
 #posts-sticky ul > li:nth-child(5) a .post-thumb-arrow polygon,
-#posts-sticky ul > li:nth-child(8) a .post-thumb-arrow polygon {
+#posts-sticky ul > li:nth-child(5) a .post-thumb-arrow path,
+#posts-sticky ul > li:nth-child(8) a .post-thumb-arrow polygon,
+#posts-sticky ul > li:nth-child(8) a .post-thumb-arrow path {
   fill:@gray-dark;
 }
-#posts-sticky ul > li a:hover .post-thumb-arrow polygon {
+#posts-sticky ul > li a:hover .post-thumb-arrow polygon,
+#posts-sticky ul > li a:hover .post-thumb-arrow path,
+#posts-sticky ul > li a:focus .post-thumb-arrow polygon,
+#posts-sticky ul > li a:focus .post-thumb-arrow path {
   fill: @orange;
 }
 
@@ -81,7 +89,8 @@ body#home #content-body {
 #posts-sticky ul > li:nth-child(8) .post-details  {
   background: @gray-dark;
 }
-#posts-sticky ul > li a:hover .post-details {
+#posts-sticky ul > li a:hover .post-details,
+#posts-sticky ul > li a:focus .post-details{
   background: @orange;
 }
 #posts-sticky ul > li a .post-details.height-auto {
@@ -99,7 +108,8 @@ body#home #content-body {
   padding: 2.4rem 0rem 0.64rem 0rem;
   text-decoration: none;
 }
-#posts-sticky ul > li a:hover .category {
+#posts-sticky ul > li a:hover .category,
+#posts-sticky ul > li a:focus .category {
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -120,7 +130,8 @@ body#home #content-body {
 #posts-sticky ul > li:nth-child(8) a .title  {
   color: @white;
 }
-#posts-sticky ul > li a:hover .title {
+#posts-sticky ul > li a:hover .title,
+#posts-sticky ul > li a:focus .title {
   color: @white;
 }
 
@@ -135,7 +146,8 @@ body#home #content-body {
   padding: 0rem 0rem 2.12rem 0rem;
   text-decoration: none;
 }
-#posts-sticky ul > li a:hover .excerpt {
+#posts-sticky ul > li a:hover .excerpt,
+#posts-sticky ul > li a:focus .excerpt {
   color: rgba(255, 255, 255, 0.72);
 }
 

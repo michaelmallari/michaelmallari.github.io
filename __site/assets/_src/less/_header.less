@@ -123,7 +123,7 @@ button#close-menu label {
   padding: 0px;
   width: 1.48rem;
 }
-.nav-primary a label {
+.nav-primary a span:nth-child(2) {
   color: @gray-dark;
   display: inline-block;
   font-size: 0.76rem;
@@ -257,7 +257,9 @@ button#close-menu label {
 
 }
 @media (max-width: 1199px) {
-
+  .nav-primary li:first-child {
+    display: none;
+  }
 }
 @media (min-width: 1200px) {
   #header {
@@ -309,18 +311,18 @@ button#close-menu label {
   }
   .nav-primary a span {
     display: block;
-    padding-top: 1.4rem;
+    padding-top: 1.48rem;
     width: 100%;
   }
   .nav-primary a:hover span,
   .nav-primary a:focus span {
     color: @white;
   }
-  .nav-primary a label {
+  .nav-primary a span:nth-child(2) {
     font-size: 0.68rem;
   }
-  .nav-primary a:hover label,
-  .nav-primary a:focus label{
+  .nav-primary a:hover span:nth-child(2),
+  .nav-primary a:focus span:nth-child(2) {
     color: @white;
   }
   .nav-primary li:first-child a {
@@ -334,6 +336,40 @@ button#close-menu label {
   .nav-primary li:first-child a:hover,
   .nav-primary li:first-child a:focus {
     color: @blue-dark;
+  }
+  .nav-primary li:nth-child(2) a span:nth-child(2),
+  .nav-primary li:nth-child(3) a span:nth-child(2),
+  .nav-primary li:nth-child(4) a span:nth-child(2),
+  .nav-primary li:nth-child(5) a span:nth-child(2),
+  .nav-primary li:nth-child(6) a span:nth-child(2) {
+    position: relative;
+    visibility: hidden;
+  }
+  .nav-primary li:nth-child(2) a span:nth-child(2):after,
+  .nav-primary li:nth-child(3) a span:nth-child(2):after,
+  .nav-primary li:nth-child(4) a span:nth-child(2):after,
+  .nav-primary li:nth-child(5) a span:nth-child(2):after,
+  .nav-primary li:nth-child(6) a span:nth-child(2):after {
+    display: block;
+    position: absolute;
+    top: 0.08rem;
+    visibility: visible;
+    width: 100%;
+  }
+  .nav-primary li:nth-child(2) a span:nth-child(2):after {
+    content: "COMP";
+  }
+  .nav-primary li:nth-child(3) a span:nth-child(2):after {
+    content: "DATA";
+  }
+  .nav-primary li:nth-child(4) a span:nth-child(2):after {
+    content: "DSGN";
+  }
+  .nav-primary li:nth-child(5) a span:nth-child(2):after {
+    content: "OPS";
+  }
+  .nav-primary li:nth-child(6) a span:nth-child(2):after {
+    content: "PROD";
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
