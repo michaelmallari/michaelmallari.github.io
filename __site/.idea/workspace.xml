@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9382b4b3-339d-4b38-9944-5dffaa1a1dc7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/__site/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/__site/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_content-posts-sticky.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_content-posts-sticky.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_footer.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_footer.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/styles.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/menu1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/menu1/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/menu2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/menu2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/menu3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/menu3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_content-posts-sticky.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_content-posts-sticky.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_content.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_footer.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_footer.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_header.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/_src/less/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/styles.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layout/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layout/head.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584842783097</updated>
       <workItem from="1584842784245" duration="3097000" />
-      <workItem from="1585009096465" duration="2338000" />
+      <workItem from="1585009096465" duration="4223000" />
     </task>
     <servers />
   </component>
