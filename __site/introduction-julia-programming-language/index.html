@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head prefix="og: http://ogp.me/ns/article#">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="/assets/img/logo-mm-pms2028c.png" />
+    <link rel="shortcut icon" href="/assets/img/icon-mm-transparent.png" />
+    <link type="image/x-icon" rel="icon" href="/assets/img/logo-mm-pms2028c.png" />
+
+
+    <title>Introduction to Julia Programming Language</title>
+    <meta name="description" content="Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames." />
+    <link rel="canonical" href="" />
+    <meta name="robots" content="index, follow" />
+
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Introduction to Julia Programming Language" />
+    <meta property="og:description" content="Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames." />
+    <meta property="og:url" content="" />
+    <meta property="og:img" content="/assets/img/feature-img-treemap.png" />
+
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MichaelMallari" />
+    <meta name="twitter:title" content="Introduction to Julia Programming Language" />
+    <meta name="twitter:description" content="Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames." />
+    <meta name="twitter:image" content="/assets/img/feature-img-treemap.png" />
+
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/styles.min.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/js/node_modules/highlight.js/styles/solarized-dark.css" />
+
+
+    <link type="application/rss+xml" rel="alternate" title="Applied Computing | Michael Mallari, BS in Computer Science" href="/feed.xml" />
+    <link type="application/rss+xml" rel="feed" title="Applied Computing | Michael Mallari, BS in Computer Science" href="/feed.xml" />
+
+
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NCX6N2R');
+    </script>
+  </head>
+
+
+
+
+
+
+
+
+  <body class="doing">
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCX6N2R" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+
+
+
+    <div id="page-container">
+      <header id="header">
+        <div class="container">
+          <a href="https://www.michaelmallari.com/" title="www.michaelmallari.com"><div id="logo-mm"></div></a>
+
+
+          <button id="hamburger-menu" class="toggle-hamburger-menu">
+            <label>Menu</label>
+            <svg width="12px" height="16px" viewBox="0 0 12 16">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g fill="#ffffff">
+                  <path d="M11.41,9 L0.59,9 C0,9 0,8.59 0,8 C0,7.41 0,7 0.59,7 L11.4,7 C11.99,7 11.99,7.41 11.99,8 C11.99,8.59 11.99,9 11.4,9 L11.41,9 Z M11.41,5 L0.59,5 C0,5 0,4.59 0,4 C0,3.41 0,3 0.59,3 L11.4,3 C11.99,3 11.99,3.41 11.99,4 C11.99,4.59 11.99,5 11.4,5 L11.41,5 Z M0.59,11 L11.4,11 C11.99,11 11.99,11.41 11.99,12 C11.99,12.59 11.99,13 11.4,13 L0.59,13 C0,13 0,12.59 0,12 C0,11.41 0,11 0.59,11 L0.59,11 Z" id="Shape"></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+
+
+          <nav id="nav">
+            <button id="close-menu" class="toggle-hamburger-menu">
+              <div class="container">
+                <label>Close</label>
+                <svg width="12px" height="16px" viewBox="0 0 12 16">
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g fill="#000000">
+                      <polygon id="Shape" points="7.48 8 11.23 11.75 9.75 13.23 6 9.48 2.25 13.23 0.77 11.75 4.52 8 0.77 4.25 2.25 2.77 6 6.52 9.75 2.77 11.23 4.25"></polygon>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </button>
+
+
+            <ul class="nav-primary">
+              <li><a href="#main-content">
+                Skip to main content
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/computational/">
+                <span class="fas fa-code"></span>
+                <span>Computational</span>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/data/">
+                <span class="fas fa-chart-pie"></span>
+                <span>Data-Informed</span>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/design/">
+                <span class="fas fa-palette"></span>
+                <span>Design</span>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/operational/">
+                <span class="fas fa-tasks"></span>
+                <span>Operational</span>
+              </a></li>
+
+
+              <li><a href="https://www.michaelmallari.com/product/">
+                <span class="fas fa-boxes"></span>
+                <span>Product</span>
+              </a></li>
+            </ul>
+          </nav>
+          <!--/#nav -->
+        </div>
+      </header>
+      <!--/#header -->
+
+
+
+
+      <article id="content" role="main">
+        <a name="main-content"></a>
+
+
+        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('/assets/img/feature-img-treemap.png')">
+          <div class="container">
+            <span class="category">Computational Thinking + Doing</span>
+            <h1 class="title">Introduction to Julia Programming Language</h1>
+            <span class="hr-minor"></span>
+            <h2 class="excerpt">Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames.</h2>
+          </div>
+        </header>
+
+
+        <div id="content-body">
+          <div class="container">
+
+<div class="franklin-content">
+<h2 id="intro_to_basics"><a href="#intro_to_basics">Intro to basics</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h3 id="how_it_works"><a href="#how_it_works">How it works</a></h3>
+<p>Calculate 3 &#43; 4</p>
+<pre><code class="language-julia-repl">julia> 3 + 4
+7</code></pre>
+<p>Calculate 6 &#43; 12</p>
+<pre><code class="language-julia-repl">julia> 6 + 12
+18</code></pre>
+<h3 id="arthmetic_with_julia"><a href="#arthmetic_with_julia">Arthmetic with Julia</a></h3>
+<p>An addition</p>
+<pre><code class="language-julia-repl">julia> 5 + 5
+10</code></pre>
+<p>A subtraction</p>
+<pre><code class="language-julia-repl">julia> 5 - 5
+0</code></pre>
+<p>A multiplication</p>
+<pre><code class="language-julia-repl">julia> 3 * 5
+15</code></pre>
+<p>A division</p>
+<pre><code class="language-julia-repl">julia> (5 + 5) / 2
+5.0</code></pre>
+<p>Exponential</p>
+<pre><code class="language-julia-repl">julia> 2 ^ 5
+32</code></pre>
+<p>Modulo</p>
+<pre><code class="language-julia-repl">julia> 28 % 5
+3</code></pre>
+<h3 id="variable_assignment"><a href="#variable_assignment">Variable assignment</a></h3>
+<p>Assign the value 42 to <code>x</code>.  Print out the value of the variable <code>x</code>
+<pre><code class="language-julia-repl">julia> x = 42
+42
+
+julia> x
+42</code></pre>
+<h3 id="variable_assignment_2"><a href="#variable_assignment_2">Variable assignment &#40;2&#41;</a></h3>
+<p>Assign the value 5 to the variable <code>my_apples</code>.  Print out the value of the variable <code>my_apples</code>
+<pre><code class="language-julia-repl">julia> my_apples = 5
+5
+
+julia> my_apples
+5</code></pre>
+<h3 id="variable_assignment_3"><a href="#variable_assignment_3">Variable assignment &#40;3&#41;</a></h3>
+<p>Assign a value to the variables <code>my_apples</code> and <code>my_oranges</code>.  Add these two variables together</p>
+<pre><code class="language-julia-repl">julia> my_apples = 5
+5
+
+julia> my_oranges = 6
+6
+
+julia> my_apples + my_oranges
+11</code></pre>
+<p>Create the variable <code>my_fruits</code>
+<pre><code class="language-julia-repl">julia> my_fruits = my_apples + my_oranges
+11
+
+julia> my_fruits
+11</code></pre>
+<h3 id="basic_data_types_in_julia"><a href="#basic_data_types_in_julia">Basic data types in Julia</a></h3>
+<p>Change <code>my_numeric</code> to be 42.  Change <code>my_character</code> to be &quot;universe&quot;.  Change <code>my_boolean</code> to be false</p>
+<pre><code class="language-julia-repl">julia> my_numeric = 42
+42
+
+julia> my_character = "universe"
+"universe"
+
+julia> my_boolean = Bool(0)
+false</code></pre>
+<h3 id="whats_that_data_type"><a href="#whats_that_data_type">What’s that data type?</a></h3>
+
+
+<hr />
+<h2 id="vectors"><a href="#vectors">Vectors</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h3 id="create_a_vector"><a href="#create_a_vector">Create a vector</a></h3>
+
+<h3 id="create_a_vector_2"><a href="#create_a_vector_2">Create a vector &#40;2&#41;</a></h3>
+
+<h3 id="create_a_vector_3"><a href="#create_a_vector_3">Create a vector &#40;3&#41;</a></h3>
+
+<h2 id="naming_a_vector"><a href="#naming_a_vector">Naming a vector</a></h2>
+
+<h3 id="naming_a_vector_2"><a href="#naming_a_vector_2">Naming a vector &#40;2&#41;</a></h3>
+
+<h3 id="calculating_total_winnings"><a href="#calculating_total_winnings">Calculating total winnings</a></h3>
+
+<h3 id="calculating_total_winnings_2"><a href="#calculating_total_winnings_2">Calculating total winnings &#40;2&#41;</a></h3>
+
+<h3 id="calculating_total_winnings_3"><a href="#calculating_total_winnings_3">Calculating total winnings &#40;3&#41;</a></h3>
+
+<h3 id="comparing_total_winnings"><a href="#comparing_total_winnings">Comparing total winnings</a></h3>
+
+<h3 id="vector_selection_the_good_times"><a href="#vector_selection_the_good_times">Vector selection: the good times</a></h3>
+
+<h3 id="vector_selection_the_good_times_2"><a href="#vector_selection_the_good_times_2">Vector selection: the good times &#40;2&#41;</a></h3>
+
+<h3 id="vector_selection_the_good_times_3"><a href="#vector_selection_the_good_times_3">Vector selection: the good times &#40;3&#41;</a></h3>
+
+<h3 id="vector_selection_the_good_times_4"><a href="#vector_selection_the_good_times_4">Vector selection: the good times &#40;4&#41;</a></h3>
+
+<h3 id="selection_by_comparison_-_step_1"><a href="#selection_by_comparison_-_step_1">Selection by comparison - Step 1</a></h3>
+
+<h3 id="selection_by_comparison_-_step_2"><a href="#selection_by_comparison_-_step_2">Selection by comparison - Step 2</a></h3>
+
+<h3 id="advanced_selection"><a href="#advanced_selection">Advanced selection</a></h3>
+
+<hr />
+<h2 id="matrix"><a href="#matrix">Matrix</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h3 id="whats_a_matrix"><a href="#whats_a_matrix">What’s a matrix?</a></h3>
+
+<h3 id="analyze_matrices_you_shall"><a href="#analyze_matrices_you_shall">Analyze matrices, you shall</a></h3>
+
+<h3 id="naming_a_matrix"><a href="#naming_a_matrix">Naming a matrix</a></h3>
+
+<h3 id="calculating_the_worldwide_box_office"><a href="#calculating_the_worldwide_box_office">Calculating the worldwide box office</a></h3>
+
+<h3 id="adding_a_column_for_the_worldwide_box_office"><a href="#adding_a_column_for_the_worldwide_box_office">Adding a column for the Worldwide box office</a></h3>
+
+<h3 id="adding_a_row"><a href="#adding_a_row">Adding a row</a></h3>
+
+<h3 id="the_total_box_office_revenue_for_the_entire_saga"><a href="#the_total_box_office_revenue_for_the_entire_saga">The total box office revenue for the entire saga</a></h3>
+
+<h3 id="selection_of_matrix_elements"><a href="#selection_of_matrix_elements">Selection of matrix elements</a></h3>
+
+<h3 id="a_little_arithmetic_with_matrices"><a href="#a_little_arithmetic_with_matrices">A little arithmetic with matrices</a></h3>
+
+<h3 id="a_little_arithmetic_with_matrices_2"><a href="#a_little_arithmetic_with_matrices_2">A little arithmetic with matrices &#40;2&#41;</a></h3>
+
+<hr />
+<h2 id="factors"><a href="#factors">Factors</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h3 id="whats_a_factor_and_why_would_you_use_it"><a href="#whats_a_factor_and_why_would_you_use_it">What’s a factor and why would you use it?</a></h3>
+
+<h3 id="whats_a_factor_and_why_would_you_use_it_2"><a href="#whats_a_factor_and_why_would_you_use_it_2">What’s a factor and why would you use it? &#40;2&#41;</a></h3>
+
+<h3 id="whats_a_factor_and_why_would_you_use_it_3"><a href="#whats_a_factor_and_why_would_you_use_it_3">What’s a factor and why would you use it? &#40;3&#41;</a></h3>
+
+<h3 id="factor_levels"><a href="#factor_levels">Factor levels</a></h3>
+
+<h3 id="summarizing_a_factor"><a href="#summarizing_a_factor">Summarizing a factor</a></h3>
+
+<h3 id="battle_of_the_sexes"><a href="#battle_of_the_sexes">Battle of the sexes</a></h3>
+
+<h3 id="ordered_factors"><a href="#ordered_factors">Ordered factors</a></h3>
+
+<h3 id="ordered_factors_2"><a href="#ordered_factors_2">Ordered factors &#40;2&#41;</a></h3>
+
+<h3 id="comparing_ordered_factors"><a href="#comparing_ordered_factors">Comparing ordered factors</a></h3>
+
+<h2 id="data_frames"><a href="#data_frames">Data frames</a></h2>
+<h3 id="whats_a_data_frame"><a href="#whats_a_data_frame">What’s a data frame?</a></h3>
+
+<h3 id="quick_have_a_look_at_your_data_set"><a href="#quick_have_a_look_at_your_data_set">Quick, have a look at your data set</a></h3>
+
+<h3 id="have_a_look_at_the_structure"><a href="#have_a_look_at_the_structure">Have a look at the structure</a></h3>
+
+<h3 id="creating_a_data_frame"><a href="#creating_a_data_frame">Creating a data frame</a></h3>
+
+<h3 id="creating_a_data_frame_2"><a href="#creating_a_data_frame_2">Creating a data frame &#40;2&#41;</a></h3>
+
+<h3 id="selection_of_data_frame_elements"><a href="#selection_of_data_frame_elements">Selection of data frame elements</a></h3>
+
+<h3 id="selection_of_data_frame_elements_2"><a href="#selection_of_data_frame_elements_2">Selection of data frame elements &#40;2&#41;</a></h3>
+
+<h3 id="only_planets_with_rings"><a href="#only_planets_with_rings">Only planets with rings</a></h3>
+
+<h3 id="only_planets_with_rings_2"><a href="#only_planets_with_rings_2">Only planets with rings &#40;2&#41;</a></h3>
+
+<h3 id="only_planets_with_rings_but_shorter"><a href="#only_planets_with_rings_but_shorter">Only planets with rings but shorter</a></h3>
+
+<h3 id="sorting"><a href="#sorting">Sorting</a></h3>
+
+<h3 id="sorting_your_data_frame"><a href="#sorting_your_data_frame">Sorting your data frame</a></h3>
+
+<hr />
+<h2 id="lists"><a href="#lists">Lists</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h3 id="lists_why_would_you_need_them"><a href="#lists_why_would_you_need_them">Lists, why would you need them?</a></h3>
+
+<h3 id="lists_why_would_you_need_them_2"><a href="#lists_why_would_you_need_them_2">Lists, why would you need them? &#40;2&#41;</a></h3>
+
+<h3 id="creating_a_list"><a href="#creating_a_list">Creating a list</a></h3>
+
+<h3 id="creating_a_named_list"><a href="#creating_a_named_list">Creating a named list</a></h3>
+
+<h3 id="creating_a_named_list_2"><a href="#creating_a_named_list_2">Creating a named list &#40;2&#41;</a></h3>
+
+<h3 id="selecting_elements_from_a_list"><a href="#selecting_elements_from_a_list">Selecting elements from a list</a></h3>
+
+<h3 id="adding_more_movie_information_to_the_list"><a href="#adding_more_movie_information_to_the_list">Adding more movie information to the list</a></h3>
+
+
+
+</div>
+
+          </div>
+          <!--/.container -->
+        </div>
+        <!--/#content -->
+
+
+
+
+        <div id="aside">
+          <div class="container">
+            <span class="category">Related Thoughts</span>
+            <ul id="aside-posts-recent">
+
+            </ul>
+          </div>
+        </div>
+      </article>
+      <!--/#content-body -->
+
+
+
+
+      <footer id="footer">
+        <blockquote id="quote">
+          <div>
+            <div class="container">
+              <p>A smart creative [or hyrbid thinker and doer] has deep technical knowledge &hellip; likely a computer scientist &hellip; [he or she] doesn't just design concepts, [he or she] builds prototypes.</p>
+
+              <footer><cite>Eric Schmidt &amp; Jonathan Rosenberg in <em>How Google Works</em></cite></footer>
+            </div>
+          </div>
+        </blockquote>
+
+
+        <section id="about">
+          <div class="container">
+            <div class="category">Computational Thinker + Doer</div>
+            <div class="michaelmallari">Michael Mallari, <span>BS in Computer Science</span></div>
+
+            <span class="hr-major"></span>
+
+            <p>Michael is a hybrid thinker and doer&mdash;a byproduct of being a <a href="https://news.gallup.com/businessjournal/694/learner.aspx" target="_blank">StrengthsFinder "Learner"</a> over time. With 20+ years of engineering, design, and product experience, he helps organizations identify market needs, mobilize internal and external resources, and deliver delightful digital customer experiences that align with business goals. He has been entrusted with problem-solving for brands&mdash;ranging from Fortune 500 companies to early-stage startups to not-for-profit organizations&mdash;including the following:</p>
+
+            <ul id="brands">
+              <li><img src="/assets/img/logo-amex.png" alt="American Express" title="American Express" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-discovery.png" alt="Discovery Communications" title="Discovery Communications" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-gap.png" alt="Gap" title="Gap" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-hasbro.png" alt="Hasbro" title="Hasbro" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-lincoln.png" alt="Lincoln Motor Company" title="Lincoln Motor Company" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-marriott.png" alt="Marriott" title="Marriott" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-marvel.png" alt="Marvel" title="Marvel" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-mayoclinic.png" alt="Mayo Clinic" title="Mayo Clinic" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-nasdaq.png" alt="Nasdaq" title="Nasdaq" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-polo.png" alt="Polo Ralph Lauren" title="Polo Ralph Lauren" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-rockefeller.png" alt="Rockefeller University" title="Rockefeller University" class="vertical-middle" /></li>
+              <li><img src="/assets/img/logo-verizon.png" alt="Verizon" title="Verizon" class="vertical-middle" /></li>
+            </ul>
+
+            <p>Michael earned his BS in Computer Science from New York Institute of Technology and his MBA from the University of Maryland, College Park. He is also a candidate to receive his MS in Applied Analytics from Columbia University.</p>
+
+            <a href="#" class="btn btn-default">Partner with Michael</a> <span id="hello">or <a href="https://www.linkedin.com/in/mmallari/" target="_blank">say hello on LinkedIn</a></span>
+          </div>
+        </section>
+
+
+        <section id="handcrafted">
+          <div class="container">
+            <p><a href="https://dribbble.com/michaelmallari/" target="_blank">Designed</a> and <a href="https://github.com/michaelmallari/michaelmallari.github.io/" target="_blank">built</a> by Michael Mallari</p>
+          </div>
+        </section>
+      </footer>
+    </div>
+    <!--/#page-container -->
+
+
+
+
+
+
+
+
+    <script src="/assets/js/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/js/functions.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+      });
+    </script>
+    <script src="/assets/js/node_modules/react/umd/react.production.min.js"></script>
+    <script src="/assets/js/node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript">
+      computationalFeed = "https://www.michaelmallari.com/computational/index.xml"
+
+      // Get title and URL of most recent 3 posts
+      // Display posts in #aside-posts-recent
+    </script>
+    <script src="/assets/js/node_modules/highlight.js/lib/highlight.js"></script>
+    <script type="text/javascript">
+      hljs.initHighlightingOnLoad();
+      hljs.registerLanguage("julia-repl",function(a){return{c:[{cN:"meta",b:/^julia>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}},{cN:"metas",b:/^shell>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"bash"}},{cN:"metap",b:/^\(.*\)\spkg>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}}]}});
+    </script>
+  </body>
+</html>

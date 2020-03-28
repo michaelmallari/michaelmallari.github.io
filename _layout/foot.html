@@ -89,9 +89,16 @@
     </script>
     <script src="/assets/js/node_modules/react/umd/react.production.min.js"></script>
     <script src="/assets/js/node_modules/react-dom/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script type="text/javascript">
+      computationalFeed = "https://www.michaelmallari.com/computational/index.xml"
+
+      // Get title and URL of most recent 3 posts
+      // Display posts in #aside-posts-recent
+    </script>
+    <script src="/assets/js/node_modules/highlight.js/lib/highlight.js"></script>
     <script type="text/javascript">
       hljs.initHighlightingOnLoad();
+      hljs.registerLanguage("julia-repl",function(a){return{c:[{cN:"meta",b:/^julia>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}},{cN:"metas",b:/^shell>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"bash"}},{cN:"metap",b:/^\(.*\)\spkg>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}}]}});
     </script>
   </body>
 </html>

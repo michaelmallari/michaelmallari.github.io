@@ -5,7 +5,9 @@
   "dependencies": {
     "angular": "^1.7.9",
     "d3": "^5.7.0",
+    "highlight.js": "^9.18.1",
     "jquery": "^3.4.1",
+    "katex": "^0.11.1",
     "particles.js": "^2.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
