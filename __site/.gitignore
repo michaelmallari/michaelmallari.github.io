@@ -1,9 +1,0 @@
-# System files
-.DS_Store
-.__py_tmp_minscript.py
-
-# CSS-preprocessor (LESS)
-config.codekit3
-
-# IDE
-/.idea
