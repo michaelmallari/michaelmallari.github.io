@@ -95,10 +95,10 @@
       // Get title and URL of most recent 3 posts
       // Display posts in #aside-posts-recent
     </script>
-    <script src="/assets/js/node_modules/highlight.js/lib/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script type="text/javascript">
       hljs.initHighlightingOnLoad();
-      hljs.registerLanguage("julia-repl",function(a){return{c:[{cN:"meta",b:/^julia>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}},{cN:"metas",b:/^shell>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"bash"}},{cN:"metap",b:/^\(.*\)\spkg>/,r:10,starts:{e:/^(?![ ]{6})/,sL:"julia"}}]}});
+      {{ isdef isJuliaRepl}}{{ insert hljsJuliaRepl.html }}{{ end }}
     </script>
   </body>
 </html>

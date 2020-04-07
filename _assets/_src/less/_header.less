@@ -314,7 +314,7 @@ button#close-menu label {
     background: @blue;
   }
   .nav-primary a span {
-    display: block;
+    display: inline-block;
     padding-top: 1.48rem;
     width: 100%;
   }
@@ -335,6 +335,7 @@ button#close-menu label {
     font-size: 0.48rem;
     font-weight: bold;
     line-height: 0.8rem;
+    text-align: center;
     text-transform: uppercase;
   }
   .nav-primary li:first-child a:hover,
@@ -354,11 +355,12 @@ button#close-menu label {
   .nav-primary li:nth-child(4) a span:nth-child(2):after,
   .nav-primary li:nth-child(5) a span:nth-child(2):after,
   .nav-primary li:nth-child(6) a span:nth-child(2):after {
-    display: block;
     position: absolute;
+    left: -1.32rem;
+    text-align: center;
     top: 0.08rem;
     visibility: visible;
-    width: 100%;
+    width: 4.64rem;
   }
   .nav-primary li:nth-child(2) a span:nth-child(2):after {
     content: "COMP";

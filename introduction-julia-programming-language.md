@@ -2,8 +2,8 @@
 @def hascode = true
 @def lang = "julia-repl"
 @def date = Date(2019, 1, 5)
-@def description = "Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames."
-@def rss = "Learn the basics of data analysis in Julia programming language by manipulating common data structures such as vectors, matrices, and data frames."
+@def description = "Learn the basics of data analysis in Julia programming language by manipulating common data structures."
+@def isJuliaRepl = true
 
 ## Intro to basics
 
@@ -13,14 +13,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Calculate 3 + 4
 
-```julia-repl
+```
 julia> 3 + 4
 7
 ```
 
 Calculate 6 + 12
 
-```julia-repl
+```
 julia> 6 + 12
 18
 ```
@@ -29,42 +29,42 @@ julia> 6 + 12
 
 An addition
 
-```julia-repl
+```
 julia> 5 + 5
 10
 ```
 
 A subtraction
 
-```julia-repl
+```
 julia> 5 - 5
 0
 ```
 
 A multiplication
 
-```julia-repl
+```
 julia> 3 * 5
 15
 ```
 
 A division
 
-```julia-repl
+```
 julia> (5 + 5) / 2
 5.0
 ```
 
 Exponential
 
-```julia-repl
+```
 julia> 2 ^ 5
 32
 ```
 
 Modulo
 
-```julia-repl
+```
 julia> 28 % 5
 3
 ```
@@ -73,7 +73,7 @@ julia> 28 % 5
 
 Assign the value 42 to `x`.  Print out the value of the variable `x`
 
-```julia-repl
+```
 julia> x = 42
 42
 
@@ -85,7 +85,7 @@ julia> x
 
 Assign the value 5 to the variable `my_apples`.  Print out the value of the variable `my_apples`
 
-```julia-repl
+```
 julia> my_apples = 5
 5
 
@@ -97,7 +97,7 @@ julia> my_apples
 
 Assign a value to the variables `my_apples` and `my_oranges`.  Add these two variables together
 
-```julia-repl
+```
 julia> my_apples = 5
 5
 
@@ -110,7 +110,7 @@ julia> my_apples + my_oranges
 
 Create the variable `my_fruits`
 
-```julia-repl
+```
 julia> my_fruits = my_apples + my_oranges
 11
 
@@ -122,7 +122,7 @@ julia> my_fruits
 
 Change `my_numeric` to be 42.  Change `my_character` to be "universe".  Change `my_boolean` to be false
 
-```julia-repl
+```
 julia> my_numeric = 42
 42
 
@@ -136,11 +136,11 @@ false
 ### What’s that data type?
 
 
-```julia-repl
+```
 
 ```
 
-```julia-repl
+```
 
 ```
 
@@ -152,7 +152,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Create a vector
 
-```julia-repl
+```
 
 ```
 
@@ -168,7 +168,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```
 
-## Naming a vector
+### Naming a vector
 
 ```julia-repl
 
@@ -372,7 +372,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```
 
+---
+
 ## Data frames
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ### What’s a data frame?
 

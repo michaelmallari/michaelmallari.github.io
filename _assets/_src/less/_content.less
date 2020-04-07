@@ -55,13 +55,30 @@ body#home #content #masthead .container {
   color: @blue-dark;
   font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0rem;
+  letter-spacing: -0.02rem;
   line-height: 1.64rem;
-  margin: 0rem 0rem 1.72rem 0rem;
+  margin: 1rem 0rem 1.72rem 0rem;
+}
+#content-body h3 {
+  color: @blue-dark;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+  line-height: 1.56rem;
+  margin: 0rem 0rem 1.4rem 0rem;
+}
+#content-body h2 a,
+#content-body h3 a {
+  color: @blue-dark;
+  text-decoration: none;
 }
 #content-body img {
   height: auto !important;
   width: 100% !important;
+}
+#content-body hr {
+  border: dotted 0.08rem @gray-light;
+  margin: 2rem 0rem 1.72rem 0rem;
 }
 
 
@@ -205,6 +222,9 @@ body#home #content #masthead .container {
   }
   #content-body h2 {
     font-size: 1.12rem;
+  }
+  #content-body h3 {
+    font-size: 0.88rem;
   }
   #aside {
     background: @off-white;
