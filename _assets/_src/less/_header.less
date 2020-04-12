@@ -110,7 +110,7 @@ button#close-menu label {
 }
 .nav-primary li {
   display: block;
-  margin: 1rem 0rem 2rem 0rem;
+  margin: 1rem 0rem 2.4rem 0rem;
   padding: 0rem;
   text-align: center;
 }
@@ -133,7 +133,7 @@ button#close-menu label {
   letter-spacing: 0.02rem;
   text-align: left;
   text-transform: uppercase;
-  width: 43%;
+  width: 7.6rem;
 }
 
 
@@ -287,6 +287,7 @@ button#close-menu label {
   #header #nav {
     background: none;
     display: block;
+    padding-top: 4.8rem;
     position: fixed;
     right: 0px !important;
     width: 4.8rem;
@@ -324,37 +325,17 @@ button#close-menu label {
   }
   .nav-primary a span:nth-child(2) {
     font-size: 0.68rem;
+    width: 43%;
   }
   .nav-primary a:hover span:nth-child(2),
   .nav-primary a:focus span:nth-child(2) {
     color: @white;
   }
-  .nav-primary li:first-child a {
-    background: none !important;
-    color: @off-white;
-    font-size: 0.48rem;
-    font-weight: bold;
-    line-height: 0.8rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
-  .nav-primary li:first-child a:hover,
-  .nav-primary li:first-child a:focus {
-    color: @blue-dark;
-  }
-  .nav-primary li:nth-child(2) a span:nth-child(2),
-  .nav-primary li:nth-child(3) a span:nth-child(2),
-  .nav-primary li:nth-child(4) a span:nth-child(2),
-  .nav-primary li:nth-child(5) a span:nth-child(2),
-  .nav-primary li:nth-child(6) a span:nth-child(2) {
+  .nav-primary li a span:nth-child(2) {
     position: relative;
     visibility: hidden;
   }
-  .nav-primary li:nth-child(2) a span:nth-child(2):after,
-  .nav-primary li:nth-child(3) a span:nth-child(2):after,
-  .nav-primary li:nth-child(4) a span:nth-child(2):after,
-  .nav-primary li:nth-child(5) a span:nth-child(2):after,
-  .nav-primary li:nth-child(6) a span:nth-child(2):after {
+  .nav-primary li a span:nth-child(2):after {
     position: absolute;
     left: -1.32rem;
     text-align: center;
@@ -362,19 +343,19 @@ button#close-menu label {
     visibility: visible;
     width: 4.64rem;
   }
-  .nav-primary li:nth-child(2) a span:nth-child(2):after {
+  .nav-primary li:nth-child(1) a span:nth-child(2):after {
     content: "COMP";
   }
-  .nav-primary li:nth-child(3) a span:nth-child(2):after {
+  .nav-primary li:nth-child(2) a span:nth-child(2):after {
     content: "DATA";
   }
-  .nav-primary li:nth-child(4) a span:nth-child(2):after {
+  .nav-primary li:nth-child(3) a span:nth-child(2):after {
     content: "DSGN";
   }
-  .nav-primary li:nth-child(5) a span:nth-child(2):after {
+  .nav-primary li:nth-child(4) a span:nth-child(2):after {
     content: "OPS";
   }
-  .nav-primary li:nth-child(6) a span:nth-child(2):after {
+  .nav-primary li:nth-child(5) a span:nth-child(2):after {
     content: "PROD";
   }
 }
