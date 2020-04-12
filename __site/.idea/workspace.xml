@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9382b4b3-339d-4b38-9944-5dffaa1a1dc7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/intermediate-julia-programming-language/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/intermediate-julia-programming-language/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/__site/introduction-julia-programming-language/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/introduction-julia-programming-language/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_content.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_header.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_layout/foot.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layout/foot.html" afterDir="false" />
@@ -66,7 +64,8 @@
       <workItem from="1586215058657" duration="4090000" />
       <workItem from="1586311623930" duration="4000" />
       <workItem from="1586651025736" duration="56000" />
-      <workItem from="1586652886500" duration="3422000" />
+      <workItem from="1586652886500" duration="3586000" />
+      <workItem from="1586662562112" duration="635000" />
     </task>
     <servers />
   </component>
