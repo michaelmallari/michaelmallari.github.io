@@ -168,6 +168,7 @@ $(document).ready(function() {
     // $('body').toggleClass('disable-scroll');
     // $('#page-container').toggleClass('disable-scroll');
     $('#header #nav').toggleClass('expanded');
+    $('#hamburger-menu').toggleClass('toggle-hamburger-menu-close');
   });
 
   UpdateLayout();

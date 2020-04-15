@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9382b4b3-339d-4b38-9944-5dffaa1a1dc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/__site/assets/_src/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_content.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/_src/less/_header.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/css/styles.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/js/functions.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/js/functions.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/assets/js/functions.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/__site/assets/js/functions.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/intermediate-julia-programming-language/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/intermediate-julia-programming-language/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__site/introduction-julia-programming-language/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/__site/introduction-julia-programming-language/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/_src/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_content.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_content.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/_src/less/_header.less" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/_src/less/_header.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/css/styles.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/css/styles.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/js/functions.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/js/functions.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_assets/js/functions.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/_assets/js/functions.min.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_layout/foot.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layout/foot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layout/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layout/head.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +75,7 @@
       <workItem from="1586652886500" duration="3586000" />
       <workItem from="1586662562112" duration="635000" />
       <workItem from="1586723935778" duration="46000" />
+      <workItem from="1586918207071" duration="2860000" />
     </task>
     <servers />
   </component>
