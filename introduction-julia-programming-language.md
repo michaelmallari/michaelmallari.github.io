@@ -1,9 +1,11 @@
 @def title = "Introduction to Julia Programming Language"
-@def hascode = true
-@def lang = "julia-repl"
 @def date = Date(2019, 1, 5)
 @def description = "Learn the basics of data analysis in Julia programming language by manipulating common data structures."
+@def rss = "Learn the basics of data analysis in Julia programming language by manipulating common data structures."
+@def hascode = true
+@def lang = "julia-repl"
 @def isJuliaRepl = true
+@def relatedPosts[0] = ["Intermediate Julia Programming Language","intermediate-julia-programming"]
 
 ## Intro to basics
 
@@ -68,6 +70,30 @@ Modulo
 julia> 28 % 5
 3
 ```
+
+### Variable names
+
+Pre-defined math-symbol variables
+
+```
+julia> π
+π = 3.1415926535897...
+```
+
+Declare unicode math symbol-based variables using LATEX2ε
+
+```
+julia> school = "Massachusetts Institute of Technology"
+"Massachusetts Institute of Technology"
+
+julia> ϑ = 6.0
+6.0
+
+julia> starting_salary_µ = 70300
+70300
+```
+
+
 
 ### Variable assignment
 
@@ -137,11 +163,14 @@ false
 
 
 ```
+julia> typeof(my_numeric)
+Int64
 
-```
+julia> typeof(my_character)
+String
 
-```
-
+julia> typeof(my_boolean)
+Bool
 ```
 
 ---
@@ -380,8 +409,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### What’s a data frame?
 
-```julia-repl
+```
+julia> using Pkg
 
+julia> Pkg.add("DataFrames")
+   Updating registry at `~/.julia/registries/General`
+   Updating git-repo `https://github.com/JuliaRegistries/General.git`
+  Resolving package versions...
+   Updating `~/.julia/environments/v1.4/Project.toml`
+  [a93c6f00] + DataFrames v0.20.2
+   Updating `~/.julia/environments/v1.4/Manifest.toml`
+ [no changes]
+
+julia> using DataFrames
 ```
 
 ### Quick, have a look at your data set

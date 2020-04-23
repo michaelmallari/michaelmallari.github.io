@@ -5,32 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" href="/assets/img/logo-mm-pms2028c.png" />
-    <link rel="shortcut icon" href="/assets/img/icon-mm-transparent.png" />
-    <link type="image/x-icon" rel="icon" href="/assets/img/logo-mm-pms2028c.png" />
+    <link rel="apple-touch-icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
+    <link rel="shortcut icon" href="https://www.michaelmallari.com/img/icon-mm-transparent.png" />
+    <link type="image/x-icon" rel="icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
 
 
     {{ isdef title }}<title>{{ fill title }} | Michael Mallari, BS in Computer Science</title>{{ end }}
     {{ isdef description }}<meta name="description" content="{{ fill description }}" />{{ end }}
     <meta name="robots" content="index, follow" />
+    <meta name="canonical" content="" />
 
 
     <meta property="og:type" content="{{ isdef ogType }}{{ fill ogType }}{{ else }}article{{ end }}" />
     {{ isdef title }}<meta property="og:title" content="{{ fill title }}" />{{ end }}
     {{ isdef description }}<meta property="og:description" content="{{ fill description }}" />{{ end }}
-    <meta property="og:img" content="{{ isdef ogImage }}{{ fill ogImage}}{{ else }}https://michaelmallari.github.io/assets/img/logo-julia.png{{ end }}" />
+    <meta property="og:img" content="{{ isdef ogImage }}{{ fill ogImage}}{{ else }}https://www.michaelmallari.com/img/logo-julia.png{{ end }}" />
 
 
     <meta name="twitter:card" content="{{ isdef twiitterCard }}{{ fill twitterCard }}{{ else }}summary{{ end }}" />
     <meta name="twitter:site" content="@MichaelMallari" />
     {{ isdef title }}<meta name="twitter:title" content="{{ fill title }}" />{{ end }}
     {{ isdef description }}<meta name="twitter:description" content="{{ fill description }}" />{{ end }}
-    <meta name="twitter:image" content="{{ isdef ogImage }}{{ fill ogImage}}{{ else }}https://michaelmallari.github.io/assets/img/logo-julia.png{{ end }}" />
+    <meta name="twitter:image" content="{{ isdef ogImage }}{{ fill ogImage}}{{ else }}https://www.michaelmallari.com/img/logo-julia.png{{ end }}" />
 
 
-    <link type="text/css" rel="stylesheet" href="/assets/css/styles.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" crossorigin="anonymous" />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" crossorigin="anonymous" />
+    <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/css/styles.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/tomorrow.min.css" />
 
 
     <link type="application/rss+xml" rel="alternate" title="Applied Computing | Michael Mallari, BS in Computer Science" href="/feed.xml" />
@@ -130,7 +131,7 @@
         <a name="main-content"></a>
 
 
-        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('{{ isdef ogImage }}{{ fill ogImage}}{{ else }}/assets/img/logo-julia.png{{ end }}')">
+        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('{{ isdef ogImage }}{{ fill ogImage}}{{ else }}https://www.michaelmallari.com/img/logo-julia.png{{ end }}')">
           <div class="container">
             <span class="category">Computational Thinking + Doing</span>
             {{ isdef title }}<h1 class="title">{{ fill title }}</h1>{{ end }}
