@@ -1,0 +1,109 @@
+---
+title: Applying Linear Algebra to NFL Combine Data 
+slug: linear-algebra-nfl-combine
+summary: "Minimize redundancy in big data through dimension reduction—more specifically, through principal component analysis."
+image: 'https://www.michaelmallari.com/img/og-nfl-combine-vdavis.png'
+twitterCard: 'summary_large_image'
+date: '2020-03-14'
+categories: []
+tags: []
+---
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggthemes)
+```
+
+```{r}
+options(width = 200) # Allow 200 characters per line before wrapping columns
+```
+
+```{r}
+nfl_combine <- read.csv("dataset/nfl-combine-2001-2018.csv")
+str(nfl_combine)
+```
+
+```{r}
+nfl_combine$player <- as.character(nfl_combine$player)
+str(nfl_combine)
+```
+
+## Correlation Matrix
+
+```{r}
+nfl_combine_metrics <- nfl_combine %>%
+  subset(select = c(height, weight, forty, vertical, bench, broad_jump, three_cone, shuttle))
+str(nfl_combine_metrics)
+```
+
+```{r}
+correlation_matrix <- as.data.frame(cor(nfl_combine_metrics))
+correlation_matrix$var1 <- rownames(correlation_matrix)
+correlation_matrix %>%
+  tidyr::gather(key = var2, value = r, 1:8) %>%
+  ggplot2::ggplot(aes(x = var1, y = var2, fill = r)) +
+  geom_tile() +
+  geom_text(aes(label = round(r, 2)), size = 2.6) +
+  scale_fill_gradient2(low = "#eb3300", high = "#00a6c8", mid = "white") +
+  labs(title = "Correlation Matrix", x = "", y = "") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  theme_economist()
+```
+
+**Standardize Data**
+
+```{r}
+# Subtract the mean of each column
+nfl_combine_metrics[, 1] <- nfl_combine_metrics[, 1] - mean(nfl_combine_metrics[, 1])
+nfl_combine_metrics[, 2] <- nfl_combine_metrics[, 2] - mean(nfl_combine_metrics[, 2])
+nfl_combine_metrics[, 3] <- nfl_combine_metrics[, 3] - mean(nfl_combine_metrics[, 3])
+nfl_combine_metrics[, 4] <- nfl_combine_metrics[, 4] - mean(nfl_combine_metrics[, 4])
+nfl_combine_metrics[, 5] <- nfl_combine_metrics[, 5] - mean(nfl_combine_metrics[, 5])
+nfl_combine_metrics[, 6] <- nfl_combine_metrics[, 6] - mean(nfl_combine_metrics[, 6])
+nfl_combine_metrics[, 7] <- nfl_combine_metrics[, 7] - mean(nfl_combine_metrics[, 7])
+nfl_combine_metrics[, 8] <- nfl_combine_metrics[, 8] - mean(nfl_combine_metrics[, 8])
+head(nfl_combine_metrics, 50)
+```
+
+**Calculate Variance/Covariance**
+
+```{r}
+
+```
+
+**Eigenanalyses of Combine Data**
+
+```{r}
+
+```
+
+---
+
+## Perform Principal Component Analysis (PCA)
+
+**Scale Data**
+
+```{r}
+
+```
+
+**Summarize PCA**
+
+```{r}
+
+```
+
+---
+
+## How Did Maryland Terrapins Football Players Fare in Past Combines?
+
+```{r}
+maryland <- nfl_combine %>%
+  filter(school == "Maryland")
+maryland
+```
+
+
+

@@ -1,0 +1,184 @@
+---
+title: Applying Linear Algebra to NFL Combine Data 
+slug: linear-algebra-nfl-combine
+summary: "Minimize redundancy in big data through dimension reduction—more specifically, through principal component analysis."
+image: 'https://www.michaelmallari.com/img/og-nfl-combine-vdavis.png'
+twitterCard: 'summary_large_image'
+date: '2020-03-14'
+categories: []
+tags: []
+---
+
+
+
+<pre class="r"><code>library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggthemes)</code></pre>
+<pre class="r"><code>options(width = 200) # Allow 200 characters per line before wrapping columns</code></pre>
+<pre class="r"><code>nfl_combine &lt;- read.csv(&quot;dataset/nfl-combine-2001-2018.csv&quot;)
+str(nfl_combine)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    2885 obs. of  13 variables:
+##  $ player    : Factor w/ 2867 levels &quot;A.J. Edds&quot;,&quot;A.J. Green&quot;,..: 1190 330 1904 2716 899 35 1868 126 1071 1582 ...
+##  $ position  : Factor w/ 20 levels &quot;C&quot;,&quot;CB&quot;,&quot;DE&quot;,..: 2 1 19 17 5 3 20 2 8 16 ...
+##  $ school    : Factor w/ 281 levels &quot;Abilene Christian&quot;,..: 118 131 182 189 103 249 183 4 126 12 ...
+##  $ year      : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ height    : int  71 73 77 74 76 78 76 72 73 73 ...
+##  $ weight    : int  192 298 256 198 257 262 216 185 248 228 ...
+##  $ forty     : num  4.38 5.34 4.67 4.34 4.87 4.6 4.62 4.36 4.59 4.46 ...
+##  $ vertical  : num  35 26.5 31 41 30 38.5 34 31.5 36 33.5 ...
+##  $ bench     : int  14 27 17 16 20 18 13 13 26 15 ...
+##  $ broad_jump: int  127 99 113 131 118 128 121 119 124 122 ...
+##  $ three_cone: num  6.71 7.81 7.34 6.56 7.12 7.53 7.07 6.93 6.9 6.91 ...
+##  $ shuttle   : num  3.98 4.71 4.38 4.03 4.23 4.48 4.25 4.4 4.36 4.35 ...
+##  $ drafted   : Factor w/ 1888 levels &quot;&quot;,&quot;Arizona Cardinals / 1st / 13th pick / 2017&quot;,..: 660 962 138 1 1 1087 1354 147 1 1000 ...</code></pre>
+<pre class="r"><code>nfl_combine$player &lt;- as.character(nfl_combine$player)
+str(nfl_combine)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    2885 obs. of  13 variables:
+##  $ player    : chr  &quot;Jaire Alexander&quot; &quot;Brian Allen&quot; &quot;Mark Andrews&quot; &quot;Troy Apke&quot; ...
+##  $ position  : Factor w/ 20 levels &quot;C&quot;,&quot;CB&quot;,&quot;DE&quot;,..: 2 1 19 17 5 3 20 2 8 16 ...
+##  $ school    : Factor w/ 281 levels &quot;Abilene Christian&quot;,..: 118 131 182 189 103 249 183 4 126 12 ...
+##  $ year      : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ height    : int  71 73 77 74 76 78 76 72 73 73 ...
+##  $ weight    : int  192 298 256 198 257 262 216 185 248 228 ...
+##  $ forty     : num  4.38 5.34 4.67 4.34 4.87 4.6 4.62 4.36 4.59 4.46 ...
+##  $ vertical  : num  35 26.5 31 41 30 38.5 34 31.5 36 33.5 ...
+##  $ bench     : int  14 27 17 16 20 18 13 13 26 15 ...
+##  $ broad_jump: int  127 99 113 131 118 128 121 119 124 122 ...
+##  $ three_cone: num  6.71 7.81 7.34 6.56 7.12 7.53 7.07 6.93 6.9 6.91 ...
+##  $ shuttle   : num  3.98 4.71 4.38 4.03 4.23 4.48 4.25 4.4 4.36 4.35 ...
+##  $ drafted   : Factor w/ 1888 levels &quot;&quot;,&quot;Arizona Cardinals / 1st / 13th pick / 2017&quot;,..: 660 962 138 1 1 1087 1354 147 1 1000 ...</code></pre>
+<div id="correlation-matrix" class="section level2">
+<h2>Correlation Matrix</h2>
+<pre class="r"><code>nfl_combine_metrics &lt;- nfl_combine %&gt;%
+  subset(select = c(height, weight, forty, vertical, bench, broad_jump, three_cone, shuttle))
+str(nfl_combine_metrics)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    2885 obs. of  8 variables:
+##  $ height    : int  71 73 77 74 76 78 76 72 73 73 ...
+##  $ weight    : int  192 298 256 198 257 262 216 185 248 228 ...
+##  $ forty     : num  4.38 5.34 4.67 4.34 4.87 4.6 4.62 4.36 4.59 4.46 ...
+##  $ vertical  : num  35 26.5 31 41 30 38.5 34 31.5 36 33.5 ...
+##  $ bench     : int  14 27 17 16 20 18 13 13 26 15 ...
+##  $ broad_jump: int  127 99 113 131 118 128 121 119 124 122 ...
+##  $ three_cone: num  6.71 7.81 7.34 6.56 7.12 7.53 7.07 6.93 6.9 6.91 ...
+##  $ shuttle   : num  3.98 4.71 4.38 4.03 4.23 4.48 4.25 4.4 4.36 4.35 ...</code></pre>
+<pre class="r"><code>correlation_matrix &lt;- as.data.frame(cor(nfl_combine_metrics))
+correlation_matrix$var1 &lt;- rownames(correlation_matrix)
+correlation_matrix %&gt;%
+  tidyr::gather(key = var2, value = r, 1:8) %&gt;%
+  ggplot2::ggplot(aes(x = var1, y = var2, fill = r)) +
+  geom_tile() +
+  geom_text(aes(label = round(r, 2)), size = 2.6) +
+  scale_fill_gradient2(low = &quot;#eb3300&quot;, high = &quot;#00a6c8&quot;, mid = &quot;white&quot;) +
+  labs(title = &quot;Correlation Matrix&quot;, x = &quot;&quot;, y = &quot;&quot;) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  theme_economist()</code></pre>
+<p><img src="/post/linear-algebra-nfl-combine_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>Standardize Data</strong></p>
+<pre class="r"><code># Subtract the mean of each column
+nfl_combine_metrics[, 1] &lt;- nfl_combine_metrics[, 1] - mean(nfl_combine_metrics[, 1])
+nfl_combine_metrics[, 2] &lt;- nfl_combine_metrics[, 2] - mean(nfl_combine_metrics[, 2])
+nfl_combine_metrics[, 3] &lt;- nfl_combine_metrics[, 3] - mean(nfl_combine_metrics[, 3])
+nfl_combine_metrics[, 4] &lt;- nfl_combine_metrics[, 4] - mean(nfl_combine_metrics[, 4])
+nfl_combine_metrics[, 5] &lt;- nfl_combine_metrics[, 5] - mean(nfl_combine_metrics[, 5])
+nfl_combine_metrics[, 6] &lt;- nfl_combine_metrics[, 6] - mean(nfl_combine_metrics[, 6])
+nfl_combine_metrics[, 7] &lt;- nfl_combine_metrics[, 7] - mean(nfl_combine_metrics[, 7])
+nfl_combine_metrics[, 8] &lt;- nfl_combine_metrics[, 8] - mean(nfl_combine_metrics[, 8])
+head(nfl_combine_metrics, 50)</code></pre>
+<pre><code>##          height     weight       forty    vertical       bench  broad_jump  three_cone     shuttle
+## 1  -2.992720971 -60.087348 -0.43158406   2.4017331  -7.0918544  13.8097054 -0.59571924 -0.42854766
+## 2  -0.992720971  45.912652  0.52841594  -6.0982669   5.9081456 -14.1902946  0.50428076  0.30145234
+## 3   3.007279029   3.912652 -0.14158406  -1.5982669  -4.0918544  -0.1902946  0.03428076 -0.02854766
+## 4   0.007279029 -54.087348 -0.47158406   8.4017331  -5.0918544  17.8097054 -0.74571924 -0.37854766
+## 5   2.007279029   4.912652  0.05841594  -2.5982669  -1.0918544   4.8097054 -0.18571924 -0.17854766
+## 6   4.007279029   9.912652 -0.21158406   5.9017331  -3.0918544  14.8097054  0.22428076  0.07145234
+## 7   2.007279029 -36.087348 -0.19158406   1.4017331  -8.0918544   7.8097054 -0.23571924 -0.15854766
+## 8  -1.992720971 -67.087348 -0.45158406  -1.0982669  -8.0918544   5.8097054 -0.37571924 -0.00854766
+## 9  -0.992720971  -4.087348 -0.22158406   3.4017331   4.9081456  10.8097054 -0.40571924 -0.04854766
+## 10 -0.992720971 -24.087348 -0.35158406   0.9017331  -6.0918544   8.8097054 -0.39571924 -0.05854766
+## 11  1.007279029 -34.087348  0.13841594  -1.5982669  -5.0918544  -1.1902946 -0.15571924 -0.07854766
+## 12  2.007279029  43.912652  0.21841594  -4.5982669   9.9081456 -12.1902946  0.20428076  0.07145234
+## 13  6.007279029  92.912652  1.03841594 -13.0982669  -7.0918544 -31.1902946  0.56428076  0.97145234
+## 14 -1.992720971 -54.087348 -0.46158406  -1.0982669  -7.0918544  12.8097054 -0.52571924 -0.29854766
+## 15  2.007279029  38.912652  0.16841594   2.4017331   8.9081456   5.8097054 -0.18571924  0.07145234
+## 16  1.007279029 -19.087348 -0.22158406   6.9017331  -3.0918544  17.8097054 -0.48571924 -0.25854766
+## 17  0.007279029 -50.087348 -0.38158406   0.9017331 -10.0918544   1.8097054 -0.59571924 -0.03854766
+## 18  1.007279029 -26.087348 -0.22158406   5.9017331  -3.0918544  16.8097054 -0.74571924 -0.37854766
+## 19  4.007279029  52.912652  0.57841594  -6.0982669   2.9081456 -16.1902946  0.73428076  0.43145234
+## 20 -0.992720971  -9.087348  0.18841594  -2.5982669  -3.0918544  -2.1902946 -0.04571924 -0.12854766
+## 21 -1.992720971 -52.087348 -0.32158406   5.4017331  -8.0918544   9.8097054 -0.52571924 -0.33854766
+## 22  2.007279029  16.912652 -0.16158406   3.4017331   2.9081456   7.8097054  0.06428076  0.00145234
+## 23 -2.992720971 -25.087348 -0.29158406   5.9017331   7.9081456  14.8097054 -0.21571924 -0.15854766
+## 24  2.007279029  58.912652  0.57841594  -3.5982669   3.9081456 -16.1902946  0.73428076  0.51145234
+## 25  1.007279029 -32.087348 -0.17158406  -2.5982669 -10.0918544  -0.1902946 -0.60571924 -0.08854766
+## 26  2.007279029  54.912652  0.41841594  -9.0982669   1.9081456  -9.1902946  0.46428076  0.37145234
+## 27  1.007279029   1.912652 -0.01158406   5.4017331  -3.0918544   6.8097054 -0.17571924 -0.17854766
+## 28  2.007279029  53.912652  0.33841594  -4.5982669  -2.0918544  -7.1902946  0.56428076  0.09145234
+## 29 -3.992720971 -71.087348 -0.38158406   1.9017331  -7.0918544  -0.1902946 -0.37571924 -0.25854766
+## 30  3.007279029  56.912652  0.41841594  -2.5982669  -4.0918544  -8.1902946  0.58428076  0.36145234
+## 31 -0.992720971 -46.087348 -0.40158406   5.9017331   3.9081456   7.8097054 -0.41571924 -0.16854766
+## 32  4.007279029  11.912652 -0.23158406   0.9017331   0.9081456  10.8097054 -0.10571924  0.00145234
+## 33 -0.992720971 -58.087348 -0.35158406  -0.0982669  -8.0918544   6.8097054 -0.35571924 -0.15854766
+## 34  1.007279029  -1.087348  0.03841594  -3.0982669  -3.0918544  -1.1902946 -0.21571924 -0.17854766
+## 35  2.007279029  66.912652  0.76841594  -9.0982669  -4.0918544 -15.1902946  0.55428076  0.54145234
+## 36  2.007279029   9.912652  0.05841594  -4.5982669  -6.0918544  -2.1902946 -0.23571924 -0.00854766
+## 37 -4.992720971 -47.087348 -0.26158406   1.4017331  -2.0918544   8.8097054 -0.51571924 -0.33854766
+## 38  1.007279029 -11.087348 -0.03158406  -1.5982669  -6.0918544   0.8097054 -0.21571924 -0.06854766
+## 39  2.007279029   3.912652 -0.16158406   6.9017331  -1.0918544  10.8097054 -0.42571924 -0.25854766
+## 40  2.007279029  65.912652  0.47841594  -2.5982669  11.9081456  -1.1902946  0.13428076  0.12145234
+## 41  2.007279029  10.912652 -0.12158406  -0.0982669   9.9081456   3.8097054 -0.42571924 -0.21854766
+## 42  0.007279029  -4.087348  0.01841594  -2.0982669  -4.0918544  -4.1902946  0.14428076  0.12145234
+## 43 -2.992720971 -13.087348 -0.18158406  -2.5982669  -3.0918544  -4.1902946 -0.37571924 -0.09854766
+## 44  2.007279029  30.912652 -0.06158406   0.4017331   4.9081456  -0.1902946  0.05428076  0.07145234
+## 45 -2.992720971 -23.087348 -0.27158406   1.4017331  -4.0918544   4.8097054 -0.40571924 -0.24854766
+## 46 -0.992720971 -47.087348 -0.30158406   3.4017331 -11.0918544   8.8097054 -0.35571924 -0.03854766
+## 47  3.007279029  54.912652  0.64841594  -8.5982669  -1.0918544 -19.1902946  0.30428076  0.27145234
+## 48 -0.992720971 -59.087348 -0.20158406  -2.5982669 -13.0918544   5.8097054 -0.14571924 -0.07854766
+## 49  3.007279029  -5.087348 -0.27158406   8.9017331   0.9081456  15.8097054 -0.54571924 -0.30854766
+## 50  3.007279029  58.912652  0.38841594  -7.5982669  10.9081456 -10.1902946  0.29428076  0.42145234</code></pre>
+<p><strong>Calculate Variance/Covariance</strong></p>
+<p><strong>Eigenanalyses of Combine Data</strong></p>
+<hr />
+</div>
+<div id="perform-principal-component-analysis-pca" class="section level2">
+<h2>Perform Principal Component Analysis (PCA)</h2>
+<p><strong>Scale Data</strong></p>
+<p><strong>Summarize PCA</strong></p>
+<hr />
+</div>
+<div id="how-did-maryland-terrapins-football-players-fare-in-past-combines" class="section level2">
+<h2>How Did Maryland Terrapins Football Players Fare in Past Combines?</h2>
+<pre class="r"><code>maryland &lt;- nfl_combine %&gt;%
+  filter(school == &quot;Maryland&quot;)
+maryland</code></pre>
+<pre><code>##                 player position   school year height weight forty vertical bench broad_jump three_cone shuttle                                        drafted
+## 1           D.J. Moore       WR Maryland 2018     72    210  4.42     39.5    15        132       6.95    4.07     Carolina Panthers / 1st / 24th pick / 2018
+## 2           Sean Davis       CB Maryland 2016     73    201  4.46     37.5    21        126       6.64    3.97   Pittsburgh Steelers / 2nd / 58th pick / 2016
+## 3      Yannick Ngakoue       DE Maryland 2016     74    252  4.75     34.5    26        118       7.35    4.50  Jacksonville Jaguars / 3rd / 69th pick / 2016
+## 4            Deon Long       WR Maryland 2015     72    192  4.51     34.0    12        120       6.98    4.27                                               
+## 5     Matt Furstenburg       TE Maryland 2013     76    242  4.62     35.5    18        115       7.09    4.35                                               
+## 6        Davin Meggett       RB Maryland 2012     68    211  4.50     35.0    23        118       7.14    4.32                                               
+## 7         Adrian Moten      OLB Maryland 2011     74    228  4.53     31.0    18        114       7.05    4.21                                               
+## 8         Da&#39;Rel Scott       RB Maryland 2011     71    211  4.40     34.0    19        117       7.15    4.20      New York Giants / 7th / 221st pick / 2011
+## 9         Torrey Smith       WR Maryland 2011     73    204  4.41     41.0    19        126       6.72    4.13      Baltimore Ravens / 2nd / 58th pick / 2011
+## 10       Zack Williams        C Maryland 2011     75    309  5.18     30.0    28        103       7.54    4.62                                               
+## 11      Bruce Campbell       OT Maryland 2010     78    314  4.75     32.0    34        101       7.58    4.69      Oakland Raiders / 4th / 106th pick / 2010
+## 12         Moise Fokou      OLB Maryland 2009     73    233  4.65     31.0    12        121       7.09    4.28  Philadelphia Eagles / 7th / 230th pick / 2009
+## 13      Dan Gronkowski       TE Maryland 2009     77    255  4.79     33.0    26        122       6.92    4.26        Detroit Lions / 7th / 255th pick / 2009
+## 14 Darrius Heyward-Bey       WR Maryland 2009     74    210  4.30     38.5    16        126       6.80    4.18        Oakland Raiders / 1st / 7th pick / 2009
+## 15      Edwin Williams        C Maryland 2009     74    308  5.40     28.5    22         99       8.15    4.98                                               
+## 16         Joey Haynos       TE Maryland 2008     80    259  4.87     30.5    17        123       6.92    4.42                                               
+## 17      Erin Henderson      OLB Maryland 2008     75    244  4.73     31.0    23        113       7.16    4.50                                               
+## 18           Dre Moore       DT Maryland 2008     76    305  4.84     28.0    31        105       7.73    4.55 Tampa Bay Buccaneers / 4th / 115th pick / 2008
+## 19         Josh Wilson       CB Maryland 2007     69    189  4.39     36.5    20        120       7.07    4.43      Seattle Seahawks / 2nd / 55th pick / 2007
+## 20        Vernon Davis       TE Maryland 2006     75    254  4.38     42.0    33        128       7.00    4.17    San Francisco 49ers / 1st / 6th pick / 2006
+## 21     D&#39;Qwell Jackson      ILB Maryland 2006     72    230  4.73     37.0    19        116       7.05    4.36      Cleveland Browns / 2nd / 34th pick / 2006
+## 22     William Kershaw      OLB Maryland 2006     75    240  4.63     37.0    21        111       6.95    4.17                                               
+## 23         C.J. Brooks       OG Maryland 2005     77    309  5.18     31.5    24        108       7.61    4.56                                               
+## 24  Domonique Foxworth       CB Maryland 2005     71    184  4.34     41.0    14        125       6.78    3.89        Denver Broncos / 3rd / 97th pick / 2005
+## 25          Jeff Dugan       TE Maryland 2004     76    263  5.00     28.0    21        109       7.40    4.32    Minnesota Vikings / 7th / 220th pick / 2004
+## 26       Melvin Fowler        C Maryland 2002     75    300  5.46     27.0    32         99       7.51    4.60      Cleveland Browns / 3rd / 76th pick / 2002
+## 27        Charles Hill       DT Maryland 2002     74    293  5.06     33.5    23        113       7.37    4.36        Houston Texans / 3rd / 83rd pick / 2002
+## 28      Tony Okanlawon       CB Maryland 2002     70    185  4.67     38.0    16        118       7.37    4.39                                               
+## 29        Kris Jenkins       DT Maryland 2001     77    318  5.19     31.0    33        108       7.85    4.40     Carolina Panthers / 2nd / 44th pick / 2001</code></pre>
+</div>
