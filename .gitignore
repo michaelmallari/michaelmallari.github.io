@@ -2,7 +2,7 @@
 .DS_Store
 
 # Distribution/public files
-/public
+/base/public
 
 # CSS-preprocessor (LESS)
 config.codekit3
@@ -12,4 +12,4 @@ config.codekit3
 
 # IDE
 /.idea
-.Rproj.user
+/base/.Rproj.user
