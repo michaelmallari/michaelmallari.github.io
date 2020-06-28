@@ -1,0 +1,42 @@
+---
+title: "Feature Engineering the Lahman Baseball Database"
+summary: "Manipulate and build more complex functions by combining simpler functions."
+image: https://www.michaelmallari.com/img/og-mlb-jdegrom.jpg
+language: R
+date: 2020-06-27
+categories: []
+tags: []
+---
+
+The Lahman Baseball Database (version 8.0-0) is a collection of pitching, hitting, fielding, and other data from 1871 to 2019.  (This includes Jacob deGrom's Cy Young Award-winning seasons with the New York Mets in 2018 and 2019!)
+
+## Import the Lahman Baseball Database
+
+```{r message=FALSE, warning=FALSE}
+require(devtools)
+install_version("Lahman", version = "8.0-0", repos = "http://cran.us.r-project.org")
+library(Lahman)
+```
+
+## Exploring the Data
+
+```{r}
+Lahman::LahmanData
+```
+
+
+## Joining Data
+
+In the real world, data sets typically come split across many tables. That is certainly true for the Lahman Baseball Database.  In order to apply feature engineering techniques, we must first join the data (essentially undoing the relationship database).
+
+
+
+
+
+
+
+
+```{r}
+R.version.string
+```
+

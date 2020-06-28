@@ -1,0 +1,54 @@
+---
+title: "Feature Engineering the Lahman Baseball Database"
+summary: "Manipulate and build more complex functions by combining simpler functions."
+image: https://www.michaelmallari.com/img/og-mlb-jdegrom.jpg
+language: R
+date: 2020-06-27
+categories: []
+tags: []
+---
+
+
+
+<p>The Lahman Baseball Database (version 8.0-0) is a collection of pitching, hitting, fielding, and other data from 1871 to 2019. (This includes Jacob deGrom’s Cy Young Award-winning seasons with the New York Mets in 2018 and 2019!)</p>
+<div id="import-the-lahman-baseball-database" class="section level2">
+<h2>Import the Lahman Baseball Database</h2>
+<pre class="r"><code>require(devtools)
+install_version(&quot;Lahman&quot;, version = &quot;8.0-0&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
+<pre class="r"><code>library(Lahman)</code></pre>
+</div>
+<div id="exploring-the-data" class="section level2">
+<h2>Exploring the Data</h2>
+<pre class="r"><code>Lahman::LahmanData</code></pre>
+<pre><code>##                   file      class   nobs nvar                     title
+## 1          AllstarFull data.frame   4993    8         AllstarFull table
+## 2          Appearances data.frame  99466   21         Appearances table
+## 3       AwardsManagers data.frame    171    6      AwardsManagers table
+## 4        AwardsPlayers data.frame   6026    6       AwardsPlayers table
+## 5  AwardsShareManagers data.frame    401    7 AwardsShareManagers table
+## 6   AwardsSharePlayers data.frame   6705    7  AwardsSharePlayers table
+## 7              Batting data.frame  99846   22             Batting table
+## 8          BattingPost data.frame  11294   22         BattingPost table
+## 9       CollegePlaying data.frame  17350    3      CollegePlaying table
+## 10            Fielding data.frame 167938   18            Fielding table
+## 11          FieldingOF data.frame  12028    6          FieldingOF table
+## 12        FieldingPost data.frame  11924   17         FieldingPost data
+## 13          HallOfFame data.frame   4088    9  Hall of Fame Voting Data
+## 14            Managers data.frame   3370   10            Managers table
+## 15        ManagersHalf data.frame     93   10        ManagersHalf table
+## 16              Master data.frame  18589   26              Master table
+## 17            Pitching data.frame  43330   30            Pitching table
+## 18        PitchingPost data.frame   4945   30        PitchingPost table
+## 19            Salaries data.frame  24758    5            Salaries table
+## 20             Schools data.frame   1207    5             Schools table
+## 21          SeriesPost data.frame    298    9          SeriesPost table
+## 22               Teams data.frame   2775   48               Teams table
+## 23     TeamsFranchises data.frame    120    4      TeamFranchises table
+## 24           TeamsHalf data.frame     52   10           TeamsHalf table</code></pre>
+</div>
+<div id="joining-data" class="section level2">
+<h2>Joining Data</h2>
+<p>In the real world, data sets typically come split across many tables. That is certainly true for the Lahman Baseball Database. In order to apply feature engineering techniques, we must first join the data (essentially undoing the relationship database).</p>
+<pre class="r"><code>R.version.string</code></pre>
+<pre><code>## [1] &quot;R version 4.0.1 (2020-06-06)&quot;</code></pre>
+</div>
