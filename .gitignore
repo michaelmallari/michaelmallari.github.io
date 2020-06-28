@@ -2,15 +2,15 @@
 .DS_Store
 
 # Distribution/public files
-/base/public
+public
 
 # CSS-preprocessor (LESS)
 config.codekit3
 
 # Repository
-/.github
+.github
 
 # IDE
 /.idea
-/base/.Rproj.user
+.Rproj.user
 .Rproj.user
