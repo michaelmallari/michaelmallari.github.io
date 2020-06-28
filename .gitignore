@@ -13,3 +13,4 @@ config.codekit3
 # IDE
 /.idea
 /base/.Rproj.user
+.Rproj.user
