@@ -1,0 +1,473 @@
+---
+title: "Wrangling Music Data"
+summary: "Create new and insightful baseball stats (or variables or features) while minimizing multicollinearity."
+image: https://www.michaelmallari.com/img/og-beatles-yesterday.jpg
+language: R
+date: 2020-06-21
+categories: []
+tags: []
+---
+
+
+
+<pre class="r"><code>R.version.string</code></pre>
+<pre><code>## [1] &quot;R version 4.0.1 (2020-06-06)&quot;</code></pre>
+<pre class="r"><code>billboard &lt;- read.csv(&quot;dataset/billboard-2.0-index.csv&quot;)</code></pre>
+<pre class="r"><code>str(billboard)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1300 obs. of  8 variables:
+##  $ id            : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ chart_date    : chr  &quot;1987-07-11&quot; &quot;1973-08-04&quot; &quot;1961-07-03&quot; &quot;1971-08-07&quot; ...
+##  $ target_rank   : int  82 14 56 32 51 15 37 67 48 49 ...
+##  $ actual_rank   : int  NA NA 57 31 NA 16 NA NA NA 51 ...
+##  $ title         : chr  &quot;&quot; &quot;&quot; &quot;I Don&#39;t Mind&quot; &quot;You&#39;ve Got A Friend&quot; ...
+##  $ artist        : chr  &quot;&quot; &quot;&quot; &quot;James Brown&quot; &quot;Roberta Flack,Donny Hathaway&quot; ...
+##  $ peak_rank     : int  NA NA 47 29 NA 3 NA NA NA 10 ...
+##  $ weeks_on_chart: int  NA NA 8 12 NA 25 NA NA NA 18 ...</code></pre>
+<div id="coerce-vectors-to-appropriate-data-types" class="section level2">
+<h2>Coerce Vectors to Appropriate Data Types</h2>
+<p>The following features will be coerced:</p>
+<ul>
+<li><strong>chart_date</strong> from string to date</li>
+<li><strong>artist</strong> from string to factor</li>
+</ul>
+<pre class="r"><code>billboard$chart_date &lt;- as.Date(billboard$chart_date)
+summary(billboard$chart_date)</code></pre>
+<pre><code>##         Min.      1st Qu.       Median         Mean      3rd Qu.         Max. 
+## &quot;1958-08-18&quot; &quot;1967-02-16&quot; &quot;1974-12-03&quot; &quot;1975-01-19&quot; &quot;1982-07-31&quot; &quot;1991-11-16&quot;</code></pre>
+<pre class="r"><code>billboard$artist &lt;- as.factor(billboard$artist)
+levels(billboard$artist)</code></pre>
+<pre><code>##   [1] &quot;&quot;                                   
+##   [2] &quot;A Taste Of Honey&quot;                   
+##   [3] &quot;Aaron Neville&quot;                      
+##   [4] &quot;Abba&quot;                               
+##   [5] &quot;Aerosmith&quot;                          
+##   [6] &quot;Al Green&quot;                           
+##   [7] &quot;Alabama&quot;                            
+##   [8] &quot;Alan O&#39;Day&quot;                         
+##   [9] &quot;Alice Cooper&quot;                       
+##  [10] &quot;Andy Gibb&quot;                          
+##  [11] &quot;Anita Baker&quot;                        
+##  [12] &quot;Ann Peebles&quot;                        
+##  [13] &quot;Anne Murray&quot;                        
+##  [14] &quot;Aretha Franklin&quot;                    
+##  [15] &quot;Arthur Conley&quot;                      
+##  [16] &quot;B.B. King&quot;                          
+##  [17] &quot;B.J. Thomas&quot;                        
+##  [18] &quot;Bachman-Turner Overdrive&quot;           
+##  [19] &quot;Bad Company&quot;                        
+##  [20] &quot;Badfinger&quot;                          
+##  [21] &quot;Baltimora&quot;                          
+##  [22] &quot;Bananarama&quot;                         
+##  [23] &quot;Barbara Lewis&quot;                      
+##  [24] &quot;Barbra Streisand&quot;                   
+##  [25] &quot;Barry White&quot;                        
+##  [26] &quot;Bay City Rollers&quot;                   
+##  [27] &quot;Beastie Boys&quot;                       
+##  [28] &quot;Ben E. King&quot;                        
+##  [29] &quot;Bertha Tillman&quot;                     
+##  [30] &quot;Bette Midler&quot;                       
+##  [31] &quot;Bill Withers&quot;                       
+##  [32] &quot;Billy Idol&quot;                         
+##  [33] &quot;Billy Joel&quot;                         
+##  [34] &quot;Billy Preston&quot;                      
+##  [35] &quot;Billy Squier&quot;                       
+##  [36] &quot;Billy Swan&quot;                         
+##  [37] &quot;Bing Crosby&quot;                        
+##  [38] &quot;Biz Markie&quot;                         
+##  [39] &quot;Blondie&quot;                            
+##  [40] &quot;Blue Cheer&quot;                         
+##  [41] &quot;Bo Diddley&quot;                         
+##  [42] &quot;Bob Dylan&quot;                          
+##  [43] &quot;Bob Seger&quot;                          
+##  [44] &quot;Bobbi Martin&quot;                       
+##  [45] &quot;Bobbie Gentry&quot;                      
+##  [46] &quot;Bobby Bare&quot;                         
+##  [47] &quot;Bobby Darin&quot;                        
+##  [48] &quot;Bobby Womack&quot;                       
+##  [49] &quot;Bonnie Pointer&quot;                     
+##  [50] &quot;Bonnie Raitt&quot;                       
+##  [51] &quot;Boston&quot;                             
+##  [52] &quot;Boyz II Men&quot;                        
+##  [53] &quot;Bread&quot;                              
+##  [54] &quot;Brenda Lee&quot;                         
+##  [55] &quot;Brother Jack McDuff&quot;                
+##  [56] &quot;Brownsville Station&quot;                
+##  [57] &quot;Bruce Channel&quot;                      
+##  [58] &quot;Bruce Springsteen&quot;                  
+##  [59] &quot;Buck Owens&quot;                         
+##  [60] &quot;Candi Staton&quot;                       
+##  [61] &quot;Canned Heat&quot;                        
+##  [62] &quot;Carl Carlton&quot;                       
+##  [63] &quot;Charlie Rich&quot;                       
+##  [64] &quot;Cheap Trick&quot;                        
+##  [65] &quot;Cher&quot;                               
+##  [66] &quot;Chicago&quot;                            
+##  [67] &quot;Chico DeBarge&quot;                      
+##  [68] &quot;Chris Kenner&quot;                       
+##  [69] &quot;Chubby Checker&quot;                     
+##  [70] &quot;Chuck Berry&quot;                        
+##  [71] &quot;Clarence Carter&quot;                    
+##  [72] &quot;Cliff Richard&quot;                      
+##  [73] &quot;Color Me Badd&quot;                      
+##  [74] &quot;Commodores&quot;                         
+##  [75] &quot;Corey Hart&quot;                         
+##  [76] &quot;Cornelius Brothers &amp; Sister Rose&quot;   
+##  [77] &quot;Count Basie&quot;                        
+##  [78] &quot;Cream&quot;                              
+##  [79] &quot;Creedence Clearwater Revival&quot;       
+##  [80] &quot;Crosby, Stills &amp; Nash&quot;              
+##  [81] &quot;Crosby, Stills, Nash&quot;               
+##  [82] &quot;Culture Club&quot;                       
+##  [83] &quot;Cyndi Lauper&quot;                       
+##  [84] &quot;Daryl Hall &amp; John Oates&quot;            
+##  [85] &quot;Dave Dudley&quot;                        
+##  [86] &quot;David Bowie&quot;                        
+##  [87] &quot;David Crosby,Graham Nash&quot;           
+##  [88] &quot;David Ruffin,Jimmy Ruffin&quot;          
+##  [89] &quot;De La Soul&quot;                         
+##  [90] &quot;Dean Martin&quot;                        
+##  [91] &quot;Debarge&quot;                            
+##  [92] &quot;Depeche Mode&quot;                       
+##  [93] &quot;Diana Ross&quot;                         
+##  [94] &quot;Digital Underground&quot;                
+##  [95] &quot;Dinah Washington&quot;                   
+##  [96] &quot;Dion&quot;                               
+##  [97] &quot;Dolly Parton&quot;                       
+##  [98] &quot;Don Gibson&quot;                         
+##  [99] &quot;Donna Fargo&quot;                        
+## [100] &quot;Donna Summer&quot;                       
+## [101] &quot;Donovan&quot;                            
+## [102] &quot;Dottie West&quot;                        
+## [103] &quot;Double Exposure&quot;                    
+## [104] &quot;Dr. Hook&quot;                           
+## [105] &quot;Dr. John&quot;                           
+## [106] &quot;Duran Duran&quot;                        
+## [107] &quot;Eagles&quot;                             
+## [108] &quot;Earth, Wind &amp; Fire&quot;                 
+## [109] &quot;Eddie Holland&quot;                      
+## [110] &quot;Eddie Rabbitt&quot;                      
+## [111] &quot;Edgar Winter&quot;                       
+## [112] &quot;Edwin Starr&quot;                        
+## [113] &quot;Elton John&quot;                         
+## [114] &quot;Elvis Presley&quot;                      
+## [115] &quot;Emerson, Lake &amp; Palmer&quot;             
+## [116] &quot;Engelbert Humperdinck&quot;              
+## [117] &quot;Eric Carmen&quot;                        
+## [118] &quot;Eric Clapton&quot;                       
+## [119] &quot;Etta James&quot;                         
+## [120] &quot;Evelyn \&quot;Champagne\&quot; King&quot;          
+## [121] &quot;Everly Brothers&quot;                    
+## [122] &quot;Fats Domino&quot;                        
+## [123] &quot;Firehouse&quot;                          
+## [124] &quot;Five Man Electrical Band&quot;           
+## [125] &quot;Flatt &amp; Scruggs&quot;                    
+## [126] &quot;Floyd Cramer&quot;                       
+## [127] &quot;Focus&quot;                              
+## [128] &quot;Foghat&quot;                             
+## [129] &quot;Fontella Bass&quot;                      
+## [130] &quot;Four Tops&quot;                          
+## [131] &quot;Freddie Jackson&quot;                    
+## [132] &quot;Freddy Fender&quot;                      
+## [133] &quot;Gary U.S. Bonds&quot;                    
+## [134] &quot;Gene Pitney&quot;                        
+## [135] &quot;General Public&quot;                     
+## [136] &quot;Genesis&quot;                            
+## [137] &quot;George Benson&quot;                      
+## [138] &quot;George Harrison&quot;                    
+## [139] &quot;Gino Vannelli&quot;                      
+## [140] &quot;Gladys Knight &amp; The Pips&quot;           
+## [141] &quot;Glen Campbell&quot;                      
+## [142] &quot;Gloria Gaynor&quot;                      
+## [143] &quot;Golden Earring&quot;                     
+## [144] &quot;Gordon Lightfoot&quot;                   
+## [145] &quot;Graham Nash&quot;                        
+## [146] &quot;Grand Funk Railroad&quot;                
+## [147] &quot;Grateful Dead&quot;                      
+## [148] &quot;Greg Kihn&quot;                          
+## [149] &quot;Greg Kihn Band&quot;                     
+## [150] &quot;Hank Snow&quot;                          
+## [151] &quot;Harry Chapin&quot;                       
+## [152] &quot;Heart&quot;                              
+## [153] &quot;Hi-Five&quot;                            
+## [154] &quot;Huey Lewis&quot;                         
+## [155] &quot;Ike &amp; Tina Turner&quot;                  
+## [156] &quot;INXS&quot;                               
+## [157] &quot;Irma Thomas&quot;                        
+## [158] &quot;Iron Butterfly&quot;                     
+## [159] &quot;Isaac Hayes&quot;                        
+## [160] &quot;J. Frank Wilson &amp; The Cavaliers&quot;    
+## [161] &quot;Jackie Wilson&quot;                      
+## [162] &quot;Jackson Browne&quot;                     
+## [163] &quot;James Brown&quot;                        
+## [164] &quot;James Taylor&quot;                       
+## [165] &quot;Jan &amp; Dean&quot;                         
+## [166] &quot;Janis Joplin&quot;                       
+## [167] &quot;Jeff Beck&quot;                          
+## [168] &quot;Jefferson Starship&quot;                 
+## [169] &quot;Jermaine Jackson&quot;                   
+## [170] &quot;Jerry Jeff Walker&quot;                  
+## [171] &quot;Jerry Reed&quot;                         
+## [172] &quot;Jesus Jones&quot;                        
+## [173] &quot;Jethro Tull&quot;                        
+## [174] &quot;Jimi Hendrix&quot;                       
+## [175] &quot;Jimmy Buffett&quot;                      
+## [176] &quot;Jimmy Clanton&quot;                      
+## [177] &quot;Jimmy Cliff&quot;                        
+## [178] &quot;Jimmy Jones&quot;                        
+## [179] &quot;Jimmy Reed&quot;                         
+## [180] &quot;Jimmy Ruffin&quot;                       
+## [181] &quot;Jimmy Smith&quot;                        
+## [182] &quot;Joan Baez&quot;                          
+## [183] &quot;Joe Cocker&quot;                         
+## [184] &quot;John Denver&quot;                        
+## [185] &quot;Johnny Cash&quot;                        
+## [186] &quot;Johnny Horton&quot;                      
+## [187] &quot;Johnny Lee&quot;                         
+## [188] &quot;Johnny Tillotson&quot;                   
+## [189] &quot;Joni Mitchell&quot;                      
+## [190] &quot;Judas Priest&quot;                       
+## [191] &quot;Juice Newton&quot;                       
+## [192] &quot;Kaoma&quot;                              
+## [193] &quot;Kate Bush&quot;                          
+## [194] &quot;Kenny Rogers&quot;                       
+## [195] &quot;Kiss&quot;                               
+## [196] &quot;Kool &amp; The Gang&quot;                    
+## [197] &quot;Kris Kristofferson&quot;                 
+## [198] &quot;Laura Branigan&quot;                     
+## [199] &quot;LaVern Baker&quot;                       
+## [200] &quot;Led Zeppelin&quot;                       
+## [201] &quot;Leo Sayer&quot;                          
+## [202] &quot;Lesley Gore&quot;                        
+## [203] &quot;Level 42&quot;                           
+## [204] &quot;Linda Ronstadt&quot;                     
+## [205] &quot;Little Anthony &amp; The Imperials&quot;     
+## [206] &quot;Little Joey &amp; The Flips&quot;            
+## [207] &quot;Little River Band&quot;                  
+## [208] &quot;Looking Glass&quot;                      
+## [209] &quot;Los Lobos&quot;                          
+## [210] &quot;Louis Armstrong&quot;                    
+## [211] &quot;Louis Prima &amp; Keely Smith&quot;          
+## [212] &quot;Lynyrd Skynyrd&quot;                     
+## [213] &quot;Madonna&quot;                            
+## [214] &quot;Marc Cohn&quot;                          
+## [215] &quot;Marie Osmond&quot;                       
+## [216] &quot;Marky Mark&quot;                         
+## [217] &quot;Martha &amp; The Vandellas&quot;             
+## [218] &quot;Marty Robbins&quot;                      
+## [219] &quot;Marvin Gaye&quot;                        
+## [220] &quot;Marvin Gaye,Kim Weston&quot;             
+## [221] &quot;Marvin Gaye,Tammi Terrell&quot;          
+## [222] &quot;Mary MacGregor&quot;                     
+## [223] &quot;Max Frost &amp; The Troopers&quot;           
+## [224] &quot;Meat Loaf&quot;                          
+## [225] &quot;Mel Torme&quot;                          
+## [226] &quot;Melba Montgomery&quot;                   
+## [227] &quot;Metallica&quot;                          
+## [228] &quot;Michael Jackson&quot;                    
+## [229] &quot;Michael Jackson With Siedah Garrett&quot;
+## [230] &quot;Michael Johnson&quot;                    
+## [231] &quot;Michael Sembello&quot;                   
+## [232] &quot;Milli Vanilli&quot;                      
+## [233] &quot;Minnie Riperton&quot;                    
+## [234] &quot;Naked Eyes&quot;                         
+## [235] &quot;Nancy Sinatra&quot;                      
+## [236] &quot;Nat \&quot;King\&quot; Cole&quot;                  
+## [237] &quot;Natalie Cole&quot;                       
+## [238] &quot;Neil Sedaka&quot;                        
+## [239] &quot;Neneh Cherry&quot;                       
+## [240] &quot;Nick Gilder&quot;                        
+## [241] &quot;Nitty Gritty Dirt Band&quot;             
+## [242] &quot;Oak Ridge Boys&quot;                     
+## [243] &quot;Ocean&quot;                              
+## [244] &quot;Oliver&quot;                             
+## [245] &quot;Otis Redding&quot;                       
+## [246] &quot;Paper Lace&quot;                         
+## [247] &quot;Pat Benatar&quot;                        
+## [248] &quot;Patrick Hernandez&quot;                  
+## [249] &quot;Paul Anka&quot;                          
+## [250] &quot;Paul McCartney&quot;                     
+## [251] &quot;Paul Revere &amp; The Raiders&quot;          
+## [252] &quot;Paul Simon&quot;                         
+## [253] &quot;Peaches &amp; Herb&quot;                     
+## [254] &quot;Peggy Lee&quot;                          
+## [255] &quot;Pet Shop Boys&quot;                      
+## [256] &quot;Peter Gabriel&quot;                      
+## [257] &quot;Phil Collins&quot;                       
+## [258] &quot;Pink Floyd&quot;                         
+## [259] &quot;Player&quot;                             
+## [260] &quot;Pointer Sisters&quot;                    
+## [261] &quot;Poison&quot;                             
+## [262] &quot;Prince (With Sheena Easton)&quot;        
+## [263] &quot;Psychedelic Furs&quot;                   
+## [264] &quot;Pure Prairie League&quot;                
+## [265] &quot;Quarterflash&quot;                       
+## [266] &quot;Queen&quot;                              
+## [267] &quot;Queensryche&quot;                        
+## [268] &quot;R. Dean Taylor&quot;                     
+## [269] &quot;Randy Vanwarmer&quot;                    
+## [270] &quot;Rare Earth&quot;                         
+## [271] &quot;Ray Charles&quot;                        
+## [272] &quot;Ray Parker Jr.&quot;                     
+## [273] &quot;Ray Price&quot;                          
+## [274] &quot;Redbone&quot;                            
+## [275] &quot;REO Speedwagon&quot;                     
+## [276] &quot;Rick Derringer&quot;                     
+## [277] &quot;Rick James&quot;                         
+## [278] &quot;Rick Springfield&quot;                   
+## [279] &quot;Righteous Brothers&quot;                 
+## [280] &quot;Rita Coolidge&quot;                      
+## [281] &quot;Rob Base&quot;                           
+## [282] &quot;Robert John&quot;                        
+## [283] &quot;Robert Palmer&quot;                      
+## [284] &quot;Roberta Flack&quot;                      
+## [285] &quot;Roberta Flack,Donny Hathaway&quot;       
+## [286] &quot;Rock And Hyde&quot;                      
+## [287] &quot;Rockwell&quot;                           
+## [288] &quot;Rod Bernard&quot;                        
+## [289] &quot;Rod Stewart&quot;                        
+## [290] &quot;Roger Miller&quot;                       
+## [291] &quot;Ronnie Milsap&quot;                      
+## [292] &quot;Roxette&quot;                            
+## [293] &quot;Roxy Music&quot;                         
+## [294] &quot;Roy Drusky&quot;                         
+## [295] &quot;Roy Head&quot;                           
+## [296] &quot;Roy Orbison&quot;                        
+## [297] &quot;Run-D.M.C.&quot;                         
+## [298] &quot;Rush&quot;                               
+## [299] &quot;Sagittarius&quot;                        
+## [300] &quot;Sammy Hagar&quot;                        
+## [301] &quot;Santana&quot;                            
+## [302] &quot;Santo &amp; Johnny&quot;                     
+## [303] &quot;Shannon&quot;                            
+## [304] &quot;Shirley Brown&quot;                      
+## [305] &quot;Simon &amp; Garfunkel&quot;                  
+## [306] &quot;Simple Minds&quot;                       
+## [307] &quot;Sly &amp; The Family Stone&quot;             
+## [308] &quot;Smokey Robinson&quot;                    
+## [309] &quot;Snap&quot;                               
+## [310] &quot;Soft Cell&quot;                          
+## [311] &quot;Solomon Burke&quot;                      
+## [312] &quot;Sonny &amp; Cher&quot;                       
+## [313] &quot;Spandau Ballet&quot;                     
+## [314] &quot;Stephanie Mills&quot;                    
+## [315] &quot;Steppenwolf&quot;                        
+## [316] &quot;Steve Miller Band&quot;                  
+## [317] &quot;Steve Winwood&quot;                      
+## [318] &quot;Stevie B&quot;                           
+## [319] &quot;Stevie Wonder&quot;                      
+## [320] &quot;Sting&quot;                              
+## [321] &quot;Stray Cats&quot;                         
+## [322] &quot;Swingin&#39; Medallions&quot;                
+## [323] &quot;Switch&quot;                             
+## [324] &quot;Talking Heads&quot;                      
+## [325] &quot;Tanya Tucker&quot;                       
+## [326] &quot;Teddy Pendergrass&quot;                  
+## [327] &quot;Ten Years After&quot;                    
+## [328] &quot;Tevin Campbell&quot;                     
+## [329] &quot;The 5th Dimension&quot;                  
+## [330] &quot;The Alan Parsons Project&quot;           
+## [331] &quot;The Allman Brothers Band&quot;           
+## [332] &quot;The Amboy Dukes&quot;                    
+## [333] &quot;The Animals&quot;                        
+## [334] &quot;The Babys&quot;                          
+## [335] &quot;The Band&quot;                           
+## [336] &quot;The Beach Boys&quot;                     
+## [337] &quot;The Beatles&quot;                        
+## [338] &quot;The Box Tops&quot;                       
+## [339] &quot;The Boys&quot;                           
+## [340] &quot;The Buckinghams&quot;                    
+## [341] &quot;The Byrds&quot;                          
+## [342] &quot;The Castaways&quot;                      
+## [343] &quot;The Chiffons&quot;                       
+## [344] &quot;The Contours&quot;                       
+## [345] &quot;The Cowsills&quot;                       
+## [346] &quot;The Crystals&quot;                       
+## [347] &quot;The Cure&quot;                           
+## [348] &quot;The Doobie Brothers&quot;                
+## [349] &quot;The Doors&quot;                          
+## [350] &quot;The Dramatics&quot;                      
+## [351] &quot;The Drifters&quot;                       
+## [352] &quot;The Electric Prunes&quot;                
+## [353] &quot;The Everly Brothers&quot;                
+## [354] &quot;The Fabulous Thunderbirds&quot;          
+## [355] &quot;The Falcons&quot;                        
+## [356] &quot;The Fireballs&quot;                      
+## [357] &quot;The Hollies&quot;                        
+## [358] &quot;The Isley Brothers&quot;                 
+## [359] &quot;The J. Geils Band&quot;                  
+## [360] &quot;The Jacksons&quot;                       
+## [361] &quot;The Kendalls&quot;                       
+## [362] &quot;The Kinks&quot;                          
+## [363] &quot;The La&#39;s&quot;                           
+## [364] &quot;The Meters&quot;                         
+## [365] &quot;The Miracles&quot;                       
+## [366] &quot;The Moments&quot;                        
+## [367] &quot;The Music Explosion&quot;                
+## [368] &quot;The Music Machine&quot;                  
+## [369] &quot;The O&#39;Jays&quot;                         
+## [370] &quot;The Osmonds&quot;                        
+## [371] &quot;The Pointer Sisters&quot;                
+## [372] &quot;The Police&quot;                         
+## [373] &quot;The Power Station&quot;                  
+## [374] &quot;The Rascals&quot;                        
+## [375] &quot;The Rembrandts&quot;                     
+## [376] &quot;The Righteous Brothers&quot;             
+## [377] &quot;The Ritchie Family&quot;                 
+## [378] &quot;The Robert Cray Band&quot;               
+## [379] &quot;The Rolling Stones&quot;                 
+## [380] &quot;The Ronettes&quot;                       
+## [381] &quot;The Shirelles&quot;                      
+## [382] &quot;The Sopwith \&quot;Camel\&quot;&quot;              
+## [383] &quot;The Staple Singers&quot;                 
+## [384] &quot;The String-A-Longs&quot;                 
+## [385] &quot;The Supremes&quot;                       
+## [386] &quot;The Tee Set&quot;                        
+## [387] &quot;The Temptations&quot;                    
+## [388] &quot;The Trammps&quot;                        
+## [389] &quot;The Turtles&quot;                        
+## [390] &quot;The Ventures&quot;                       
+## [391] &quot;The Weather Girls&quot;                  
+## [392] &quot;The Who&quot;                            
+## [393] &quot;The Yardbirds&quot;                      
+## [394] &quot;The Youngbloods&quot;                    
+## [395] &quot;Thelma Houston&quot;                     
+## [396] &quot;Tina Turner&quot;                        
+## [397] &quot;Todd Rundgren&quot;                      
+## [398] &quot;Tom Jones&quot;                          
+## [399] &quot;Tom T. Hall&quot;                        
+## [400] &quot;Tommy James&quot;                        
+## [401] &quot;Tracie Spencer&quot;                     
+## [402] &quot;Tracy Chapman&quot;                      
+## [403] &quot;U2&quot;                                 
+## [404] &quot;UB40&quot;                               
+## [405] &quot;Urban Dance Squad&quot;                  
+## [406] &quot;Van Halen&quot;                          
+## [407] &quot;Village People&quot;                     
+## [408] &quot;Wang Chung&quot;                         
+## [409] &quot;Waylon Jennings&quot;                    
+## [410] &quot;Wednesday&quot;                          
+## [411] &quot;Wham!&quot;                              
+## [412] &quot;Whitesnake&quot;                         
+## [413] &quot;Wild Cherry&quot;                        
+## [414] &quot;Willie Mitchell&quot;                    
+## [415] &quot;Willie Nelson&quot;                      
+## [416] &quot;Wilson Phillips&quot;                    
+## [417] &quot;Wilson Pickett&quot;                     
+## [418] &quot;Yaz&quot;                                
+## [419] &quot;Young MC&quot;                           
+## [420] &quot;Yvonne Elliman&quot;                     
+## [421] &quot;ZZ Top&quot;</code></pre>
+<pre class="r"><code>str(billboard)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1300 obs. of  8 variables:
+##  $ id            : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ chart_date    : Date, format: &quot;1987-07-11&quot; &quot;1973-08-04&quot; ...
+##  $ target_rank   : int  82 14 56 32 51 15 37 67 48 49 ...
+##  $ actual_rank   : int  NA NA 57 31 NA 16 NA NA NA 51 ...
+##  $ title         : chr  &quot;&quot; &quot;&quot; &quot;I Don&#39;t Mind&quot; &quot;You&#39;ve Got A Friend&quot; ...
+##  $ artist        : Factor w/ 421 levels &quot;&quot;,&quot;A Taste Of Honey&quot;,..: 1 1 163 285 1 30 1 1 1 33 ...
+##  $ peak_rank     : int  NA NA 47 29 NA 3 NA NA NA 10 ...
+##  $ weeks_on_chart: int  NA NA 8 12 NA 25 NA NA NA 18 ...</code></pre>
+</div>
+<div id="impute-missing-data" class="section level2">
+<h2>Impute Missing Data</h2>
+</div>

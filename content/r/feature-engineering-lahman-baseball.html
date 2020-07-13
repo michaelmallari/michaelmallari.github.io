@@ -1,9 +1,9 @@
 ---
 title: "Feature Engineering the Lahman Baseball Database"
-summary: "Manipulate and build more complex functions by combining simpler functions."
+summary: "Create new and insightful baseball stats (or variables or features) while minimizing multicollinearity."
 image: https://www.michaelmallari.com/img/og-mlb-jdegrom.jpg
 language: R
-date: 2020-06-27
+date: 2020-07-04
 categories: []
 tags: []
 ---
@@ -14,7 +14,7 @@ tags: []
 <div id="import-the-lahman-baseball-database" class="section level2">
 <h2>Import the Lahman Baseball Database</h2>
 <pre class="r"><code>require(devtools)
-install_version(&quot;Lahman&quot;, version = &quot;8.0-0&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
+devtools::install_version(&quot;Lahman&quot;, version = &quot;8.0-0&quot;, repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
 <pre class="r"><code>library(Lahman)</code></pre>
 </div>
 <div id="exploring-the-data" class="section level2">
@@ -48,7 +48,13 @@ install_version(&quot;Lahman&quot;, version = &quot;8.0-0&quot;, repos = &quot;h
 </div>
 <div id="joining-data" class="section level2">
 <h2>Joining Data</h2>
-<p>In the real world, data sets typically come split across many tables. That is certainly true for the Lahman Baseball Database. In order to apply feature engineering techniques, we must first join the data (essentially undoing the relationship database).</p>
+<p>In the real world, data sets typically come split across many tables. As we can see above, that is certainly true for the Lahman Baseball Database—split up across many data frames. In order to apply feature engineering techniques, we must first join the data (essentially reversing the efficiencies of relationship databases).</p>
+</div>
+<div id="transforming-data-using-box-cox-and-yeo-johnson-techniques" class="section level2">
+<h2>Transforming Data Using Box-Cox and Yeo-Johnson Techniques</h2>
+</div>
+<div id="minimize-multicollinearity-through-principal-component-analysis-pca" class="section level2">
+<h2>Minimize Multicollinearity Through Principal Component Analysis (PCA)</h2>
 <pre class="r"><code>R.version.string</code></pre>
 <pre><code>## [1] &quot;R version 4.0.1 (2020-06-06)&quot;</code></pre>
 </div>

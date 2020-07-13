@@ -4,7 +4,7 @@ title: "Replace Missing Data Through Imputation"
 
 summary: "Missing data is part of real world data wrangling. Avoid dropping valuable observations by using Impute.jl."
 
-image: https://www.michaelmallari.com/img/logo-julia.png
+image: https://www.michaelmallari.com/img/og-jigsaw-puzzle.jpg
 
 language: Julia
 

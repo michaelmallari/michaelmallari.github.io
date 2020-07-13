@@ -1,0 +1,51 @@
+---
+title: "Wrangling Music Data"
+summary: "Create new and insightful baseball stats (or variables or features) while minimizing multicollinearity."
+image: https://www.michaelmallari.com/img/og-beatles-yesterday.jpg
+language: R
+date: 2020-06-21
+categories: []
+tags: []
+---
+
+
+```{r}
+R.version.string
+```
+
+
+```{r}
+billboard <- read.csv("dataset/billboard-2.0-index.csv")
+```
+
+```{r}
+str(billboard)
+```
+
+## Coerce Vectors to Appropriate Data Types
+
+The following features will be coerced:
+
+* **chart_date** from string to date
+* **artist** from string to factor
+
+```{r}
+billboard$chart_date <- as.Date(billboard$chart_date)
+summary(billboard$chart_date)
+```
+
+
+```{r}
+billboard$artist <- as.factor(billboard$artist)
+levels(billboard$artist)
+```
+
+```{r}
+str(billboard)
+```
+
+## Impute Missing Data
+
+```{r}
+
+```

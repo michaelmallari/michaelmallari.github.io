@@ -1,9 +1,9 @@
 ---
 title: "Feature Engineering the Lahman Baseball Database"
-summary: "Manipulate and build more complex functions by combining simpler functions."
+summary: "Create new and insightful baseball stats (or variables or features) while minimizing multicollinearity."
 image: https://www.michaelmallari.com/img/og-mlb-jdegrom.jpg
 language: R
-date: 2020-06-27
+date: 2020-07-04
 categories: []
 tags: []
 ---
@@ -14,7 +14,7 @@ The Lahman Baseball Database (version 8.0-0) is a collection of pitching, hittin
 
 ```{r message=FALSE, warning=FALSE}
 require(devtools)
-install_version("Lahman", version = "8.0-0", repos = "http://cran.us.r-project.org")
+devtools::install_version("Lahman", version = "8.0-0", repos = "http://cran.us.r-project.org")
 library(Lahman)
 ```
 
@@ -27,13 +27,17 @@ Lahman::LahmanData
 
 ## Joining Data
 
-In the real world, data sets typically come split across many tables. That is certainly true for the Lahman Baseball Database.  In order to apply feature engineering techniques, we must first join the data (essentially undoing the relationship database).
+In the real world, data sets typically come split across many tables. As we can see above, that is certainly true for the Lahman Baseball Database—split up across many data frames.  In order to apply feature engineering techniques, we must first join the data (essentially reversing the efficiencies of relationship databases).
 
 
 
 
 
+## Transforming Data Using Box-Cox and Yeo-Johnson Techniques
 
+
+
+## Minimize Multicollinearity Through Principal Component Analysis (PCA)
 
 
 ```{r}

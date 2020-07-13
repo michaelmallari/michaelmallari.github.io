@@ -2,6 +2,4 @@ title = "Michael Mallari, BS in Computer Science"
 baseURL = "https://michaelmallari.github.io/"
 languageCode = "en-us"
 theme = "michaelmallari"
-
-[permalinks]
-    post = "/:slug/"
+rssLimit = 3

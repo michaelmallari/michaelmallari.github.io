@@ -43,7 +43,7 @@
 
           <p>Michael earned his BS in Computer Science from New York Institute of Technology and his MBA from the University of Maryland, College Park. He is also a candidate to receive his MS in Applied Analytics from Columbia University.</p>
 
-          <a href="https://www.patreon.com/bePatron?u=8363129" target="_blank" class="btn btn-default">Become a Patron</a> <span id="hello">or <a href="https://www.linkedin.com/in/mmallari/" target="_blank">say hello on LinkedIn</a></span>
+          <a href="https://www.patreon.com/michaelmallari" target="_blank" class="btn btn-default">Become a Patron</a> <span id="hello">or <a href="https://www.linkedin.com/in/mmallari/" target="_blank">say hello on LinkedIn</a></span>
         </div>
       </section>
 
@@ -69,16 +69,26 @@
     <script type="text/javascript">
       $(document).ready(function() {
 
+        rssFeed = "https://www.michaelmallari.com/computational/index.xml";
+
+        fetch(rssFeed)
+            .then(response => response.text())
+            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(data => {
+              console.log(data);
+              const items = data.querySelectorAll("item");
+              let html = ``;
+              items.forEach(el => {
+                html += `
+                <li><a href="${el.querySelector("link").innerHTML}">${el.querySelector("title").innerHTML}</a></li>
+              `;
+              });
+              document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin", html);
+            });
       });
     </script>
     <script src="https://www.michaelmallari.com/js/node_modules/react/umd/react.production.min.js"></script>
     <script src="https://www.michaelmallari.com/js/node_modules/react-dom/umd/react-dom.production.min.js"></script>
-    <script type="text/javascript">
-      rssFeed = "https://www.michaelmallari.com/computational/index.xml"
-
-      // Get title and URL of most recent 3 posts
-      // Display posts in #aside-posts-recent
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script type="text/javascript">
