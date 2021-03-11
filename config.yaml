@@ -5,3 +5,4 @@ theme: michaelmallari
 permalinks:
   post: /:slug/
 rssLimit: 3
+publishDir: docs
