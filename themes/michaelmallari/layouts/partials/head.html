@@ -9,55 +9,60 @@
     <link type="image/x-icon" rel="icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
 
 
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
-    <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    <title>{{ if .IsHome }}Computational Thinking + Doing{{ else }}{{ .Title | safeHTML }}{{ end }} | Michael Mallari, BS in Computer Science</title>
+    <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
     <link rel="canonical" href="{{ .Permalink }}" />
     <meta name="robots" content="index, follow" />
 
 
     <meta property="og:type" content="{{ if .IsHome | or .IsSection }}website{{ else }}article{{ end }}" />
-    <meta property="og:title" content="{{ .Title }}" />
-    <meta property="og:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    <meta property="og:title" content="{{ .Title | safeHTML }}" />
+    <meta property="og:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
-    <meta property="og:img" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}https://www.michaelmallari.com/img/og-michaelmallari-com.jpg{{ end }}" />
+    <meta property="og:img" content="https://www.michaelmallari.com{{ if .Params.image }}{{ .Params.image }}{{ else }}/img/og-equations.jpg{{ end }}" />
 
 
-    <meta name="twitter:card" content="{{ if .Params.twitterCard }}{{ .Params.twitterCard }}{{ else }}summary{{ end }}" />
+    <meta name="twitter:card" content="{{ if .Params.twitterCard }}{{ .Params.twitterCard }}{{ else }}summary_large_image{{ end }}" />
     <meta name="twitter:site" content="@MichaelMallari" />
-    <meta name="twitter:title" content="{{ .Title }}" />
-    <meta name="twitter:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
-    <meta name="twitter:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}https://www.michaelmallari.com/img/og-michaelmallari-com.jpg{{ end }}" />
+    <meta name="twitter:title" content="{{ .Title | safeHTML }}" />
+    <meta name="twitter:description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
+    <meta name="twitter:image" content="https://www.michaelmallari.com{{ if .Params.image }}{{ .Params.image }}{{ else }}/img/og-equations.jpg{{ end }}" />
 
 
     <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/css/styles.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github-gist.min.css" />
-
-
-    {{ if .IsHome }}{{ if .RSSLink }}
-    <link type="application/rss+xml" rel="alternate" title="{{ .Title }} | {{ .Site.Title }}" href="{{ .RSSLink }}" />
-    <link type="application/rss+xml" rel="feed" title="{{ .Title }} | {{ .Site.Title }}" href="{{ .RSSLink }}" />
-    {{ end }}{{ end }}
-
-    {{if ne .Site.BaseURL "http://127.0.0.1:4321/"}}
-    <style>
-      #posts-category>article a .category::after {
-        content: '' !important;
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" crossorigin />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/{{ if .Params.highlightjs }}{{ .Params.highlightjs }}{{ else }}solarized-dark{{ end }}.min.css" crossorigin />
+    <style type="text/css">
+      @media (min-width: 1200px) {
+        body.github .nav-primary li:nth-child(1) a span:nth-child(2):after {
+          content: "DATA";
+        }
+        body.github  .nav-primary li:nth-child(2) a span:nth-child(2):after {
+          content: "QC";
+        }
+        body.github  .nav-primary li:nth-child(3) a span:nth-child(2):after {
+          content: "SW";
+        }
       }
     </style>
-    <script>
+
+{{ if .OutputFormats.Get "RSS" }}{{ with .OutputFormats.Get "RSS" }}
+
+    <link type="application/rss+xml" rel="alternate" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
+    <link type="application/rss+xml" rel="feed" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
+
+{{ end }}{{ end }}
+
+{{if ne .Site.BaseURL "http://localhost:4321/"}}
+
+    <script crossorigin>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-NCX6N2R');
     </script>
-    {{ end }}
+
+{{ end }}
+
   </head>
-
-
-
-
-
-
-

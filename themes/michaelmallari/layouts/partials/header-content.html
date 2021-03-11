@@ -1,10 +1,25 @@
 
-        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('{{ if .Params.image }}{{ .Params.image }}{{ else }}bg-michaelmallari-com.jpg/img/og-equations.jpg{{ end }}')">
+        <header id="masthead" style="background-image: linear-gradient(120deg, rgba(29, 37, 45, 1), rgba(0, 88, 124, 0.8)), url('https://www.michaelmallari.com{{ if .Params.image }}{{ .Params.image }}{{ else }}/img/og-equations.jpg{{ end }}');">
+
           <div class="container">
-            <span class="category">Computational Thinking + Doing</span>
-            <h1 class="title">{{ .Title }}</h1>
+            <div class="category">
+
+{{ if .IsHome }}
+              Attribute of a Hybrid Thinker + Doer
+
+{{ else if .IsSection }}
+
+              Attribute of a Computational Thinker + Doer
+
+{{ else }}
+
+                Computational Thinking + Doing
+
+{{ end }}
+            </div>
+            <h1 class="title">{{ .Title | safeHTML }}</h1>
             <span class="hr-minor"></span>
-            <p class="excerpt">{{ .Params.summary | html }}</p>
+            <p class="excerpt">{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}</p>
           </div>
         </header>
 

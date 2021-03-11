@@ -1,6 +1,6 @@
-<section id="posts-category" class="posts-list">
+<section id="posts-sticky" class="posts-list">
 
-{{ range (.Paginator 36).Pages }}
+{{ range (.Paginator 9).Pages }}
 
   <article><a class="title" href="{{ .Params.ExternalLink | default .RelPermalink }}">
     <div class="post-thumb height-half-width" style="background-image: url('{{ .Params.image | safeHTML }}');">
@@ -10,7 +10,7 @@
     </div>
     <div class="post-details">
       <div class="container">
-      <div class="category">{{ .Params.topic | safeHTML }}</div>
+        <div class="category">{{ .Params.topic | safeHTML }}</div>
         <h2 class="title">{{ .Title | safeHTML }}</h2>
         <p class="excerpt">{{ .Params.summary | safeHTML }}</p>
       </div>
@@ -21,3 +21,4 @@
 
   <div style="clear: both;"></div>
 </section>
+<!--/#posts-sticky -->

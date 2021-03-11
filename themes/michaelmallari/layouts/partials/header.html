@@ -1,14 +1,16 @@
-    {{if ne .Site.BaseURL "http://127.0.0.1:4321/"}}
+{{if ne .Site.BaseURL "http://localhost:4321/"}}
+
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCX6N2R" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    {{ end }}
+
+{{ end }}
 
 
     <div id="page-container">
       <header id="header">
         <div class="container">
-          <a href="https://www.michaelmallari.com/" title="Michael Mallari [michaelmallari.com]"><div id="logo-mm"></div></a>
+          <a href="{{ .Site.BaseURL }}" title="Michael Mallari [github.io]"><div id="logo-mm"></div></a>
 
 
           <button id="hamburger-menu" class="toggle-hamburger-menu" role="button">
@@ -32,33 +34,21 @@
 
           <nav id="nav" role="navigation">
             <ul class="nav-primary">
-              <li><a href="https://www.michaelmallari.com/computational/" title="Computational [michaelmallari.com]">
-                <span class="fas fa-square-root-alt"></span>
-                <span>Computational</span>
+              <li><a href="{{ .Site.BaseURL }}data-engineering/" title="Data Engineering">
+                <span class="fas fa-database"></span>
+                <span>Data Engineering</span>
               </a></li>
 
 
-              <li><a href="https://www.michaelmallari.com/data/" title="Data-Informed [michaelmallari.com]">
-                <span class="fas fa-chart-area"></span>
-                <span>Data-Informed</span>
+              <li><a href="{{ .Site.BaseURL }}quantum-computing/" title="Quantum Computing">
+                <span class="fas fa-atom"></span>
+                <span>Quantum Computing</span>
               </a></li>
 
 
-              <li><a href="https://www.michaelmallari.com/design/" title="Design [michaelmallari.com]">
-                <span class="fas fa-route"></span>
-                <span>Design</span>
-              </a></li>
-
-
-              <li><a href="https://www.michaelmallari.com/operational/" title="Operational [michaelmallari.com]">
-                <span class="fas fa-cogs"></span>
-                <span>Operational</span>
-              </a></li>
-
-
-              <li><a href="https://www.michaelmallari.com/product/" title="Product [michaelmallarii.com]">
-                <span class="fas fa-dolly-flatbed"></span>
-                <span>Product</span>
+              <li><a href="{{ .Site.BaseURL }}software-engineering/" title="Software Engineering">
+                <span class="fas fa-laptop-code"></span>
+                <span>Software Engineering</span>
               </a></li>
             </ul>
           </nav>
@@ -67,9 +57,14 @@
       </header>
       <!--/#header -->
 
+{{ if .IsHome | or .IsSection }}
 
+      <main id="content" role="main">
 
+{{ else }}
 
-      {{ if .IsHome | or .IsSection }}<main id="content" role="main">{{ else }}<article id="content" role="main">{{ end }}
+      <article id="content" role="main">
 
-        {{- partial "header-content.html" . -}}
+{{ end }}
+
+{{- partial "header-content.html" . -}}

@@ -12,7 +12,7 @@ min_version = "0.41"
 
 [author]
   name = "Michael Mallari"
-  homepage = "http://www.michaelmallari.com/"
+  homepage = "https://www.michaelmallari.com/"
 
 # If porting an existing theme
 [original]

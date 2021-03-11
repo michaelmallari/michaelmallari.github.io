@@ -1,0 +1,7 @@
+baseurl: https://michaelmallari.github.io/
+languageCode: en-us
+title: Michael Mallari, BS in Computer Science
+theme: michaelmallari
+permalinks:
+  post: /:slug/
+rssLimit: 3
