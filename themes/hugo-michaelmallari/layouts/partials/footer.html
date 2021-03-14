@@ -27,9 +27,9 @@
         <section id="about">
           <div class="container">
             <div class="category">
-              Computational Thinker + Doer
+              {{ $.Site.Params.focus }}
             </div>
-            <h2>Michael Mallari, <span>BS in Computer Science</span></h2>
+            <h2>{{ $.Site.Params.author }}, <span>{{ $.Site.Params.suffix }}</span></h2>
 
             <span class="hr-major"></span>
 
@@ -72,7 +72,7 @@
 
 
 
-    <script src="https://www.michaelmallari.com/js/node_modules/jquery/dist/jquery.min.js" crossorigin></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin></script>
     <script src="https://www.michaelmallari.com/js/functions.min.js" crossorigin></script>
     {{ if .IsHome }}<script src="https://www.michaelmallari.com/js/posts-sticky.min.js" crossorigin></script>{{ else if .IsSection }}<script src="https://www.michaelmallari.com/js/posts-category.min.js" crossorigin></script>{{ end }}
     <script type="text/javascript">

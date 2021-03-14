@@ -5,15 +5,15 @@
             <div class="category">
 
 {{ if .IsHome }}
-              Attribute of a Hybrid Thinker + Doer
+              Attribute of a Hybrid Thinking + Doing
 
 {{ else if .IsSection }}
 
-              Attribute of a Computational Thinker + Doer
+              Attribute of {{ .Site.Title }}
 
 {{ else }}
 
-                Computational Thinking + Doing
+              {{ .Site.Title }}
 
 {{ end }}
             </div>

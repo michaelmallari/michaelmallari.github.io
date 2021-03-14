@@ -9,7 +9,7 @@
     <link type="image/x-icon" rel="icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
 
 
-    <title>{{ if .IsHome }}Applied Computing{{ else }}{{ .Title | safeHTML }}{{ end }} | Michael Mallari, BS in Computer Science</title>
+    <title>{{ if .IsHome }}{{ .Site.Title }} | {{ $.Site.Params.author }}, {{ $.Site.Params.suffix }}{{ else }}{{ .Title | safeHTML }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
     <link rel="canonical" href="{{ .Permalink }}" />
     <meta name="robots" content="index, follow" />
@@ -41,7 +41,7 @@
           content: "QC";
         }
         body.github  .nav-primary li:nth-child(3) a span:nth-child(2):after {
-          content: "SW";
+          content: "SWE";
         }
       }
     </style>

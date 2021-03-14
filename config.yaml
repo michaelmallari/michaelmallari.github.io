@@ -1,8 +1,12 @@
-baseurl: https://michaelmallari.github.io/
+baseurl: https://michaelmallari.bitbucket.io/
 languageCode: en-us
-title: Michael Mallari, BS in Computer Science
+title: Applied Computing
 theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
 rssLimit: 3
 publishDir: docs
+params:
+  author: Michael Mallari
+  suffix: BS in Computer Science
+  focus: Computational Thinker + Doer
