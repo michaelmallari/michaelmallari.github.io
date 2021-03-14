@@ -1,5 +1,5 @@
 ---
 title: "Data Engineering"
-summary: "Learn how Michael applies product thinking to deliver delightful CX that aligns with business goals."
-image:
+summary: "Explore Michael's collection of data engineering projects and prototypes."
+image: /img/og-data-engineering-0.jpg
 ---
