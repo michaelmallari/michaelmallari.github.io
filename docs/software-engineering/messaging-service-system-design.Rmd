@@ -1,10 +1,10 @@
 ---
-title: "Search Engine Autocomplete System Design"
+title: "Messaging Service Design"
 summary: ""
-image: og-google-search.jpg
-imageSource: https://unsplash.com/photos/zhZydTyNMPg
+image: og-messaging.jpg
+imageSource: https://unsplash.com/photos/zs-41Br0WhQ
 topic: "Software Engineering"
-date: 2021-01-02
+date: 2021-09-18
 ---
 
 ```{r include = FALSE}

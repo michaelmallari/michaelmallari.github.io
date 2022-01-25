@@ -21,13 +21,13 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 options(width = 1000, scipen = 10000, digits = 2)
 ```
 
-## Defining Problem Statement
+## Defining the Problem Statement
 
-## Clarifying Requirements and Scope
+## Clarifying the Requirements and Scope
 
-## Architecting High-Level Design
+## Architecting the High-Level Design
 
-## Modeling Data
+## Modeling the Data
 
-## Designing Components
+## Designing the Components
 
