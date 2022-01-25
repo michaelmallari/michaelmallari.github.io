@@ -1,5 +1,7 @@
 ---
 title: "Data Engineering"
 summary: "Explore Michael's collection of data engineering projects and prototypes."
-image: og-data-engineering-0.jpg
+image: og-dashboard-funnel.jpg
+# https://unsplash.com/photos/qwtCeJ5cLYs
 ---
+

@@ -1,6 +1,6 @@
 ---
 title: "SABR Analytics With BullpenSession"
-summary: "A package for analyzing baseball statistics in Julia, Python, and R."
+summary: "A package for analyzing baseball metrics in Julia, Python, and R."
 image: og-mlb-citi-field.jpg
 topic: "Data Engineering"
 date: 2019-02-02
@@ -19,4 +19,6 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 # Round to 2 decimal points
 options(width = 1000, scipen = 10000, digits = 2)
 ```
+
+
 
