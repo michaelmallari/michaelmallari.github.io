@@ -1,0 +1,22 @@
+---
+title: "SABR Analytics With BullpenSession"
+summary: "A package for analyzing baseball statistics in Julia, Python, and R."
+image: og-mlb-citi-field.jpg
+topic: "Data Engineering"
+date: 2019-02-02
+---
+
+```{r include = FALSE}
+library(JuliaCall)
+
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON = "/Volumes/Personal/Mami/python-venv/bin/python")
+reticulate::py_config()
+
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+# Make width wide enough to prevent wrapping of output
+# Prevent scientific notation
+# Round to 2 decimal points
+options(width = 1000, scipen = 10000, digits = 2)
+```
+
