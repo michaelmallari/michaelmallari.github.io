@@ -1,68 +1,66 @@
 
-  <head prefix="og: http://ogp.me/ns/{{ if .IsHome | or .IsSection }}website{{ else }}article{{ end }}#">
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
-    <link rel="shortcut icon" href="https://www.michaelmallari.com/img/icon-mm-transparent.png" />
-    <link type="image/x-icon" rel="icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
+    <head prefix="og: http://ogp.me/ns/{{ if .IsPage }}article{{ else }}website{{ end }}#">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
+        <link rel="shortcut icon" href="https://www.michaelmallari.com/img/icon-mm-transparent.png" />
+        <link type="image/x-icon" rel="icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
 
 
-    <title>{{ if .IsHome }}{{ .Site.Title }} | {{ $.Site.Params.author }}, {{ $.Site.Params.suffix }}{{ else }}{{ .Title | safeHTML }} | {{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
-    <link rel="canonical" href="{{ .Permalink }}" />
-    <meta name="robots" content="index, follow" />
+        <title>{{ if .IsHome }}{{ .Site.Title }} | {{ $.Site.Params.author }}, {{ $.Site.Params.suffix }}{{ else }}{{ .Title | safeHTML }} | {{ .Site.Title }}{{ end }}</title>
+        <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
+        <link rel="canonical" href="{{ .Permalink }}" />
+        <meta name="robots" content="index, follow" />
+
+        
+        {{ if .IsPage }}<meta property="article:published_time" content='{{ .PublishDate.Format "2006-01-02" }}' />{{ end }}
+        <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+        <meta property="og:title" content="{{ .Title | safeHTML }}" />
+        <meta property="og:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
+        <meta property="og:url" content="{{ .Permalink }}" />
+        <meta property="og:img" content="{{ .Site.BaseURL }}img/{{ if .IsHome}}og-github-io.png{{ else }}{{ if .Params.image }}{{ .Params.image }}{{ else }}og-equations.jpg{{ end }}{{ end }}" />
 
 
-    <meta property="og:type" content="{{ if .IsHome | or .IsSection }}website{{ else }}article{{ end }}" />
-    <meta property="og:title" content="{{ .Title | safeHTML }}" />
-    <meta property="og:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
-    <meta property="og:url" content="{{ .Permalink }}" />
-    <meta property="og:img" content="https://www.michaelmallari.com{{ if .Params.image }}{{ .Params.image }}{{ else }}/img/og-equations.jpg{{ end }}" />
+        <meta name="twitter:card" content="{{ if .Params.twitterCard }}{{ .Params.twitterCard }}{{ else }}summary_large_image{{ end }}" />
+        <meta name="twitter:site" content="@MichaelMallari" />
+        <meta name="twitter:title" content="{{ .Title | safeHTML }}" />
+        <meta name="twitter:description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
+        <meta name="twitter:image" content="{{ .Site.BaseURL }}img/{{ if .IsHome}}og-github-io.png{{ else }}{{ if .Params.image }}{{ .Params.image }}{{ else }}og-equations.jpg{{ end }}{{ end }}" />
 
 
-    <meta name="twitter:card" content="{{ if .Params.twitterCard }}{{ .Params.twitterCard }}{{ else }}summary_large_image{{ end }}" />
-    <meta name="twitter:site" content="@MichaelMallari" />
-    <meta name="twitter:title" content="{{ .Title | safeHTML }}" />
-    <meta name="twitter:description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
-    <meta name="twitter:image" content="https://www.michaelmallari.com{{ if .Params.image }}{{ .Params.image }}{{ else }}/img/og-equations.jpg{{ end }}" />
-
-
-    <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/css/styles.min.css" crossorigin />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" crossorigin />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/{{ if .Params.highlightjs }}{{ .Params.highlightjs }}{{ else }}solarized-dark{{ end }}.min.css" crossorigin />
-    <style type="text/css">
-      @media (min-width: 1200px) {
-        body.github .nav-primary li:nth-child(1) a span:nth-child(2):after {
-          content: "DATA";
-        }
-        body.github  .nav-primary li:nth-child(2) a span:nth-child(2):after {
-          content: "QC";
-        }
-        body.github  .nav-primary li:nth-child(3) a span:nth-child(2):after {
-          content: "SWE";
-        }
-      }
-    </style>
+        <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/css/styles.min.css" crossorigin />
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" crossorigin />
+        <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/js/highlight/styles/solarized-dark.css" crossorigin />
+        <style type="text/css">
+            @media (min-width: 1112px) {
+                body.github .nav-primary li:nth-child(1) a span:nth-child(2):after {
+                    content: "DATA";
+                }
+                body.github  .nav-primary li:nth-child(2) a span:nth-child(2):after {
+                    content: "SWE";
+                }
+            }
+        </style>
 
 {{ if .OutputFormats.Get "RSS" }}{{ with .OutputFormats.Get "RSS" }}
 
-    <link type="application/rss+xml" rel="alternate" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
-    <link type="application/rss+xml" rel="feed" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
+        <link type="application/rss+xml" rel="alternate" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
+        <link type="application/rss+xml" rel="feed" title="{{ $.Title }}" href="{{ .RelPermalink }}" />
 
 {{ end }}{{ end }}
 
 {{if ne .Site.BaseURL "http://localhost:4321/"}}
 
-    <script crossorigin>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-NCX6N2R');
-    </script>
+        <script crossorigin>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-NCX6N2R');
+        </script>
 
 {{ end }}
 
-  </head>
+    </head>

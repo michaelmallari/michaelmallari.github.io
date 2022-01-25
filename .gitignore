@@ -1,10 +1,22 @@
 # System files
 .DS_Store
-node_modules/.bin
-
-# JetBrains IDE
-/.idea
 
 # R Studio
 /.Rproj.user
 .Rhistory
+
+# Node.js packages
+node_modules/.bin
+
+# Hugo
+.hugo_build.lock
+
+# Dataset
+/dataset
+
+# JetBrains IDE
+/.idea
+
+# Distribution/public files
+/cunix.cc.columbia.edu
+
