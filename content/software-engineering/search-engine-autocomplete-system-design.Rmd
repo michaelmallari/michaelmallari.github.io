@@ -1,5 +1,5 @@
 ---
-title: "Design for a Search Engine Autocomplete System"
+title: "Search Engine Autocomplete System Design"
 summary: ""
 image: og-google-search.jpg
 imageSource: https://unsplash.com/photos/zhZydTyNMPg
@@ -30,5 +30,4 @@ options(width = 1000, scipen = 10000, digits = 2)
 ## Modeling Data
 
 ## Designing Components
-
 
