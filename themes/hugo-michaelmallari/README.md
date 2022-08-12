@@ -19,4 +19,4 @@ Hugo theme for data science blogging in Julia, Python, and R.
 * [**Main Blog** (www.michaelmallari.com)](https://www.michaelmallari.com)
 * [**Applied Computing** (michaelmallari.github.io)](https://michaelmallari.github.io)
 * [**Applied Data Science & Analytics** (www.columbia.edu/~mm5470)](http://www.columbia.edu/~mm5470)
-* [**Applied Product Management** (michaelmallari.bitbucket.io)](https://michaelmallari.bitbucket.io)
+* [**Applied Product Leadership** (michaelmallari.bitbucket.io)](https://michaelmallari.bitbucket.io)
