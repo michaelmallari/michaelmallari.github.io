@@ -8,7 +8,7 @@ rssLimit: 3
 publishDir: docs
 params:
   author: Michael Mallari
-  suffix: BS in Computer Science
+  suffix: BS Computer Science
   focus: Computational Thinker + Doer
 
 # Delete directories, files from /docs
