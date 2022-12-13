@@ -1,6 +1,6 @@
 baseurl: https://michaelmallari.github.io/
 languageCode: en-us
-title: Applied Computing
+title: Applied Computing, Data, and Analytics
 theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
@@ -8,7 +8,7 @@ rssLimit: 3
 publishDir: docs
 params:
   author: Michael Mallari
-  suffix: BS Computer Science
+  suffix: MS, MBA, BS Computer Science
   focus: Chief Data & Analytics Officer With Hybrid Skill-Set
 
 # Delete directories, files from /docs
