@@ -22,14 +22,14 @@
         <meta property="og:title" content="{{ .Title | safeHTML }}" />
         <meta property="og:description" content="{{ if .Params.summary }}{{ .Params.summary | html }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
         <meta property="og:url" content="{{ .Permalink }}" />
-        <meta property="og:img" content="{{ .Site.BaseURL }}img/{{ if .Params.image }}{{ .Params.image }}{{ end }}" />
+        <meta property="og:img" content="{{ .Site.BaseURL }}img/{{ if .IsHome}}og-michaelmallari-github.png{{ else }}{{ if .Params.image }}{{ .Params.image }}{{ else }}og-equations.jpg{{ end }}{{ end }}" />
 
 
         <meta name="twitter:card" content="{{ if .Params.twitterCard }}{{ .Params.twitterCard }}{{ else }}summary_large_image{{ end }}" />
         <meta name="twitter:site" content="@MichaelMallari" />
         <meta name="twitter:title" content="{{ .Title | safeHTML }}" />
         <meta name="twitter:description" content="{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}" />
-        <meta name="twitter:image" content="{{ .Site.BaseURL }}img/{{ if .Params.image }}{{ .Params.image }}{{ end }}" />
+        <meta name="twitter:image" content="{{ .Site.BaseURL }}img/{{ if .IsHome}}og-michaelmallari-github.png{{ else }}{{ if .Params.image }}{{ .Params.image }}{{ else }}og-equations.jpg{{ end }}{{ end }}" />
 
 
         <link type="text/css" rel="stylesheet" href="https://www.michaelmallari.com/css/styles.min.css" crossorigin />
