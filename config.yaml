@@ -8,7 +8,7 @@ rssLimit: 3
 publishDir: docs
 params:
   author: Michael Mallari
-  suffix: MS, MBA, BS Computer Science
+  suffix: MBA, MS Applied Analytics, BS Computer Science
   focus: Chief Data & Analytics Officer With Hybrid Skill-Set
 
 # Delete directories, files from /docs
