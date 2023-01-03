@@ -16,4 +16,4 @@ BuildType: Website
 
 PythonType: virtualenv
 PythonVersion: 3.9.6
-PythonPath: /Volumes/Personal/Mami/python-venv/bin/python
+PythonPath: pythonenv/bin/python

@@ -4,11 +4,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="apple-touch-icon-precomposed" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
-        <link rel="apple-touch-icon" href="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
-        <meta name="msapplication-TileImage" content="https://www.michaelmallari.com/img/logo-mm-pms2028c.png" />
-        <link rel="shortcut icon" type="image/png" href="https://www.michaelmallari.com/img/icon-mm-transparent.png" />
-        <link rel="icon" type="image/png" href="https://www.michaelmallari.com/img/icon-mm-transparent.png" />
+        <link rel="apple-touch-icon-precomposed" href="{{ .Site.BaseURL }}img/logo-mm-pms2028c.png" />
+        <link rel="apple-touch-icon" href="{{ .Site.BaseURL }}img/logo-mm-pms2028c.png" />
+        <meta name="msapplication-TileImage" content="{{ .Site.BaseURL }}img/logo-mm-pms2028c.png" />
+        <link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL }}img/icon-mm-transparent.png" />
+        <link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/icon-mm-transparent.png" />
 
 
         <title>{{ if .IsHome }}{{ .Site.Title }} | {{ $.Site.Params.author }}, {{ $.Site.Params.suffix }}{{ else }}{{ .Title | safeHTML }} | {{ .Site.Title }}{{ end }}</title>

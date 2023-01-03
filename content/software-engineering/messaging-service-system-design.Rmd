@@ -9,9 +9,10 @@ date: 2021-09-18
 
 ```{r include = FALSE}
 library(JuliaCall)
+julia <- julia_setup("/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/juliaenv/v1.5.0/bin/")
 
 library(reticulate)
-Sys.setenv(RETICULATE_PYTHON = "/Volumes/Personal/Mami/python-venv/bin/python")
+Sys.setenv(RETICULATE_PYTHON = "/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/bin/python")
 reticulate::py_config()
 
 knitr::opts_chunk$set(echo = TRUE, comment = NA)

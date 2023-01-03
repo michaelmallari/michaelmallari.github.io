@@ -1,9 +1,15 @@
 # System files
 .DS_Store
 
+# Temporary files
+/_temp
+
 # R Studio
 /.Rproj.user
 .Rhistory
+
+# JetBrains IDE
+/.idea
 
 # Node.js packages
 node_modules/.bin
@@ -11,12 +17,14 @@ node_modules/.bin
 # Hugo
 .hugo_build.lock
 
+# Virtual environments
+/juliaenv
+/pythonenv
+/renv
+/R
+
 # Dataset
 /dataset
 
-# JetBrains IDE
-/.idea
-
 # Distribution/public files
-/cunix.cc.columbia.edu
-
+# /docs
