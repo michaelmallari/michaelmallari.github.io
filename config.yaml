@@ -5,6 +5,7 @@ theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
 rssLimit: 3
+disableKinds: ["taxonomyTerm"]
 publishDir: docs
 params:
   author: Michael Mallari
