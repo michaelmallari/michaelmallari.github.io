@@ -1,6 +1,6 @@
 ---
 title: "Applied Computing"
-summary: "Kickoff your child's journey in building a competitive computer science portfolio by the time s/he is applying to Ivy League schools."
+summary: "Helping secondary and post-secondary education students build a competitive computer science portfolio (that includes AI and machine learning)."
 image: og-equations.jpg
 # https://unsplash.com/photos/05A-kdOH6Hw
 ---
