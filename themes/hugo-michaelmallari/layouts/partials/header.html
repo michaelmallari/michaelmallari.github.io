@@ -10,7 +10,7 @@
         <div id="page-container">
             <header id="header">
                 <div class="container">
-                    <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }} | {{ $.Site.Params.author }}, {{ $.Site.Params.suffix }}"><div id="logo-mm"></div></a>
+                    <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title | safeHTML }} by {{ $.Site.Params.author }}"><div id="logo-mm"></div></a>
 
 
                     <button id="hamburger-menu" class="toggle-hamburger-menu" role="button">

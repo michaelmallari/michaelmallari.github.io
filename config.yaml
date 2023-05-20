@@ -10,7 +10,7 @@ publishDir: docs
 params:
   author: Michael Mallari
   suffix: MS, MBA
-  focus: AI/ML Leader & Educator
+  focus: AI Educator & Coach
 
 # Delete directories, files from /docs
 # "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
