@@ -25,7 +25,6 @@
 <meta name=twitter:description content="Explore Michael's collection of data engineering projects and prototypes.">
 <meta name=twitter:image content="https://michaelmallari.github.io/img/og-dashboard-funnel.jpg">
 <link type=text/css rel=stylesheet href=https://www.michaelmallari.com/css/styles.min.css crossorigin>
-<link type=text/css rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css crossorigin>
 <link type=text/css rel=stylesheet href=https://www.michaelmallari.com/js/highlight/styles/solarized-dark.css crossorigin>
 <style type=text/css>@media(min-width:1112px){body.github .nav-primary li:nth-child(1) a span:nth-child(2):after{content:"CE"}body.github .nav-primary li:nth-child(2) a span:nth-child(2):after{content:"DE"}body.github .nav-primary li:nth-child(3) a span:nth-child(2):after{content:"SWE"}}</style>
 <link type=application/rss+xml rel=alternate title="Data Engineering | Applied Computing by Michael Mallari" href=/data-engineering/index.xml>
@@ -72,30 +71,6 @@
 </header>
 <div id=content-body>
 <section id=posts-category class=posts-list>
-<article><a class=title href=/data-engineering/streaming-sports-betting-analytics/>
-<div class="post-thumb height-half-width" style=background-image:url(https://michaelmallari.github.io/img/og-betting-lines.jpg)>
-<div class="container height-parent"><svg class="post-thumb-arrow" width="40" height="16"><polygon points="20,0 39.978,16 0.023,16" fill="#fff"/></div>
-</div>
-<div class=post-details>
-<div class=container>
-<div class=category>Data Engineering</div>
-<h2 class=title>Streaming Sports Betting Analytics</h2>
-<p class=excerpt></p>
-</div>
-</div>
-</a></article>
-<article><a class=title href=/data-engineering/sabr-analytics-bullpensession/>
-<div class="post-thumb height-half-width" style=background-image:url(https://michaelmallari.github.io/img/og-mlb-citi-field.jpg)>
-<div class="container height-parent"><svg class="post-thumb-arrow" width="40" height="16"><polygon points="20,0 39.978,16 0.023,16" fill="#fff"/></div>
-</div>
-<div class=post-details>
-<div class=container>
-<div class=category>Data Engineering</div>
-<h2 class=title>SABR Analytics With BullpenSession</h2>
-<p class=excerpt>A package for analyzing baseball metrics in Julia, Python, and R.</p>
-</div>
-</div>
-</a></article>
 <div style=clear:both></div>
 </section>
 </div>
@@ -120,7 +95,7 @@
 <div class=category>AI Educator & Coach</div>
 <h2>Michael Mallari, <span>MS, MBA</span></h2>
 <span class=hr-major></span>
-<p>Michael is a hybrid thinker and doer&mdash;a byproduct of being a <a href=https://news.gallup.com/businessjournal/694/learner.aspx target=_blank>CliftonStrengths "Learner"</a> over time. As a seasoned leader (20+ years) with hands-on "product trio" experiences (software engineering, product design, and product management), he helps organizations discover market needs, mobilize internal and external resources, and deliver delightful customer experiences that align with business goals&mdash;in this <em>AI-first</em>&nbsp;era.</p>
+<p>Michael is a hybrid thinker and doer&mdash;a seasoned leader with hands-on experiences in software engineering, product design, and product management. He helps organizations discover, define, and deliver next-gen solutions in this <em>AI-first</em> era&mdash;while sustaining the change that follows.</p>
 <p>He has been entrusted with problem-solving for brands&mdash;ranging from Fortune 500 companies to early-stage startups to not-for-profit organizations&mdash;including the&nbsp;following:</p>
 <ul id=brands>
 <li><img src=https://www.michaelmallari.com/img/logo-amex.png alt="American Express" title="American Express" class=vertical-middle crossorigin></li>
@@ -137,7 +112,7 @@
 <li><img src=https://www.michaelmallari.com/img/logo-yahoo.png alt=Yahoo title=Yahoo class=vertical-middle crossorigin></li>
 </ul>
 <p>Michael earned his MS in Applied Analytics from Columbia University, MBA from the University of Maryland, College Park, and BS in Computer Science from New York Institute of&nbsp;Technology.</p>
-<a href=https://koalendar.com/e/30-min-exploratory-call-with-michael target=_blank class="btn btn-default">Schedule an exploratory call</a> <span id=hello>or <a href=https://www.linkedin.com/in/mmallari/ target=_blank>say hello on LinkedIn</a></span>
+<a href=https://www.threads.net/@MichaelMallari target=_blank class="btn btn-default">Follow his latest threads <i class="fa-brands fa-threads"></i></a> <span id=hello>or <a href=https://www.linkedin.com/in/mmallari/ target=_blank>say hello on LinkedIn</a> <i class="fa-brands fa-linkedin"></i></span>
 </div>
 </section>
 <section id=handcrafted>
@@ -149,7 +124,7 @@
 </div>
 <div id=banner>
 <div class=container>
-<p><a href=https://koalendar.com/e/30-min-exploratory-call-with-michael target=_blank><span>Build confidence with real projects valued by Fortune 500 companies.</span> <strong>Schedule an exploratory call&nbsp;&#187;</strong></a></p>
+<p><a href=https://michaelmallari.substack.com/ target=_blank><span>Looking for portfolio ideas to showcase your technical chops?</span> <strong>Subscribe&nbsp;to&nbsp;newsletter&nbsp;&#187;</strong></a></p>
 </div>
 </div>
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js crossorigin></script>
@@ -158,8 +133,7 @@
 <script type=text/javascript>$(document).ready(function(){UpdatePostsCategoryLayout(),rssFeed="https://www.michaelmallari.com/computational/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(a=>{console.log(a);const c=a.querySelectorAll("item");let b=``;c.forEach(a=>{b+=`
                             <li><a href="${a.querySelector("link").innerHTML}">${a.querySelector("title").innerHTML}</a></li>
                             `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",b)})}),$(window).resize(function(){UpdatePostsCategoryLayout()}).resize()</script>
-<script src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js crossorigin></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js crossorigin></script>
+<script src=https://www.michaelmallari.com/js/highlight/highlight.pack.js crossorigin></script>
 <script type=text/javascript>hljs.initHighlightingOnLoad()</script>
 </body>
 </html>
