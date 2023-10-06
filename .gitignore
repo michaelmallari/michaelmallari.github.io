@@ -21,7 +21,7 @@ node_modules/.bin
 /juliaenv
 /pythonenv
 /renv
-/R
+renv.lock
 
 # Dataset
 /dataset
