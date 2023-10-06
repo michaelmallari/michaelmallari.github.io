@@ -11,12 +11,10 @@
 /dataset
 
 # IDE
-/.Rproj.user
-.RData
-.Rhistory
+.Rproj.user
 .Rprofile
-michaelmallari.github.io.Rproj
 /.idea
+
 
 # Temporary files
 /__jupyter
