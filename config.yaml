@@ -13,5 +13,5 @@ params:
   focus: AI Educator & Coach
 
 # "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
-# Push /docs to GitHub
-# Push root to GitLab, Bitbucket
+# Delete /docs folder
+# Push root to GitHub, GitLab, Bitbucket
