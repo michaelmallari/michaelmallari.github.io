@@ -13,6 +13,7 @@
 # IDE
 /.Rproj.user
 .RData
+.Rhistory
 .Rprofile
 michaelmallari.github.io.Rproj
 /.idea
