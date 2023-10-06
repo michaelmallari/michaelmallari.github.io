@@ -11,7 +11,7 @@
 /dataset
 
 # IDE
-/.Rproj.user
+.Rproj.user
 .RData
 .Rprofile
 michaelmallari.github.io.Rproj
