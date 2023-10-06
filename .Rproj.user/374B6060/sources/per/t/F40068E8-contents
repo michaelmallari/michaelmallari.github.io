@@ -1,0 +1,15 @@
+baseurl: https://michaelmallari.github.io/
+languageCode: en-us
+title: Applied Computing
+theme: hugo-michaelmallari
+permalinks:
+  post: /:slug/
+rssLimit: 3
+publishDir: docs
+params:
+  author: Michael Mallari
+  suffix: MS Applied Analytics, BS Computer Science
+  focus: Ivy League-Educated K-12 Computer Science Tutor
+
+# Delete directories, files from /docs
+# "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify

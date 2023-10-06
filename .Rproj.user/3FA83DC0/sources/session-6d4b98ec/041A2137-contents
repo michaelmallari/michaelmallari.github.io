@@ -5,15 +5,14 @@
 .hugo_build.lock
 
 # Distribution/public files
-# /docs
+/public
 
 # Dataset
 /dataset
 
 # IDE
-.RData
+.Rproj.user
 .Rprofile
-michaelmallari.github.io.Rproj
 /.idea
 
 # Temporary files
@@ -21,11 +20,7 @@ michaelmallari.github.io.Rproj
 /_archive
 /_temp
 
-# Node.js packages
-node_modules/.bin
-
 # Virtual environments
-/juliaenv
 /pythonenv
 /renv
 renv.lock
