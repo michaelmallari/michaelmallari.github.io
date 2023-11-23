@@ -76,7 +76,7 @@
 </div>
 <div id=aside>
 <div class=container>
-<span class=category>Recent Thoughts</span>
+<span class=category>Back to Basics</span>
 <ul id=aside-posts-recent>
 </div>
 </div>
@@ -96,7 +96,7 @@
 <h2>Michael Mallari, <span>MS, MBA</span></h2>
 <span class=hr-major></span>
 <p>Michael is an adjunct faculty member&mdash;teaching cloud computing, data & analytics, and AI/ML&mdash;at Columbia University.</p>
-<p>As an educator, coach, and leader who has 20+ years of experience in engineering, UX, and product management, he has been entrusted with discovering, defining, and delivering next-gen solutions for Fortune 500 companies, startups, and not-for-profit organizations&mdash;including the&nbsp;following:</p>
+<p>Aside from being an educator & coach, he is a leader with 20+ years of experience in software engineering, product design, and product management&mdash;entrusted with discovering, defining, and delivering next-gen solutions for Fortune 500 companies, startups, and not-for-profit organizations, including the&nbsp;following:</p>
 <ul id=brands>
 <li><img src=https://www.michaelmallari.com/img/logo-amex.png alt="American Express" title="American Express" class=vertical-middle crossorigin></li>
 <li><img src=https://www.michaelmallari.com/img/logo-discovery.png alt="Discovery Communications" title="Discovery Communications" class=vertical-middle crossorigin></li>
@@ -112,7 +112,7 @@
 <li><img src=https://www.michaelmallari.com/img/logo-yahoo.png alt=Yahoo title=Yahoo class=vertical-middle crossorigin></li>
 </ul>
 <p>Michael earned his MS in Applied Analytics from Columbia University, MBA from the University of Maryland, College Park, and BS in Computer Science from New York Institute of&nbsp;Technology.</p>
-<a href=https://github.com/michaelmallari target=_blank class="btn btn-default">Get his free code examples <i class="fa-brands fa-github"></i></a> <span id=hello>or <a href=https://www.linkedin.com/in/mmallari/ target=_blank>say hello on LinkedIn</a> <i class="fa-brands fa-linkedin"></i></span>
+<a href=https://github.com/michaelmallari target=_blank class="btn btn-default">Access free code examples <i class="fa-brands fa-github"></i></a> <span id=hello>or <a href=https://www.linkedin.com/in/mmallari/ target=_blank>say hello on LinkedIn</a> <i class="fa-brands fa-linkedin"></i></span>
 </div>
 </section>
 <section id=handcrafted>
@@ -130,9 +130,9 @@
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js crossorigin></script>
 <script src=https://www.michaelmallari.com/js/functions.min.js crossorigin></script>
 <script src=https://www.michaelmallari.com/js/posts-category.min.js crossorigin></script>
-<script type=text/javascript>$(document).ready(function(){UpdatePostsCategoryLayout(),rssFeed="https://www.michaelmallari.com/computational/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(a=>{console.log(a);const c=a.querySelectorAll("item");let b=``;c.forEach(a=>{b+=`
-                            <li><a href="${a.querySelector("link").innerHTML}">${a.querySelector("title").innerHTML}</a></li>
-                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",b)})}),$(window).resize(function(){UpdatePostsCategoryLayout()}).resize()</script>
+<script type=text/javascript>$(document).ready(function(){UpdatePostsCategoryLayout(),rssFeed="https://www.michaelmallari.com/computational/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(b=>{console.log(b);const a=Array.from(b.querySelectorAll("item"));for(let b=a.length-1;b>0;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}const d=a.slice(0,3);let c=``;d.forEach(a=>{c+=`
+                                <li><a href="${a.querySelector("link").innerHTML}">${a.querySelector("title").innerHTML}</a></li>
+                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",c)})}),$(window).resize(function(){UpdatePostsCategoryLayout()}).resize()</script>
 <script src=https://www.michaelmallari.com/js/highlight/highlight.pack.js crossorigin></script>
 <script type=text/javascript>hljs.initHighlightingOnLoad()</script>
 </body>

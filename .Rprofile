@@ -5,11 +5,8 @@ source("renv/activate.R")
 # update.packages()
 # REMEMBER to restart R after you modify and save this file!
 
-# Python environment
-# /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/python
 
-# Julia environment
-# /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/www.columbia.edu-mm5470/juliaenv/v1.9.2/bin/julia
+
 
 # First, execute the global .Rprofile if it exists. You may configure blogdown
 # options there, too, so they apply to any blogdown projects. Feel free to
@@ -32,3 +29,14 @@ options(
 
 # Fix Hugo version
 options(blogdown.hugo.version="0.89.4")
+
+
+
+
+# Python environment
+# /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/python")
+# Manual env activation
+# source /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/activate
+
+# Julia environment
+# /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/www.columbia.edu-mm5470/juliaenv/v1.9.2/bin/julia
