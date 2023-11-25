@@ -4,7 +4,7 @@ title: Applied Computing
 theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
-rssLimit: 3
+rssLimit: 24
 disableKinds: ["taxonomyTerm"]
 publishDir: docs
 params:
