@@ -3,7 +3,7 @@ title: "Task Scheduler with Reminders"
 summary: "Leverage cloud services for data storage, authentication, and serverless functions for handling reminders."
 image: og-todo-list.jpg
 imageSource: https://bit.ly/3sGSkdD
-date: 2020-02-01
+date: 2020-08-01
 ---
 
 ```{r include=FALSE}
