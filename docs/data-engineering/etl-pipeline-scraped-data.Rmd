@@ -1,8 +1,8 @@
 ---
-title: "Cloud-Based File Storage and Sharing System"
-summary: "Setting up a serverless architecture for file storage, user authentication, and access control."
-image: og-cloud-storage.jpg
-date: 2017-02-04
+title: "ETL Pipeline for Scraped Data"
+summary: "Scrape/extract data from multiple websites, perform transformations, and load it into a SQL DB."
+image: og-beautifulsoup.jpg
+date: 2022-02-05
 ---
 
 ```{r include=FALSE}

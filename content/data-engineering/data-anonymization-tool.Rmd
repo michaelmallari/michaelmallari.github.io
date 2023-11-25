@@ -1,8 +1,8 @@
 ---
-title: "Cloud-Based File Storage and Sharing System"
-summary: "Setting up a serverless architecture for file storage, user authentication, and access control."
-image: og-cloud-storage.jpg
-date: 2017-02-04
+title: "Data Anonymization Tool"
+summary: Anonymizing sensitive data (i.e., PII) in datasets while preserving their utility."
+image: og-data-privacy.jpg
+date: 2019-02-02
 ---
 
 ```{r include=FALSE}

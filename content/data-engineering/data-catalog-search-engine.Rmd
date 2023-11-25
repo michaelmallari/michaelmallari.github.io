@@ -1,8 +1,8 @@
 ---
-title: "Cloud-Based File Storage and Sharing System"
-summary: "Setting up a serverless architecture for file storage, user authentication, and access control."
-image: og-cloud-storage.jpg
-date: 2017-02-04
+title: "Data Catalog and Search Engine"
+summary: "Upload metadata about datasets, search for datasets based on criteria, and view dataset details."
+image: og-elasticsearch.jpg
+date: 2020-08-01
 ---
 
 ```{r include=FALSE}

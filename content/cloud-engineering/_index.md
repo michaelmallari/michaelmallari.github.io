@@ -1,7 +1,7 @@
 ---
 title: "Cloud Engineering"
-summary: "Explore Michael's collection of cloud engineering projects and prototypes."
-image: og-developer-female.jpg
-# https://unsplash.com/photos/7PHq2BCa7dM
+summary: "Discover exceptional student projects in cloud engineering—demonstrating cutting-edge solutions and skills that set candidates apart."
+image: og-data-center-racks.jpg
+# https://unsplash.com/photos/cable-network-M5tzZtFCOfs
 ---
 
