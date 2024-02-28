@@ -11,9 +11,9 @@
 
                     <div class="container">
                         <div id="byline">
-                            <div class="byline-author">By <a href=https://www.instagram.com/michaelmallari/ target="_blank">Michael Mallari</a> <i class="fa-brands fa-instagram"></i></div>
+                            <div class="byline-author">By <a rel="author" href=https://www.instagram.com/michaelmallari/ target="_blank">Michael Mallari</a> <i class="fa-brands fa-instagram"></i></div>
                             
-                            <time class="byline-time">{{ dateFormat "Monday, January 2, 2006" .Params.date }}</time>
+                            <time datetime="{{ dateFormat "2006-01-06" .Params.date }}" pubdate="pubdate" class="byline-time">{{ dateFormat "Monday, January 2, 2006" .Params.date }}</time>
                             
                             <div class="byline-notes">{{ if .Params.bylineNotes }}{{ .Params.bylineNotes }}{{ end }} {{ if .Params.imageSource }}Photo Credit: <a href="{{ .Params.imageSource }}" target="_blank">{{ .Params.imageSource }}</a>{{ end }}</div>
 
