@@ -1,0 +1,30 @@
+---
+title: "Real-Time Streaming Data Dashboard"
+summary: "Simulate data streams and visualize the incoming data in real time—using Apache Kafka"
+image: og-kafka.jpg
+date: 2023-02-04
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, comment=NA)
+options(
+    # Make width wide enough to prevent wrapping of output
+    width=10000,
+    # Prevent scientific notation
+    scipen=10000,
+    # Round to 2 decimal points
+    digits=2
+)
+
+
+# library(reticulate)
+# Sys.setenv(RETICULATE_PYTHON="/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/www.columbia.edu-mm5470/pythonenv/v3.11.4/bin/python")
+# reticulate::py_config()
+
+
+# library(JuliaCall)
+# julia <- julia_setup(JULIA_HOME="/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/www.columbia.edu-mm5470/juliaenv/v1.9.2/bin")
+```
+
+
+

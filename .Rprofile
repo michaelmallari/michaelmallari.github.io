@@ -29,7 +29,8 @@ options(
 
 # Fix Hugo version
 options(blogdown.hugo.version="0.89.4")
-
+# "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
+# C:/Users/mmall/AppData/Roaming/Hugo/0.89.4/hugo.exe --gc --minify
 
 
 
