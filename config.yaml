@@ -13,5 +13,6 @@ params:
   focus: AI Educator & Coach
 
 # "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
+# C:/Users/mmall/AppData/Roaming/Hugo/0.89.4/hugo.exe --gc --minify
 # Delete /docs folder
 # Push root to GitHub, GitLab, Bitbucket
