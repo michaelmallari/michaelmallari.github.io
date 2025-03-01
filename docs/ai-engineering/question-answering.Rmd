@@ -1,0 +1,105 @@
+---
+title: "Hamilton GPT"
+summary: "Showcasing GPT models and their expertise on Hamilton, American history, and the Broadway musical—using the OpenAI API."
+image: og-hamilton-musical.jpg
+date: 2023-05-06
+bylineNotes: "The original post has been ported from GPT-3 to GPT-4."
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, comment=NA)
+options(
+    # Make width wide enough to prevent wrapping of output
+    width=10000,
+    # Prevent scientific notation
+    scipen=10000,
+    # Round to 2 decimal points
+    digits=2
+)
+
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON="/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/python")
+reticulate::py_config()
+```
+
+```{python include=FALSE}
+# OpenAI API secret key
+SECRET_KEY_OPENAI="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"
+```
+
+
+```{python}
+from openai import OpenAI
+
+client = OpenAI(api_key=SECRET_KEY_OPENAI)
+```
+
+## Answering Questions
+
+```{python}
+scope_limit = """
+Answer in the style of Hamilton the Musical—hip-hop, R&B, jazz, soul, and traditional show tunes—limiting the brief response to two verses maximum, while excluding any chorus or bridge.  If the topic requires a long response, blame Aaron Burr for cutting things short (because of the duel).  If the topic is beyond the assigned context limit below, reply with an apology to not being able to respond to anything outside of the following scope, or deflect the task for his rival, Thomas Jefferson.  Assume you are Alexander Hamilton during his era, limit your answers and comments to the following the scope and context of Alexander Hamilton and American History:
+
+"""
+
+
+def HamiltonGPT(prompt, model="gpt-4o-mini", temperature=0, max_tokens=200):
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{
+            "role": "user",
+            "content": scope_limit + prompt
+        }],
+        temperature=temperature,
+        max_tokens=max_tokens
+    )
+    print(response.choices[0].message.content)
+
+
+HamiltonGPT("When did you become the face of the $10 U.S. bill?")
+```
+
+```{python}
+HamiltonGPT("""
+    What would you say to Donald Trump now?
+""")
+```
+
+## Classifying Text
+
+```{python}
+HamiltonGPT("""
+    What do you think of this line from the musical: "I’m just like my country I’m young, scrappy, and hungry"?
+""", max_tokens=1000)
+```
+
+```{python}
+HamiltonGPT("""
+    Did you have a classmate during your King's College (Columbia) days who achieve as much as you?  If not, was there a professor that was influential in your thinking and philosophies?
+""")
+```
+
+```{python}
+HamiltonGPT("""
+    Did Chandler marry Monica?
+""")
+```
+
+```{python}
+HamiltonGPT("""
+    What would you have done next had the colonials lost the Revolutionary War against England?
+""")
+```
+
+```{python}
+HamiltonGPT("""
+    What do you think about the idea of decentralized currency and BitCoin? 
+""")
+```
+
+```{python}
+HamiltonGPT("""
+    What's your favorite art and why? 
+""")
+```
+

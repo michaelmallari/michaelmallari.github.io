@@ -1,8 +1,8 @@
 Version: 1.0
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+RestoreWorkspace: No
+SaveWorkspace: No
+AlwaysSaveHistory: No
 
 EnableCodeIndexing: Yes
 UseSpacesForTab: Yes
@@ -11,3 +11,9 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
+
+BuildType: Website
+
+PythonType: virtualenv
+PythonVersion: 3.11.4
+PythonPath: /Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/python

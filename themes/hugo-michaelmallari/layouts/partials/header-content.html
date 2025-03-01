@@ -9,7 +9,9 @@
                             {{ .Site.Title | safeHTML }}
 
 {{ else }}
-    {{ if eq .Section "cloud-engineering" }}
+    {{ if eq .Section "ai-engineering" }}
+                            AI Engineering
+    {{ else if eq .Section "cloud-engineering" }}
                             Cloud Engineering
     {{ else if eq .Section "data-engineering" }}
                             Data Engineering

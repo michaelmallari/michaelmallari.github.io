@@ -1,7 +1,7 @@
-source("renv/activate.R")
+# source("renv/activate.R")
 # If re-building environment
-# install.packages(c("devtools", "renv", "knitr", "rmarkdown", "markdown", "blogdown", "IRkernel", "reticulate", "JuliaCall"))
-# install.packages(c("tidyverse", "ggplot2"))
+# install.packages(c("tidyverse","devtools", "renv", "knitr", "blogdown", "IRkernel", "reticulate", "JuliaCall"))
+# renv::repair()
 # update.packages()
 # REMEMBER to restart R after you modify and save this file!
 
