@@ -109,7 +109,7 @@
                 {{ if .IsHome }}UpdatePostsStickyLayout(){{ else if .IsSection }}UpdatePostsCategoryLayout(){{ end }}
 
                 // rssFeed = "https://www.michaelmallari.com/computational/index.xml";
-                rssFeed = "https://michaelmallari.bitbucket.io/index.xml";
+                rssFeed = "https://michaelmallari.bitbucket.io/case-study/index.xml";
 
                 fetch(rssFeed)
                     .then(response => response.text())
