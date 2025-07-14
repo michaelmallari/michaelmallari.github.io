@@ -4,25 +4,22 @@
                     <div class="container">
                         <div class="category">
 {{ if .IsHome }}
+
                             {{ $.Site.Params.focus | safeHTML }}
-{{ else if .IsSection }}
-                            {{ .Site.Title | safeHTML }}
 
 {{ else }}
-    {{ if eq .Section "ai-engineering" }}
-                            AI Engineering
-    {{ else if eq .Section "cloud-engineering" }}
-                            Cloud Engineering
-    {{ else if eq .Section "data-engineering" }}
-                            Data Engineering
-    {{ else if eq .Section "software-engineering" }}
-                            Software Engineering
-    {{ end }}
+
+                            {{ .Site.Title | safeHTML }}
+                            
 {{ end }}
                         </div>
                         <h1 class="title">{{ .Title | safeHTML }}</h1>
                         <span class="hr-minor"></span>
-                        <p class="excerpt">{{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}</p>
+                        <p class="excerpt">
+                    
+                            {{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}
+                            
+                        </p>
                     </div>
                 </header>
 
