@@ -1,0 +1,46 @@
+---
+title: "Large-Scale Genomics Data Processing"
+summary: "Accelerate DNA sequence alignment or variant calling."
+image: og-
+ImageSource: 
+date: 2024-09-18
+tags:
+    - Advanced
+    - CuPy & RAPIDS
+    - Numba & Custom Kernels
+---
+
+```{r include=FALSE}
+library(parallel)
+# Calculate the number of cores
+cores_number_local <- detectCores() - 1
+# Initiate cluster
+clusters_local <- makeCluster(cores_number_local)
+
+knitr::opts_chunk$set(echo=TRUE, comment=NA)
+options(
+    # Make width wide enough to prevent wrapping of output
+    width=10000,
+    # Prevent scientific notation
+    scipen=10000,
+    # Round to 2 decimal points
+    digits=2
+)
+
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON="/Volumes/Personal/Mami/__Netlify/hello@michaelmallari.com/www.michaelmallari.com/pythonenv/v3.11.4/bin/python")  # For Mami-MacBookPro152
+# Sys.setenv(RETICULATE_PYTHON="/usr/local/bin/python3.7")  # For Mapa-MacBookPro92
+reticulate::py_config()
+
+
+# library(JuliaCall)
+# julia <- julia_setup(JULIA_HOME="/Volumes/Personal/Mami/__Netlify/hello@michaelmallari.com/www.michaelmallari.com/juliaenv/v1.9.2/bin")  # For Mami-MacBookPro152
+# julia <- julia_setup(JULIA_HOME="/Applications/Julia-1.2.app/Contents/Resources/julia/bin")  # For Mapa-MacBookPro92
+```
+
+
+
+
+
+
+

@@ -1,16 +1,16 @@
 baseurl: https://michaelmallari.github.io/
 languageCode: en-us
-title: Applied Computing
+title: GPU-Accelerated AI
 theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
-rssLimit: 24
+rssLimit: 12
 disableKinds: ["taxonomyTerm"]
 publishDir: docs
 params:
   author: Michael Mallari
   suffix: MS, MBA
-  focus: Ivy League Educator & Career Coach
+  focus: NVIDIA CUDA Python Specialist
 
 # "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
 # Delete /docs folder
