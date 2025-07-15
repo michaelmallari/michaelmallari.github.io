@@ -110,7 +110,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin></script>
         <script src="https://www.michaelmallari.com/js/functions.min.js" crossorigin></script>
-        {{ if .IsHome }}<script src="https://www.michaelmallari.com/js/posts-sticky.min.js" crossorigin></script>{{ else if .IsSection }}<script src="https://www.michaelmallari.com/js/posts-category.min.js" crossorigin></script>{{ end }}
+        {{ if .IsHome }}<script src="https://www.michaelmallari.com/js/posts-sticky.min.js" crossorigin></script>{{ else if .IsSection }}<script src="https://www.michaelmallari.com/js/posts-category.min.js" crossorigin></script>{{ else if .IsNode }}<script src="https://www.michaelmallari.com/js/posts-tag.min.js" crossorigin></script>{{ end }}
         <script type="text/javascript">
             $(document).ready(function() {
                 {{ if .IsHome }}UpdatePostsStickyLayout(){{ else if .IsSection }}UpdatePostsCategoryLayout(){{ end }}
