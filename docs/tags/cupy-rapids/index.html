@@ -71,7 +71,7 @@
 GPU-Accelerated AI
 </div>
 <h1 class=title>CuPy & RAPIDS</h1>
-<span class=hr-minor></span>
+<span class=hr-major></span>
 <p class=excerpt>
 Accelerated data pipelines and reduced processing times from hours to minutes—handling datasets that are too large for traditional CPU memory.
 </p>
@@ -180,7 +180,7 @@ Accelerated data pipelines and reduced processing times from hours to minutes—
 <li><img src=https://www.michaelmallari.com/img/logo-yahoo.png alt=Yahoo title=Yahoo class=vertical-middle></li>
 </ul>
 <p>Michael earned his MS in Applied Analytics from Columbia University, MBA from the University of Maryland, College Park, and BS in Computer Science from New York Institute of&nbsp;Technology. He is also NVIDIA certified in GPU-accelerated AI.</p>
-<a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=footer&showWelcomeOnShare=true" target=_blank class="btn btn-default">Subscribe to Substack newsletter &nbsp;<i class=fa-substack></i></a>
+<a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=footer&showWelcomeOnShare=true" target=_blank class="btn btn-primary">Subscribe to Substack newsletter &nbsp;<i class=fa-substack-white></i></a>
 </div>
 </section>
 <section id=badges>
@@ -207,9 +207,9 @@ Accelerated data pipelines and reduced processing times from hours to minutes—
 <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js crossorigin></script>
 <script src=https://www.michaelmallari.com/js/functions.min.js crossorigin></script>
 <script src=https://www.michaelmallari.com/js/posts-tag.min.js crossorigin></script>
-<script type=text/javascript>$(document).ready(function(){rssFeed="https://michaelmallari.bitbucket.io/tags/free/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(b=>{console.log(b);const a=Array.from(b.querySelectorAll("item"));for(let b=a.length-1;b>0;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}const d=a.slice(0,4);let c=``;d.forEach(a=>{let b=a.querySelector("link").innerHTML,d=b.replace("https://michaelmallari.bitbucket.io/case-study/","https://michaelmallari.substack.com/p/");c+=`
+<script type=text/javascript>$(document).ready(function(){UpdatePostsTagLayout(),rssFeed="https://michaelmallari.bitbucket.io/tags/free/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(b=>{console.log(b);const a=Array.from(b.querySelectorAll("item"));for(let b=a.length-1;b>0;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}const d=a.slice(0,4);let c=``;d.forEach(a=>{let b=a.querySelector("link").innerHTML,d=b.replace("https://michaelmallari.bitbucket.io/case-study/","https://michaelmallari.substack.com/p/");c+=`
                                 <li><a href="${d}?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=aside">${a.querySelector("title").innerHTML}</a></li>
-                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",c)})}),$(window).resize(function(){}).resize()</script>
+                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",c)})}),$(window).resize(function(){UpdatePostsTagLayout()}).resize()</script>
 <script src=https://www.michaelmallari.com/js/highlight/highlight.pack.js crossorigin></script>
 <script type=text/javascript>hljs.initHighlightingOnLoad()</script>
 </body>

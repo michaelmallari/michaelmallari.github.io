@@ -14,7 +14,7 @@
 {{ end }}
                         </div>
                         <h1 class="title">{{ .Title | safeHTML }}</h1>
-                        <span class="hr-minor"></span>
+                        <span class="hr-major"></span>
                         <p class="excerpt">
                     
                             {{ if .Params.summary }}{{ .Params.summary | safeHTML }}{{ else }}{{ .Site.Params.description | safeHTML }}{{ end }}
