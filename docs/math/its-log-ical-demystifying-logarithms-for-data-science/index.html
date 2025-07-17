@@ -14,17 +14,17 @@
 <meta name=author content="Michael Mallari">
 <link rel=canonical href=https://michaelmallari.github.io/math/its-log-ical-demystifying-logarithms-for-data-science/>
 <meta name=robots content="index, follow">
-<meta property="article:published_time" content="2018-01-04">
+<meta property="article:published_time" content="2018-01-03">
 <meta property="og:type" content="article">
 <meta property="og:title" content="It’s Log-ical! Demystifying Logarithms for Data Science">
 <meta property="og:description" content="Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.">
 <meta property="og:url" content="https://michaelmallari.github.io/math/its-log-ical-demystifying-logarithms-for-data-science/">
-<meta property="og:img" content="https://michaelmallari.github.io/img/og-equations.jpg">
+<meta property="og:img" content="https://michaelmallari.github.io/img/og-logarithm-plots.png">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@MichaelMallari">
 <meta name=twitter:title content="It’s Log-ical! Demystifying Logarithms for Data Science">
 <meta name=twitter:description content="Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.">
-<meta name=twitter:image content="https://michaelmallari.github.io/img/og-equations.jpg">
+<meta name=twitter:image content="https://michaelmallari.github.io/img/og-logarithm-plots.png">
 <link type=text/css rel=stylesheet href=https://www.michaelmallari.com/css/styles.min.css crossorigin>
 <link type=text/css rel=stylesheet href=https://www.michaelmallari.com/js/highlight/styles/solarized-dark.css crossorigin>
 <style type=text/css>@media(min-width:1112px){body.github .nav-primary li:nth-child(1) a span:nth-child(2):after{content:"DS"}body.github .nav-primary li:nth-child(2) a span:nth-child(2):after{content:"KRNL"}body.github .nav-primary li:nth-child(3) a span:nth-child(2):after{content:"DL"}body.github .nav-primary li:nth-child(4) a span:nth-child(2):after{content:"DIST"}}</style>
@@ -64,7 +64,7 @@
 </div>
 </header>
 <article id=content role=main>
-<header id=masthead style=background-image:linear-gradient(120deg,#1d252d,rgba(0,88,124,.8)),url(https://michaelmallari.github.io/img/og-equations.jpg)>
+<header id=masthead style=background-image:linear-gradient(120deg,#1d252d,rgba(0,88,124,.8)),url(https://michaelmallari.github.io/img/og-logarithm-plots.png)>
 <div class=container>
 <div class=category>
 Essential Math for Data Science
@@ -79,9 +79,11 @@ Learn why logarithms matter in data science—covering log basics, real-world us
 <div id=content-body>
 <div class=container>
 <div id=byline>
-<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari/ target=_blank>Michael Mallari</a> <i class=fa-substack></i></div>
-<time datetime=2018-01-18 pubdate=pubdate class=byline-time>Thursday, January 4, 2018</time>
-<div class=byline-notes> </div>
+<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari target=_blank>Michael Mallari</a> &nbsp;<i class=fa-substack></i></div>
+<time datetime=2018-01-18 pubdate=pubdate class=byline-time>Wednesday, January 3, 2018</time>
+<div class=byline-notes>
+Updated: <time datetime=2023-08-23>Tuesday, August 1, 2023</time><br>
+</div>
 </div>
 <p>Let’s face it: most people flinch when they hear the word logarithm. But in the world of data science, logs are not just a math class memory; they’re essential tools. If you’ve ever looked at a skewed dataset, worked with probabilities, or explored machine learning (ML) models, you’ve already brushed up against the power of logarithms.</p>
 <p>I’ll break down the concept of logarithms into bite-sized, Python-friendly pieces. Whether you’re a data science newbie or brushing up on math you last saw in high school, this guide is for you.</p>
@@ -301,12 +303,21 @@ print(f&quot;log_10(1000) = {log_result}&quot;)</code></pre>
 <input type=radio checked><label>Python</label>
 <div class=language-output>
 <pre class=python><code>import sys
-print(sys.version)</code></pre>
-<pre><code>3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)]</code></pre>
-<pre class=python><code>!pip install pandas==2.0.3
-!pip install numpy==1.25.2
-!pip install matplotlib==3.7.0
-!pip install scikit-learn==1.3.0</code></pre>
+import platform
+import os
+import cpuinfo
+print(
+    &quot;Python&quot;, sys.version,
+    &quot;\nOS:&quot;, platform.system(), platform.platform(),
+    &quot;\nCPU:&quot;, os.cpu_count(), &quot;x&quot;, cpuinfo.get_cpu_info()[&quot;brand_raw&quot;]
+)</code></pre>
+<pre><code>Python 3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)] 
+OS: Darwin macOS-10.16-x86_64-i386-64bit 
+CPU: 8 x Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz</code></pre>
+<pre class=python><code>!pip install pandas==2.0.3  # 2023-06-28 release date
+!pip install numpy==1.25.2  # 2023-07-31 release date
+!pip install matplotlib==3.7.0  #2023-02-13 release date
+!pip install scikit-learn==1.3.0  # 2023-06-30 release date</code></pre>
 <pre class=python><code>import pandas
 import numpy
 import matplotlib
@@ -319,7 +330,7 @@ import sklearn</code></pre>
 <h2>Further Readings</h2>
 <ul>
 <li>
-McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, Numpy, and IPython</em> (2nd ed.). O’Reilly.
+Nield, T. (2022). <em>Essential math for data science: Take control of your data with fundamental linear algebra, probability, and statistics</em>. O’Reilly.
 </li>
 <li>
 <em>Numpy.log — NumPy v1.25 Manual</em>. (n.d.). <a href=https://numpy.org/doc/1.25/reference/generated/numpy.log.html target=_blank>https://numpy.org/doc/1.25/reference/generated/numpy.log.html</a>
@@ -346,7 +357,7 @@ McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, N
 </blockquote>
 <section id=boilerplate>
 <div class=container>
-<div class=category>NVIDIA CUDA Python Specialist</div>
+<div class=category>NVIDIA CUDA Python Expert</div>
 <h2>Michael Mallari, <span>MS, MBA</span></h2>
 <span class=hr-major></span>
 <p>Michael is an adjunct faculty member at Columbia University—teaching cloud computing, data & analytics, and AI. A computer scientist-by-trade, he brings a combined 20+ years of industry hands-on experience in software engineering, product design, product management, and data science—having created and captured business value with AI, 5G, messaging, fintech, martech, mobile, and even Web 1.0 solutions (at the start of his career during the dot-com boom).</p>

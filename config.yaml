@@ -4,13 +4,13 @@ title: GPU-Accelerated AI
 theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
-rssLimit: 12
+rssLimit: 7
 disableKinds: ["taxonomyTerm"]
 publishDir: docs
 params:
   author: Michael Mallari
   suffix: MS, MBA
-  focus: NVIDIA CUDA Python Specialist
+  focus: NVIDIA CUDA Python Expert
 
 # "/Users/michael/Library/Application Support/Hugo/0.89.4/"hugo --gc --minify
 # Delete /docs folder

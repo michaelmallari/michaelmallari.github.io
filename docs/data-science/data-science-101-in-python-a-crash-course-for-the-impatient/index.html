@@ -79,9 +79,12 @@ Getting started with the essentials of importing packages, loading data, summari
 <div id=content-body>
 <div class=container>
 <div id=byline>
-<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari/ target=_blank>Michael Mallari</a> <i class=fa-substack></i></div>
+<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari target=_blank>Michael Mallari</a> &nbsp;<i class=fa-substack></i></div>
 <time datetime=2019-01-19 pubdate=pubdate class=byline-time>Wednesday, January 30, 2019</time>
-<div class=byline-notes> Photo Credit: <a href=https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ target=_blank>https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ</a></div>
+<div class=byline-notes>
+Updated: <time datetime=2023-08-23>Tuesday, August 1, 2023</time><br>
+Image Credit: <a href=https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ target=_blank>https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ</a>
+</div>
 </div>
 <p>So, you want to get into data science but don’t want a 10-hour bootcamp or a textbook thicker than the Yellow Pages phone book? (Yes, I’ve dated myself. I’m Gen X.) Let’s go from zero to data-savvy with just 4 essential skills, like building your first IKEA table but with Python.</p>
 <p>We’ll cover:</p>
@@ -305,12 +308,21 @@ matplotlib.pyplot.show()</code></pre>
 <input type=radio checked><label>Python</label>
 <div class=language-output>
 <pre class=python><code>import sys
-print(sys.version)</code></pre>
-<pre><code>3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)]</code></pre>
-<pre class=python><code>!pip install pandas==2.0.3
-!pip install numpy==1.25.2
-!pip install matplotlib==3.7.0
-!pip install seaborn==0.12.2</code></pre>
+import platform
+import os
+import cpuinfo
+print(
+    &quot;Python&quot;, sys.version,
+    &quot;\nOS:&quot;, platform.system(), platform.platform(),
+    &quot;\nCPU:&quot;, os.cpu_count(), &quot;x&quot;, cpuinfo.get_cpu_info()[&quot;brand_raw&quot;]
+)</code></pre>
+<pre><code>Python 3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)] 
+OS: Darwin macOS-10.16-x86_64-i386-64bit 
+CPU: 8 x Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz</code></pre>
+<pre class=python><code>!pip install pandas==2.0.3  # 2023-06-28 release date
+!pip install numpy==1.25.2  # 2023-07-31 release date
+!pip install matplotlib==3.7.0  #2023-02-13 release date
+!pip install scikit-learn==1.3.0  # 2023-06-30 release date</code></pre>
 <pre class=python><code>import pandas
 import numpy
 import matplotlib
@@ -347,7 +359,7 @@ McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, N
 </blockquote>
 <section id=boilerplate>
 <div class=container>
-<div class=category>NVIDIA CUDA Python Specialist</div>
+<div class=category>NVIDIA CUDA Python Expert</div>
 <h2>Michael Mallari, <span>MS, MBA</span></h2>
 <span class=hr-major></span>
 <p>Michael is an adjunct faculty member at Columbia University—teaching cloud computing, data & analytics, and AI. A computer scientist-by-trade, he brings a combined 20+ years of industry hands-on experience in software engineering, product design, product management, and data science—having created and captured business value with AI, 5G, messaging, fintech, martech, mobile, and even Web 1.0 solutions (at the start of his career during the dot-com boom).</p>

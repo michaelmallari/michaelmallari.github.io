@@ -4,6 +4,7 @@ summary: "Getting started with the essentials of importing packages, loading dat
 image: og-blue-and-gold-can-on-white-table-Bn77cbbbqOQ.jpg
 ImageSource: https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ
 date: 2019-01-30
+dateUpdated: 2023-08-01
 # tags:
 #     - Advanced
 #     - Numba & Custom CUDA Kernels
@@ -252,14 +253,21 @@ Finally, my coding style here is verbose (avoiding package aliases), in order to
 <div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 import sys
-print(sys.version)
+import platform
+import os
+import cpuinfo
+print(
+    "Python", sys.version,
+    "\nOS:", platform.system(), platform.platform(),
+    "\nCPU:", os.cpu_count(), "x", cpuinfo.get_cpu_info()["brand_raw"]
+)
 ```
 
 ```{python eval=FALSE}
-!pip install pandas==2.0.3
-!pip install numpy==1.25.2
-!pip install matplotlib==3.7.0
-!pip install seaborn==0.12.2
+!pip install pandas==2.0.3  # 2023-06-28 release date
+!pip install numpy==1.25.2  # 2023-07-31 release date
+!pip install matplotlib==3.7.0  #2023-02-13 release date
+!pip install scikit-learn==1.3.0  # 2023-06-30 release date
 ```
 
 ```{python echo=TRUE, message=FALSE, warning=FALSE}
