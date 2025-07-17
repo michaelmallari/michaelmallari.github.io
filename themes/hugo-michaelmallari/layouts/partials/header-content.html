@@ -10,7 +10,15 @@
                             
 {{ else if eq .Section "fundamental-python-programming-for-data-science" }}
 
+    {{ if .IsPage }}
+    
                             Fundamental Python Programming for Data Science
+                            
+    {{ else }}
+    
+                            Journey to GPU-Accelerated AI
+    
+    {{ end }}              
 
 {{ else }}
 

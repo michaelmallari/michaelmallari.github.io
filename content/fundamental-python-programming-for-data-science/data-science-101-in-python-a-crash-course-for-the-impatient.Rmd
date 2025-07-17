@@ -276,7 +276,7 @@ pandas.set_option("display.width", 10000)
 
 
 
-## Furhter Readings
+## Further Readings
 
 <ul>
     <li>McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, Numpy, and IPython</em> (2nd ed.). O’Reilly.</li>
