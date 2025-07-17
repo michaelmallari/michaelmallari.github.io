@@ -1,0 +1,287 @@
+---
+title: "Data Science 101 in Python: A Crash Course for the Impatient"
+summary: "Getting started with the essentials of importing packages, loading data, summarizing data, and visualizing data."
+image: og-blue-and-gold-can-on-white-table-Bn77cbbbqOQ.jpg
+ImageSource: https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ
+date: 2019-01-30
+# tags:
+#     - Advanced
+#     - Numba & Custom CUDA Kernels
+---
+
+```{r include=FALSE}
+library(parallel)
+# Calculate the number of cores
+cores_number_local <- detectCores() - 1
+# Initiate cluster
+clusters_local <- makeCluster(cores_number_local)
+
+knitr::opts_chunk$set(echo=TRUE, comment=NA)
+options(
+    # Make width wide enough to prevent wrapping of output
+    width=10000,
+    # Prevent scientific notation
+    scipen=10000,
+    # Round to 2 decimal points
+    digits=2
+)
+
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON="/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/pythonenv/v3.11.4/bin/python")  # For Mami-MacBookPro152
+# Sys.setenv(RETICULATE_PYTHON="/usr/local/bin/python3.7")  # For Mapa-MacBookPro92
+reticulate::py_config()
+
+
+# library(JuliaCall)
+# julia <- julia_setup(JULIA_HOME="/Volumes/Personal/Mami/__GitHub/hello@michaelmallari.com/michaelmallari.github.io/juliaenv/v1.9.2/bin")  # For Mami-MacBookPro152
+# julia <- julia_setup(JULIA_HOME="/Applications/Julia-1.2.app/Contents/Resources/julia/bin")  # For Mapa-MacBookPro92
+```
+```{python include=FALSE}
+import pandas
+import matplotlib
+import seaborn
+
+pandas.set_option("display.max_columns", None)
+pandas.set_option("display.max_rows", 100)
+pandas.set_option("display.width", 10000)
+```
+```{python include=FALSE}
+# import wrds
+
+# db = wrds.Connection(wrds_username="michaelmallari")
+# db.create_pgpass_file()
+
+# wrds_db = wrds.Connection(wrds_username='michaelmallari')
+# wrds_db.close()
+```
+
+
+
+So, you want to get into data science but don’t want a 10-hour bootcamp or a textbook thicker than the Yellow Pages phone book? (Yes, I've dated myself. I'm Gen X.) Let’s go from zero to data-savvy with just 4 essential skills, like building your first IKEA table but with Python.
+
+We'll cover:
+
+1. Importing packages
+1. Loading data
+1. Summarizing data
+1. Visualizing data
+
+Let’s get into it. No fluff. Just code + vibes.
+
+
+
+---
+
+
+
+## Importing Packages (Like Adding Apps to Your Phone)
+
+Think of Python packages as apps. You don’t build everything from scratch; you install Instagram to scroll, right? Same thing here. These are your must-haves:
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+import pandas  # For data handling
+import numpy  # For math stuff
+import matplotlib  # For plotting
+import seaborn  # For prettier plots
+```
+</div></div>
+
+In practice, shortcuts are your friends. Use aliases to keep things tidy:
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python eval=FALSE}
+import pandas as pd  # For data handling
+import numpy as np  # For math stuff
+import matplotlib.pyplot as plt  # For plotting
+import seaborn as sns  # For prettier plots
+```
+</div></div>
+
+We'll continue without these shortcuts for clarity, but feel free to use aliases in your own code.
+
+
+---
+
+
+
+## Loading Data (Like Opening a File in Google Docs)
+
+You need data. You can use a CSV file, which is like a spreadsheet saved in text form. Let’s load a sample dataset from [Seaborn](https://seaborn.pydata.org/){target=_blank} (so you don’t have to download anything).
+
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+# Load sample dataset
+df = seaborn.load_dataset('titanic')  # Info about Titanic passengers
+```
+</div></div>
+
+**Pro Tip:** `df` is short for DataFrame. Think of it like a smart table (Excel on steroids).
+
+
+
+---
+
+
+
+## Summarizing Data (Like Skimming a Wikipedia Page)
+
+You don’t read every tweet in a thread — you skim the highlights. Let’s do that for our dataset:
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+df.head()  # First 5 rows
+df.shape  # Rows and columns (like saying "this table has 891 rows")
+df.columns  # List of column names
+df.info()  # Data types + missing values
+df.describe()  # Quick stats (mean, std, etc.)
+```
+</div></div>
+
+Wanna see how many survived vs. didn't?
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+df['survived'].value_counts()
+```
+</div></div>
+
+Or maybe: How many people per class?
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+df['pclass'].value_counts()
+```
+</div></div>
+
+
+
+---
+
+
+
+## Visualizing Data (Like Making Your Spotify Wrapped)
+
+Graphs hit different. Let’s plot like pros:
+
+### Bar chart: Who survived?
+
+```{python}
+seaborn.countplot(x='survived', data=df)
+matplotlib.pyplot.title('Survival Count')
+matplotlib.pyplot.show()
+```
+
+### Histogram: Age distribution
+
+```{python}
+seaborn.histplot(df['age'].dropna(), bins=30, kde=True)
+matplotlib.pyplot.title('Age Distribution')
+matplotlib.pyplot.xlabel('Age')
+matplotlib.pyplot.show()
+```
+
+### Bonus: Heatmap of missing data
+
+```{python}
+seaborn.heatmap(df.isnull(), cbar=False)
+matplotlib.pyplot.title('Missing Data Heatmap')
+matplotlib.pyplot.show()
+```
+
+
+
+---
+
+
+
+## TL;DR (Your Data Science Starter Pack)
+
+Here’s your cheat sheet:
+
+| **Step** | **What to Use** |
+| --- | --- |
+| Import Packages | `pandas`, `numpy`, `matplotlib`, `seaborn` |
+| Load Data | `pandas.read_csv()` or `seaborn.load_dataset()` |
+| Summarize Data | `.head()`, `.info()`, `.describe()` |
+| Visualize Data | `seaborn.countplot()`, `seaborn.histplot()` |
+
+
+
+---
+
+
+
+## Next Steps
+
+* Try loading your own CSV using `pd.read_csv('yourfile.csv')`
+* Play with other datasets: `seaborn.get_dataset_names()` to browse them
+* Experiment with visualizations: change colors, add labels, remix it like a TikTok trend
+
+
+
+---
+
+
+
+## Final Note
+
+This is your first 5-minute sprint. Don’t try to boil the ocean. Just start messing with data like it’s your sandbox. You’ll pick up more by doing than watching.
+
+Stay curious. Break stuff. Google errors. That’s the data science way.
+
+
+
+---
+
+
+
+## Appendix A: Environment, Reproducibility, and Coding Style
+
+If you are interested in reproducing this work, here are the versions of [Python](https://www.python.org/){target=_blank} and Python packages that I used.
+
+Additionally, I used [Pandas](https://pandas.pydata.org/){target=_blank} (for data manipulation and analysis) and [Matplotlib](https://matplotlib.org/){target=_blank} (for data visualization), the absolute minimum packages for data science in Python. I've set display settings to make Pandas outputs readable.
+
+Finally, my coding style here is verbose (avoiding package aliases), in order to trace back where functions/methods and variables are originating from, and make this a learning experience for everyone—*including me*.
+
+<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+```{python}
+import sys
+print(sys.version)
+```
+
+```{python eval=FALSE}
+!pip install pandas==2.0.3
+!pip install matplotlib==3.7.0
+!pip install seaborn==0.12.2
+```
+
+```{python echo=TRUE, message=FALSE, warning=FALSE}
+import pandas
+import matplotlib
+import seaborn
+```
+
+```{python eval=FALSE}
+pandas.set_option("display.max_columns", None)
+pandas.set_option("display.max_rows", 100)
+pandas.set_option("display.width", 10000)
+```
+</div></div>
+
+
+
+---
+
+
+
+## Furhter Readings
+
+<ul>
+    <li>McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, Numpy, and IPython</em> (2nd ed.). O’Reilly.</li>
+</ul>
+
+```{python include=FALSE}
+# wrds_db.close()
+```

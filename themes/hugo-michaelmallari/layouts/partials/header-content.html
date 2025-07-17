@@ -6,6 +6,11 @@
 {{ if .IsHome }}
 
                             {{ $.Site.Params.focus | safeHTML }}
+                            
+                            
+{{ else if eq .Section "fundamental-python-programming-for-data-science" }}
+
+                            Fundamental Python Programming for Data Science
 
 {{ else }}
 
