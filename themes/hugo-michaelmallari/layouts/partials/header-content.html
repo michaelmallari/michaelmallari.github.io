@@ -3,12 +3,13 @@
 
                     <div class="container">
                         <div class="category">
+
 {{ if .IsHome }}
 
                             {{ $.Site.Params.focus | safeHTML }}
                             
                             
-{{ else if eq .Section "fundamental-python-programming-for-data-science" }}
+{{ else if eq .Section "data-science" }}
 
     {{ if .IsPage }}
     
@@ -18,13 +19,26 @@
     
                             Journey to GPU-Accelerated AI
     
-    {{ end }}              
+    {{ end }}
+    
+{{ else if eq .Section "math" }}
+
+    {{ if .IsPage }}
+    
+                            Essential Math for Data Science
+                            
+    {{ else }}
+    
+                            Journey to GPU-Accelerated AI
+    
+    {{ end }}
 
 {{ else }}
 
                             {{ .Site.Title | safeHTML }}
                             
 {{ end }}
+
                         </div>
                         <h1 class="title">{{ .Title | safeHTML }}</h1>
                         <span class="hr-major"></span>

@@ -38,8 +38,6 @@ reticulate::py_config()
 ```
 ```{python include=FALSE}
 import pandas
-import matplotlib
-import seaborn
 
 pandas.set_option("display.max_columns", None)
 pandas.set_option("display.max_rows", 100)
@@ -78,7 +76,7 @@ Let’s get into it. No fluff. Just code + vibes.
 
 Think of Python packages as apps. You don’t build everything from scratch; you install Instagram to scroll, right? Same thing here. These are your must-haves:
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 import pandas  # For data handling
 import numpy  # For math stuff
@@ -89,7 +87,7 @@ import seaborn  # For prettier plots
 
 In practice, shortcuts are your friends. Use aliases to keep things tidy:
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python eval=FALSE}
 import pandas as pd  # For data handling
 import numpy as np  # For math stuff
@@ -110,7 +108,7 @@ We'll continue without these shortcuts for clarity, but feel free to use aliases
 You need data. You can use a CSV file, which is like a spreadsheet saved in text form. Let’s load a sample dataset from [Seaborn](https://seaborn.pydata.org/){target=_blank} (so you don’t have to download anything).
 
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 # Load sample dataset
 df = seaborn.load_dataset('titanic')  # Info about Titanic passengers
@@ -129,7 +127,7 @@ df = seaborn.load_dataset('titanic')  # Info about Titanic passengers
 
 You don’t read every tweet in a thread — you skim the highlights. Let’s do that for our dataset:
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 df.head()  # First 5 rows
 df.shape  # Rows and columns (like saying "this table has 891 rows")
@@ -141,7 +139,7 @@ df.describe()  # Quick stats (mean, std, etc.)
 
 Wanna see how many survived vs. didn't?
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 df['survived'].value_counts()
 ```
@@ -149,7 +147,7 @@ df['survived'].value_counts()
 
 Or maybe: How many people per class?
 
-<div class=language-tabs><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 df['pclass'].value_counts()
 ```
@@ -167,28 +165,34 @@ Graphs hit different. Let’s plot like pros:
 
 ### Bar chart: Who survived?
 
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 seaborn.countplot(x='survived', data=df)
 matplotlib.pyplot.title('Survival Count')
 matplotlib.pyplot.show()
 ```
+</div></div>
 
 ### Histogram: Age distribution
 
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 seaborn.histplot(df['age'].dropna(), bins=30, kde=True)
 matplotlib.pyplot.title('Age Distribution')
 matplotlib.pyplot.xlabel('Age')
 matplotlib.pyplot.show()
 ```
+</div></div>
 
 ### Bonus: Heatmap of missing data
 
+<div class="language-tabs"><input type="radio" checked="checked" /><label>Python</label><div class="language-output">
 ```{python}
 seaborn.heatmap(df.isnull(), cbar=False)
 matplotlib.pyplot.title('Missing Data Heatmap')
 matplotlib.pyplot.show()
 ```
+</div></div>
 
 
 
@@ -241,7 +245,7 @@ Stay curious. Break stuff. Google errors. That’s the data science way.
 
 If you are interested in reproducing this work, here are the versions of [Python](https://www.python.org/){target=_blank} and Python packages that I used.
 
-Additionally, I used [Pandas](https://pandas.pydata.org/){target=_blank} (for data manipulation and analysis) and [Matplotlib](https://matplotlib.org/){target=_blank} (for data visualization), the absolute minimum packages for data science in Python. I've set display settings to make Pandas outputs readable.
+Additionally, I used [Pandas](https://pandas.pydata.org/){target=_blank} (for data manipulation and analysis), [NumPy](https://numpy.org/){target=_blank} (for mathematical operations) and [Matplotlib](https://matplotlib.org/){target=_blank} (for data visualization), the absolute minimum packages for data science in Python.
 
 Finally, my coding style here is verbose (avoiding package aliases), in order to trace back where functions/methods and variables are originating from, and make this a learning experience for everyone—*including me*.
 
@@ -253,20 +257,16 @@ print(sys.version)
 
 ```{python eval=FALSE}
 !pip install pandas==2.0.3
+!pip install numpy==1.25.2
 !pip install matplotlib==3.7.0
 !pip install seaborn==0.12.2
 ```
 
 ```{python echo=TRUE, message=FALSE, warning=FALSE}
 import pandas
+import numpy
 import matplotlib
 import seaborn
-```
-
-```{python eval=FALSE}
-pandas.set_option("display.max_columns", None)
-pandas.set_option("display.max_rows", 100)
-pandas.set_option("display.width", 10000)
 ```
 </div></div>
 

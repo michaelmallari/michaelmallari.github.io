@@ -141,25 +141,40 @@ Name: count, dtype: int64</code></pre>
 <p>Graphs hit different. Let’s plot like pros:</p>
 <div id="bar-chart-who-survived" class="section level3">
 <h3>Bar chart: Who survived?</h3>
+<div class="language-tabs">
+<input type="radio" checked="checked" /><label>Python</label>
+<div class="language-output">
 <pre class="python"><code>seaborn.countplot(x=&#39;survived&#39;, data=df)
 matplotlib.pyplot.title(&#39;Survival Count&#39;)
 matplotlib.pyplot.show()</code></pre>
-<p><img src="/fundamental-python-programming-for-data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
 </div>
 <div id="histogram-age-distribution" class="section level3">
 <h3>Histogram: Age distribution</h3>
+<div class="language-tabs">
+<input type="radio" checked="checked" /><label>Python</label>
+<div class="language-output">
 <pre class="python"><code>seaborn.histplot(df[&#39;age&#39;].dropna(), bins=30, kde=True)
 matplotlib.pyplot.title(&#39;Age Distribution&#39;)
 matplotlib.pyplot.xlabel(&#39;Age&#39;)
 matplotlib.pyplot.show()</code></pre>
-<p><img src="/fundamental-python-programming-for-data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-11-3.png" width="672" /></p>
+<p><img src="/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-11-3.png" width="672" /></p>
+</div>
+</div>
 </div>
 <div id="bonus-heatmap-of-missing-data" class="section level3">
 <h3>Bonus: Heatmap of missing data</h3>
+<div class="language-tabs">
+<input type="radio" checked="checked" /><label>Python</label>
+<div class="language-output">
 <pre class="python"><code>seaborn.heatmap(df.isnull(), cbar=False)
 matplotlib.pyplot.title(&#39;Missing Data Heatmap&#39;)
 matplotlib.pyplot.show()</code></pre>
-<p><img src="/fundamental-python-programming-for-data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-12-5.png" width="672" /></p>
+<p><img src="/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-12-5.png" width="672" /></p>
+</div>
+</div>
 <hr />
 </div>
 </div>
@@ -212,7 +227,7 @@ matplotlib.pyplot.show()</code></pre>
 <div id="appendix-a-environment-reproducibility-and-coding-style" class="section level2">
 <h2>Appendix A: Environment, Reproducibility, and Coding Style</h2>
 <p>If you are interested in reproducing this work, here are the versions of <a href="https://www.python.org/" target="_blank">Python</a> and Python packages that I used.</p>
-<p>Additionally, I used <a href="https://pandas.pydata.org/" target="_blank">Pandas</a> (for data manipulation and analysis) and <a href="https://matplotlib.org/" target="_blank">Matplotlib</a> (for data visualization), the absolute minimum packages for data science in Python. I’ve set display settings to make Pandas outputs readable.</p>
+<p>Additionally, I used <a href="https://pandas.pydata.org/" target="_blank">Pandas</a> (for data manipulation and analysis), <a href="https://numpy.org/" target="_blank">NumPy</a> (for mathematical operations) and <a href="https://matplotlib.org/" target="_blank">Matplotlib</a> (for data visualization), the absolute minimum packages for data science in Python.</p>
 <p>Finally, my coding style here is verbose (avoiding package aliases), in order to trace back where functions/methods and variables are originating from, and make this a learning experience for everyone—<em>including me</em>.</p>
 <div class="language-tabs">
 <input type="radio" checked="checked" /><label>Python</label>
@@ -221,14 +236,13 @@ matplotlib.pyplot.show()</code></pre>
 print(sys.version)</code></pre>
 <pre><code>3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)]</code></pre>
 <pre class="python"><code>!pip install pandas==2.0.3
+!pip install numpy==1.25.2
 !pip install matplotlib==3.7.0
 !pip install seaborn==0.12.2</code></pre>
 <pre class="python"><code>import pandas
+import numpy
 import matplotlib
 import seaborn</code></pre>
-<pre class="python"><code>pandas.set_option(&quot;display.max_columns&quot;, None)
-pandas.set_option(&quot;display.max_rows&quot;, 100)
-pandas.set_option(&quot;display.width&quot;, 10000)</code></pre>
 </div>
 </div>
 <hr />
