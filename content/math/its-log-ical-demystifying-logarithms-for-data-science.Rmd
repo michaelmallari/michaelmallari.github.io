@@ -316,7 +316,7 @@ import sklearn
 ## Further Readings
 
 <ul>
-    <li>Bruce, P., Bruce, P. C., Bruce, A., & Gedeck, P. (2020). <em>Practical statistics for data scientists: 50+ essential concepts using R and Python</em>. O’Reilly.</li>
+    <li>Bruce, P., Bruce, P. C., Bruce, A., & Gedeck, P. (2020). <em>Practical statistics for data scientists: 50+ essential concepts using R and Python</em> (2nd ed.). O’Reilly.</li>
     <li>Nield, T. (2022). <em>Essential math for data science: Take control of your data with fundamental linear algebra, probability, and statistics</em>. O’Reilly.</li>
     <li><em>Numpy.log — NumPy v1.25 Manual</em>. (n.d.). <a href="https://numpy.org/doc/1.25/reference/generated/numpy.log.html" target="_blank">https://numpy.org/doc/1.25/reference/generated/numpy.log.html</a></li>
 </ul>
