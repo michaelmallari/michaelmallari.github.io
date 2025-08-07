@@ -19,6 +19,7 @@
 /__jupyter
 /_archive
 /_temp
+/_rmd_mami-macbookpro152
 
 # Node.js packages
 node_modules/.bin
