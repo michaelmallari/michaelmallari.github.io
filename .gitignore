@@ -24,6 +24,7 @@
 
 # Source Rmd
 *.Rmd
+**.Rmd
 
 # Node.js packages
 node_modules/.bin
