@@ -23,6 +23,7 @@
 
 
 # Source Rmd
+.Rmd
 *.Rmd
 **.Rmd
 
