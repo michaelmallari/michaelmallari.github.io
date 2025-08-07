@@ -5,7 +5,7 @@ theme: hugo-michaelmallari
 permalinks:
   post: /:slug/
 rssLimit: 7
-// disableKinds: ["taxonomyTerm"]
+disableKinds: ["taxonomyTerm"]
 ignoreFiles: [ "\\.Rmd$"] 
 publishDir: docs
 params:
