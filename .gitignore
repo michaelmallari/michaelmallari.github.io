@@ -23,8 +23,7 @@
 
 
 # Source Rmd
-/content/**/*.Rmd
-/docs/**/*.Rmd
+/content
 
 
 # Node.js packages
