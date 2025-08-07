@@ -21,6 +21,10 @@
 /_temp
 /_rmd_mami-macbookpro152
 
+
+# Source Rmd
+*.Rmd
+
 # Node.js packages
 node_modules/.bin
 
