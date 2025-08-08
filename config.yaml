@@ -6,7 +6,7 @@ permalinks:
   post: /:slug/
 rssLimit: 7
 disableKinds: ["taxonomyTerm"]
-ignoreFiles: [ "\\.Rmd$"] 
+ignoreFiles: ["\\.Rmd$"]
 publishDir: docs
 params:
   author: Michael Mallari

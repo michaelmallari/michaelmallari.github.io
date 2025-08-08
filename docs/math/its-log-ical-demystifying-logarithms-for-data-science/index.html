@@ -1,0 +1,420 @@
+<!doctype html><html lang=en-us>
+<head prefix="og: http://ogp.me/ns/article#">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1">
+<meta name=apple-mobile-web-app-capable content="yes">
+<link rel=apple-touch-icon-precomposed href=https://michaelmallari.github.io/img/logo-mm-pms2028c.png>
+<link rel=apple-touch-icon href=https://michaelmallari.github.io/img/logo-mm-pms2028c.png>
+<meta name=msapplication-TileImage content="https://michaelmallari.github.io/img/logo-mm-pms2028c.png">
+<link rel="shortcut icon" type=image/png href=https://michaelmallari.github.io/img/icon-mm-transparent.png>
+<link rel=icon type=image/png href=https://michaelmallari.github.io/img/icon-mm-transparent.png>
+<title>It’s Log-ical! Demystifying Logarithms for Data Science | GPU-Accelerated AI by Michael Mallari</title>
+<meta name=description content="Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.">
+<meta name=author content="Michael Mallari">
+<link rel=canonical href=https://michaelmallari.github.io/math/its-log-ical-demystifying-logarithms-for-data-science/>
+<meta name=robots content="index, follow">
+<meta property="article:published_time" content="2018-01-03">
+<meta property="og:type" content="article">
+<meta property="og:title" content="It’s Log-ical! Demystifying Logarithms for Data Science">
+<meta property="og:description" content="Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.">
+<meta property="og:url" content="https://michaelmallari.github.io/math/its-log-ical-demystifying-logarithms-for-data-science/">
+<meta property="og:img" content="https://michaelmallari.github.io/img/og-logarithm-plots.png">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@MichaelMallari">
+<meta name=twitter:title content="It’s Log-ical! Demystifying Logarithms for Data Science">
+<meta name=twitter:description content="Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.">
+<meta name=twitter:image content="https://michaelmallari.github.io/img/og-logarithm-plots.png">
+<link type=text/css rel=stylesheet href=https://www.michaelmallari.com/css/styles.min.css crossorigin>
+<link type=text/css rel=stylesheet href=https://www.michaelmallari.com/js/highlight/styles/solarized-dark.css crossorigin>
+<style type=text/css>@media(min-width:1112px){body.github .nav-primary li:nth-child(1) a span:nth-child(2):after{content:"DS"}body.github .nav-primary li:nth-child(2) a span:nth-child(2):after{content:"KRNL"}body.github .nav-primary li:nth-child(3) a span:nth-child(2):after{content:"DL"}body.github .nav-primary li:nth-child(4) a span:nth-child(2):after{content:"DIST"}}</style>
+<script crossorigin async src="https://www.googletagmanager.com/gtag/js?id=G-9TSG16QBR9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-9TSG16QBR9')</script>
+<script crossorigin>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-MWNDL6JN')</script>
+</head>
+<body id=single class="theme-michaelmallari template-single doing github">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWNDL6JN" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
+<div id=page-container>
+<header id=header>
+<div class=container>
+<a href=https://michaelmallari.github.io/ title="GPU-Accelerated AI by Michael Mallari"><div id=logo-mm></div></a>
+<button id=hamburger-menu class=toggle-hamburger-menu role=button>
+<span></span><svg id="hamburger-menu-open" width="12" height="16" viewBox="0 0 12 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="#fff"><path d="M11.41 9H.59C0 9 0 8.59.0 8S0 7 .59 7H11.4c.59.0.59.41.59 1s0 1-.59 1H11.41zm0-4H.59C0 5 0 4.59.0 4S0 3 .59 3H11.4c.59.0.59.41.59 1s0 1-.59 1H11.41zM.59 11H11.4c.59.0.59.41.59 1s0 1-.59 1H.59C0 13 0 12.59.0 12s0-1 .59-1z" id="Shape"/></g></g></svg><svg id="hamburger-menu-close" width="12" height="16" viewBox="0 0 12 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="#eb3300"><polygon id="Shape" points="7.48 8 11.23 11.75 9.75 13.23 6 9.48 2.25 13.23 0.77 11.75 4.52 8 0.77 4.25 2.25 2.77 6 6.52 9.75 2.77 11.23 4.25"/></g></g></svg>
+</button>
+<nav id=nav role=navigation>
+<ul class=nav-primary>
+<li><a href=https://michaelmallari.github.io/tags/cupy-rapids/ title="CuPy & RAPIDS">
+<span class="fas fa-table"></span>
+<span>CuPy & RAPIDS</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/numba-custom-cuda-kernels/ title="Numba & Custom CUDA Kernels">
+<span class="fas fa-microchip"></span>
+<span>Numba & Custom CUDA Kernels</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/deep-learning-frameworks/ title="Deep Learning Frameworks">
+<span class="fas fa-brain"></span>
+<span>Deep Learning Frameworks</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/distributed-scalable-computing/ title="Distributed & Scalable Computing">
+<span class="fas fa-network-wired"></span>
+<span>Distributed & Scalable Computing</span>
+</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<article id=content role=main>
+<header id=masthead style=background-image:linear-gradient(120deg,#1d252d,rgba(0,88,124,.8)),url(https://michaelmallari.github.io/img/og-logarithm-plots.png)>
+<div class=container>
+<div class=category>
+Essential Math for Data Science
+</div>
+<h1 class=title>It’s Log-ical! Demystifying Logarithms for Data Science</h1>
+<span class=hr-major></span>
+<p class=excerpt>
+Learn why logarithms matter in data science—covering log basics, real-world use cases, and Python examples.
+</p>
+</div>
+</header>
+<div id=content-body>
+<div class=container>
+<div id=byline>
+<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari target=_blank>Michael Mallari</a> &nbsp;<i class=fa-substack></i></div>
+<time datetime=2018-01-18 pubdate=pubdate class=byline-time>Wednesday, January 3, 2018</time>
+<div class=byline-notes>
+Updated: <time datetime=2023-08-23>Tuesday, August 1, 2023</time><br>
+</div>
+</div>
+<p>Let’s face it: most people flinch when they hear the word logarithm. But in the world of data science, logs are not just a math class memory; they’re essential tools. If you’ve ever looked at a skewed dataset, worked with probabilities, or explored machine learning (ML) models, you’ve already brushed up against the power of logarithms.</p>
+<p>I’ll break down the concept of logarithms into bite-sized, Python-friendly pieces. Whether you’re a data science newbie or brushing up on math you last saw in high school, this guide is for you.</p>
+<hr>
+<div id=what-is-a-logarithm-really class="section level2">
+<h2>What Is a Logarithm, Really?</h2>
+<p>Let’s start with that simplest question. A logarithm is just the inverse of exponentiation.</p>
+<p>If <math><msup><mi>b</mi><mi>x</mi></msup><mo>=</mo><mi>y</mi></math>,
+then <math><msub><mi>log</mi><mn>b</mn></msub><mo>(</mo><mn>y</mn><mo>)</mo><mo>=</mo><mn>x</mn></math></p>
+<p>Example:
+If <math><msup><mi>2</mi><mi>3</mi></msup><mo>=</mo><mi>8</mi></math>,
+then <math><msub><mi>log</mi><mn>2</mn></msub><mo>(</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>3</mn></math></p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import numpy
+
+# Example: 2^3 = 8
+base = 2
+exponent = 3
+result = base ** exponent
+print(f&quot;{base}^{exponent} = {result}&quot;)</code></pre>
+<pre><code>2^3 = 8</code></pre>
+<pre class=python><code># Logarithm: log_2(8) = 3
+log_result = numpy.log2(8)
+print(f&quot;log_2(8) = {log_result}&quot;)</code></pre>
+<pre><code>log_2(8) = 3.0</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div id=why-do-data-scientists-care class="section level2">
+<h2>Why Do Data Scientists Care?</h2>
+<p>You’ll see logarithms all over the place in data science:</p>
+<ul>
+<li><strong>Data normalization</strong> (especially for skewed distributions)</li>
+<li><strong>Information theory</strong> (entropy, surprise, mutual information)</li>
+<li><strong>Modeling probabilities</strong> (log-likelihood, logistic regression)</li>
+<li><strong>Measuring error</strong> (log loss in classification problems)</li>
+<li><strong>Visualizations</strong> (log-scale plots for better insight)</li>
+</ul>
+<hr>
+</div>
+<div id=lets-get-hands-on-with-python class="section level2">
+<h2>Let’s Get Hands-On with Python</h2>
+<div id=basic-logarithms-in-python class="section level3">
+<h3>Basic Logarithms in Python</h3>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code># Natural log (base e)
+print(numpy.log(10))  # ≈ 2.302</code></pre>
+<pre><code>2.302585092994046</code></pre>
+<pre class=python><code># Base-10 log
+print(numpy.log10(1000))  # 3.0</code></pre>
+<pre><code>3.0</code></pre>
+<pre class=python><code># Base-2 log
+print(numpy.log2(8))  # 3.0</code></pre>
+<pre><code>3.0</code></pre>
+</div>
+</div>
+<p>Want to specify a custom base?</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code># Log base 5 of 125
+log_base_5 = numpy.log(125) / numpy.log(5)
+print(log_base_5)  # 3.0</code></pre>
+<pre><code>3.0000000000000004</code></pre>
+</div>
+</div>
+</div>
+<div id=why-log-transform-data class="section level3">
+<h3>Why Log-Transform Data?</h3>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code># Natural log (base e)
+print(numpy.log(10))  # ≈ 2.302</code></pre>
+<pre><code>2.302585092994046</code></pre>
+<pre class=python><code># Base-10 log
+print(numpy.log10(1000))  # 3.0</code></pre>
+<pre><code>3.0</code></pre>
+<pre class=python><code># Base-2 log
+print(numpy.log2(8))  # 3.0</code></pre>
+<pre><code>3.0</code></pre>
+</div>
+</div>
+</div>
+<div id=why-log-transform-data-1 class="section level3">
+<h3>Why Log-Transform Data?</h3>
+<p>Imagine you have the following income data (which tends to be skewed):</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import matplotlib.pyplot as plt
+
+income = numpy.array([30_000, 35_000, 40_000, 50_000, 70_000, 200_000, 1_000_000])
+
+plt.figure(figsize=(12, 9))
+
+# Raw data histogram
+plt.subplot(1, 2, 1)
+plt.hist(income, bins=20, color=&#39;#00a6c8&#39;)
+plt.title(&#39;Raw Income Distribution&#39;)
+
+# Log-transformed data histogram
+plt.subplot(1, 2, 2)
+plt.hist(numpy.log10(income), bins=20, color=&#39;#eb3300&#39;)
+plt.title(&#39;Log-Transformed Income (base 10)&#39;)
+
+plt.tight_layout()
+plt.show()</code></pre>
+<p><img src=/math/its-log-ical-demystifying-logarithms-for-data-science_files/figure-html/unnamed-chunk-8-1.png width=1152></p>
+</div>
+</div>
+</div>
+<div id=logarithms-in-machine-learning class="section level3">
+<h3>Logarithms in Machine Learning</h3>
+<div id=logistic-regression class="section level4">
+<h4>Logistic Regression</h4>
+<p>Logistic regression models the probability of a class using the logit function, which involves logarithms:</p>
+<p><math><mi>log</mi><mo>(</mo><mrow><mi>p</mi><mo>/</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>p</mi><mo>)</mo></mrow><mo>)</mo><mo>=</mo><msub><mi>β</mi><mn>0</mn></msub><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mo>⋯</mo><mo>+</mo><msub><mi>β</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></math></p>
+<p>We don’t code this directly, but under the hood, libraries like scikit-learn are applying log-based math.</p>
+</div>
+<div id=log-loss class="section level4">
+<h4>Log Loss</h4>
+<p>Logarithmic loss is commonly used for evaluating classification models:</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import sklearn.metrics
+
+y_true = [1, 0, 1, 1]
+y_pred = [0.9, 0.1, 0.8, 0.7]
+
+loss = sklearn.metrics.log_loss(y_true, y_pred)
+print(f&quot;Log Loss: {loss:.4f}&quot;)</code></pre>
+<pre><code>Log Loss: 0.1976</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id=quick-recap-when-to-use-logs class="section level2">
+<h2>Quick Recap: When to Use Logs</h2>
+<table>
+<col width=50%>
+<col width=50%>
+<thead>
+<tr class=header>
+<th>Scenario</th>
+<th>Why Use Logs?</th>
+</tr>
+</thead>
+<tbody>
+<tr class=odd>
+<td>Skewed Data</td>
+<td>Makes it more normal-like</td>
+</tr>
+<tr class=even>
+<td>Multiplicative Relationships</td>
+<td>Converts to additive (easier to model)</td>
+</tr>
+<tr class=odd>
+<td>Tiny Probabilities</td>
+<td>Prevents underflow, improves interpretability</td>
+</tr>
+<tr class=even>
+<td>Loss Functions</td>
+<td>Better model penalties for bad predictions</td>
+</tr>
+<tr class=odd>
+<td>Features with Wide Range</td>
+<td>Compresses the scale without losing ranking</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+<div id=think-logically-a-mental-model class="section level2">
+<h2>Think Logically: A Mental Model</h2>
+<p>Think of logs as <strong>measuring how many times you have to multiply</strong> to get a result.</p>
+<ul>
+<li><math><msub><mi>log</mi><mn>2</mn></msub><mo>(</mo><mn>8</mn><mo>)</mo><mo>=</mo><mn>3</mn></math> → “You multiply 2 by itself 3 times to get 8.”</li>
+<li><math><msub><mi>log</mi><mn>10</mn></msub><mo>(</mo><mn>1000</mn><mo>)</mo><mo>=</mo><mn>3</mn></math> → “How many times do you multiply 10 by itself to get 1,000? 3.”</li>
+</ul>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code># Logarithm: log_2(8) = 3
+log_result = numpy.log2(8)
+print(f&quot;log_2(8) = {log_result}&quot;)</code></pre>
+<pre><code>log_2(8) = 3.0</code></pre>
+<pre class=python><code># Logarithm: log_10(1000) = 3
+log_result = numpy.log10(1000)
+print(f&quot;log_10(1000) = {log_result}&quot;)</code></pre>
+<pre><code>log_10(1000) = 3.0</code></pre>
+</div>
+</div>
+<p>And if you’re working backwards from big, skewed numbers? Logarithms help you <strong>compress reality into something your models (and plots!) can chew on</strong>.</p>
+<hr>
+</div>
+<div id=final-thoughts class="section level2">
+<h2>Final Thoughts</h2>
+<p>Logarithms aren’t some obscure academic idea; they’re practical tools that can help wrangle messy data, make models work better, and improve how we interpret results.</p>
+<p>Next time you see a variable with wild values or want to understand a model’s loss function, think: “It’s log-ical!”</p>
+<hr>
+</div>
+<div id=appendix-a-environment-reproducibility-and-coding-style class="section level2">
+<h2>Appendix A: Environment, Reproducibility, and Coding Style</h2>
+<p>If you are interested in reproducing this work, here are the versions of <a href=https://www.python.org/ target=_blank>Python</a> and Python packages that I used.</p>
+<p>Additionally, I used <a href=https://pandas.pydata.org/ target=_blank>Pandas</a> (for data manipulation and analysis), <a href=https://numpy.org/ target=_blank>NumPy</a> (for mathematical operations) and <a href=https://matplotlib.org/ target=_blank>Matplotlib</a> (for data visualization), the absolute minimum packages for data science in Python.</p>
+<p>Finally, my coding style here is verbose (avoiding package aliases), in order to trace back where functions/methods and variables are originating from, and make this a learning experience for everyone—<em>including me</em>.</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import sys
+import os
+import cpuinfo
+print(
+    &quot;Python&quot;, sys.version,
+    &quot;\nOS Kernel Version:&quot;, os.uname().sysname, os.uname().release,  # Darwin 22.6.0, MacOS Ventura 13.5.0, 2023-07-24 release date
+    &quot;\nCPU:&quot;, os.cpu_count(), &quot;x&quot;, cpuinfo.get_cpu_info()[&quot;brand_raw&quot;]  # Apple MacBookPro15,2
+)</code></pre>
+<pre><code>Python 3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)] 
+OS Kernel Version: Darwin 24.6.0 
+CPU: 8 x Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz</code></pre>
+<pre class=python><code>!pip install pandas==2.0.3  # 2023-06-28 release date
+!pip install numpy==1.25.2  # 2023-07-31 release date
+!pip install matplotlib==3.7.0  #2023-02-13 release date
+!pip install scikit-learn==1.3.0  # 2023-06-30 release date</code></pre>
+<pre class=python><code>import pandas
+import numpy
+import matplotlib
+import sklearn</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div id=further-readings class="section level2">
+<h2>Further Readings</h2>
+<ul>
+<li>
+Bruce, P., Bruce, P. C., Bruce, A., & Gedeck, P. (2020). <em>Practical statistics for data scientists: 50+ essential concepts using R and Python</em> (2nd ed.). O’Reilly.
+</li>
+<li>
+Mallari, M. (n.d.). Essential Math for Data Science. GPU-Accelerated AI by Michael Mallari. <a href=/math/>https://michaelmallari.github.io/math/</a>
+</li>
+<li>
+Mallari, M. (n.d.). Fundamental data science with Python. GPU-Accelerated AI by Michael Mallari. <a href=/data-science/>https://michaelmallari.github.io/data-science/</a>
+</li>
+<li>
+Nield, T. (2022). <em>Essential math for data science: Take control of your data with fundamental linear algebra, probability, and statistics</em>. O’Reilly.
+</li>
+<li>
+<em>Numpy.log — NumPy v1.25 Manual</em>. (n.d.). <a href=https://numpy.org/doc/1.25/reference/generated/numpy.log.html target=_blank>https://numpy.org/doc/1.25/reference/generated/numpy.log.html</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id=aside>
+<div class=container>
+<span class=category>Art of the Possible With AI</span>
+<ul id=aside-posts-recent>
+</div>
+</div>
+</article>
+<footer id=footer>
+<blockquote id=quote>
+<div>
+<div class=container>
+<p>People are going to use more and more AI. Acceleration is going to be the path forward for computing. These [are] fundamental trends.</p>
+<footer><cite>Jensen Huang, Nvidia Co-Founder & CEO, Circa 2025</cite></footer>
+</div>
+</div>
+</blockquote>
+<section id=boilerplate>
+<div class=container>
+<div class=category>NVIDIA CUDA Python Expert</div>
+<h2>Michael Mallari, <span>MS, MBA</span></h2>
+<span class=hr-major></span>
+<p>Michael is an adjunct faculty member at Columbia University—teaching cloud computing, data & analytics, and AI. A computer scientist-by-trade and an MBA, he brings a combined 20+ years of industry hands-on experience in software engineering, product design, product management, and data science—having created and captured business value with AI, 5G, messaging, fintech, martech, mobile, and even Web 1.0 solutions (at the start of his career during the dot-com boom).</p>
+<p>Thriving at the intersection of emerging technologies, business strategy, and product sense, Michael has been entrusted with discovering, defining, delivering, and deploying next-gen solutions for Fortune 500 companies, startups, and not-for-profit organizations, including the&nbsp;following:</p>
+<ul id=brands>
+<li><img src=https://www.michaelmallari.com/img/logo-amex.png alt="American Express" title="American Express" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-schwab.png alt="Charles Schwab" title="Charles Schwab" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-discovery.png alt="Discovery Communications" title="Discovery Communications" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-hasbro.png alt=Hasbro title=Hasbro class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-lincoln.png alt="Lincoln Motor Company" title="Lincoln Motor Company" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-marriott.png alt=Marriott title=Marriott class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-marvel.png alt=Marvel title=Marvel class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-mayoclinic.png alt="Mayo Clinic" title="Mayo Clinic" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-nasdaq.png alt=Nasdaq title=Nasdaq class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-polo.png alt="Polo Ralph Lauren" title="Polo Ralph Lauren" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-verizon-2.png alt=Verizon title=Verizon class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-yahoo.png alt=Yahoo title=Yahoo class=vertical-middle></li>
+</ul>
+<p>Michael has been a long-time ACM and SIGGRAPH member—dating back to his undergraduate studies, when he earned his BS in Computer Science from New York Institute of&nbsp;Technology. Subsequently, he earned his MBA from the University of Maryland, College Park, and MS in Applied Analytics from Columbia University. He is NVIDIA certified in GPU-accelerated AI.</p>
+<a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=footer&showWelcomeOnShare=true" target=_blank class="btn btn-primary">Subscribe to Substack newsletter &nbsp;<i class=fa-substack-white></i></a>
+</div>
+</section>
+<section id=badges>
+<div class=container>
+<ul>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-associate-generative-ai-llms.png alt="NVIDIA-Certified Associate: Generative AI and LLMs (NCA-GENL)" title="NVIDIA-Certified Associate: Generative AI and LLMs (NCA-GENL)"></li>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-associate-multimodal-generative-ai.png alt="NVIDIA-Certified Associate: Multimodal Generative AI (NCA-GENM)" title="NVIDIA-Certified Associate: Multimodal Generative AI (NCA-GENM)"></li>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-professional-accelerated-data-science.png alt="NVIDIA-Certified Professional: Accelerated Data Science (NCP-ADS)" title="NVIDIA-Certified Professional: Accelerated Data Science (NCP-ADS)"></li>
+</ul>
+</div>
+</section>
+<section id=handcrafted>
+<div class=container>
+<p>Designed and built by Michael Mallari</p>
+</div>
+</section>
+</footer>
+</div>
+<div id=banner>
+<div class=container>
+<p><a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=banner&showWelcomeOnShare=true" target=_blank><span>Discover first-mover advantages based on newly published AI research.</span> <strong>Read&nbsp;case&nbsp;studies&nbsp;&#187;</strong></a></p>
+</div>
+</div>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js crossorigin></script>
+<script src=https://www.michaelmallari.com/js/functions.min.js crossorigin></script>
+<script type=text/javascript>$(document).ready(function(){rssFeed="https://michaelmallari.bitbucket.io/tags/free/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(b=>{console.log(b);const a=Array.from(b.querySelectorAll("item"));for(let b=a.length-1;b>0;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}const d=a.slice(0,4);let c=``;d.forEach(a=>{let b=a.querySelector("link").innerHTML,d=b.replace("https://michaelmallari.bitbucket.io/case-study/","https://michaelmallari.substack.com/p/");c+=`
+                                <li><a href="${d}?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=aside">${a.querySelector("title").innerHTML}</a></li>
+                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",c)})}),$(window).resize(function(){}).resize()</script>
+<script src=https://www.michaelmallari.com/js/highlight/highlight.pack.js crossorigin></script>
+<script type=text/javascript>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

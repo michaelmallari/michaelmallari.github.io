@@ -1,0 +1,419 @@
+<!doctype html><html lang=en-us>
+<head prefix="og: http://ogp.me/ns/article#">
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1">
+<meta name=apple-mobile-web-app-capable content="yes">
+<link rel=apple-touch-icon-precomposed href=https://michaelmallari.github.io/img/logo-mm-pms2028c.png>
+<link rel=apple-touch-icon href=https://michaelmallari.github.io/img/logo-mm-pms2028c.png>
+<meta name=msapplication-TileImage content="https://michaelmallari.github.io/img/logo-mm-pms2028c.png">
+<link rel="shortcut icon" type=image/png href=https://michaelmallari.github.io/img/icon-mm-transparent.png>
+<link rel=icon type=image/png href=https://michaelmallari.github.io/img/icon-mm-transparent.png>
+<title>Data Science 101 in Python: A Crash Course for the Impatient | GPU-Accelerated AI by Michael Mallari</title>
+<meta name=description content="Getting started with the essentials of importing packages, loading data, summarizing data, and visualizing data.">
+<meta name=author content="Michael Mallari">
+<link rel=canonical href=https://michaelmallari.github.io/data-science/data-science-101-in-python-a-crash-course-for-the-impatient/>
+<meta name=robots content="index, follow">
+<meta property="article:published_time" content="2019-01-30">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Science 101 in Python: A Crash Course for the Impatient">
+<meta property="og:description" content="Getting started with the essentials of importing packages, loading data, summarizing data, and visualizing data.">
+<meta property="og:url" content="https://michaelmallari.github.io/data-science/data-science-101-in-python-a-crash-course-for-the-impatient/">
+<meta property="og:img" content="https://michaelmallari.github.io/img/og-blue-and-gold-can-on-white-table-Bn77cbbbqOQ.jpg">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@MichaelMallari">
+<meta name=twitter:title content="Data Science 101 in Python: A Crash Course for the Impatient">
+<meta name=twitter:description content="Getting started with the essentials of importing packages, loading data, summarizing data, and visualizing data.">
+<meta name=twitter:image content="https://michaelmallari.github.io/img/og-blue-and-gold-can-on-white-table-Bn77cbbbqOQ.jpg">
+<link type=text/css rel=stylesheet href=https://www.michaelmallari.com/css/styles.min.css crossorigin>
+<link type=text/css rel=stylesheet href=https://www.michaelmallari.com/js/highlight/styles/solarized-dark.css crossorigin>
+<style type=text/css>@media(min-width:1112px){body.github .nav-primary li:nth-child(1) a span:nth-child(2):after{content:"DS"}body.github .nav-primary li:nth-child(2) a span:nth-child(2):after{content:"KRNL"}body.github .nav-primary li:nth-child(3) a span:nth-child(2):after{content:"DL"}body.github .nav-primary li:nth-child(4) a span:nth-child(2):after{content:"DIST"}}</style>
+<script crossorigin async src="https://www.googletagmanager.com/gtag/js?id=G-9TSG16QBR9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-9TSG16QBR9')</script>
+<script crossorigin>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-MWNDL6JN')</script>
+</head>
+<body id=single class="theme-michaelmallari template-single doing github">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWNDL6JN" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
+<div id=page-container>
+<header id=header>
+<div class=container>
+<a href=https://michaelmallari.github.io/ title="GPU-Accelerated AI by Michael Mallari"><div id=logo-mm></div></a>
+<button id=hamburger-menu class=toggle-hamburger-menu role=button>
+<span></span><svg id="hamburger-menu-open" width="12" height="16" viewBox="0 0 12 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="#fff"><path d="M11.41 9H.59C0 9 0 8.59.0 8S0 7 .59 7H11.4c.59.0.59.41.59 1s0 1-.59 1H11.41zm0-4H.59C0 5 0 4.59.0 4S0 3 .59 3H11.4c.59.0.59.41.59 1s0 1-.59 1H11.41zM.59 11H11.4c.59.0.59.41.59 1s0 1-.59 1H.59C0 13 0 12.59.0 12s0-1 .59-1z" id="Shape"/></g></g></svg><svg id="hamburger-menu-close" width="12" height="16" viewBox="0 0 12 16"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill="#eb3300"><polygon id="Shape" points="7.48 8 11.23 11.75 9.75 13.23 6 9.48 2.25 13.23 0.77 11.75 4.52 8 0.77 4.25 2.25 2.77 6 6.52 9.75 2.77 11.23 4.25"/></g></g></svg>
+</button>
+<nav id=nav role=navigation>
+<ul class=nav-primary>
+<li><a href=https://michaelmallari.github.io/tags/cupy-rapids/ title="CuPy & RAPIDS">
+<span class="fas fa-table"></span>
+<span>CuPy & RAPIDS</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/numba-custom-cuda-kernels/ title="Numba & Custom CUDA Kernels">
+<span class="fas fa-microchip"></span>
+<span>Numba & Custom CUDA Kernels</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/deep-learning-frameworks/ title="Deep Learning Frameworks">
+<span class="fas fa-brain"></span>
+<span>Deep Learning Frameworks</span>
+</a></li>
+<li><a href=https://michaelmallari.github.io/tags/distributed-scalable-computing/ title="Distributed & Scalable Computing">
+<span class="fas fa-network-wired"></span>
+<span>Distributed & Scalable Computing</span>
+</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<article id=content role=main>
+<header id=masthead style=background-image:linear-gradient(120deg,#1d252d,rgba(0,88,124,.8)),url(https://michaelmallari.github.io/img/og-blue-and-gold-can-on-white-table-Bn77cbbbqOQ.jpg)>
+<div class=container>
+<div class=category>
+Fundamental Python Programming for Data Science
+</div>
+<h1 class=title>Data Science 101 in Python: A Crash Course for the Impatient</h1>
+<span class=hr-major></span>
+<p class=excerpt>
+Getting started with the essentials of importing packages, loading data, summarizing data, and visualizing data.
+</p>
+</div>
+</header>
+<div id=content-body>
+<div class=container>
+<div id=byline>
+<div class=byline-author>By <a rel=author href=https://substack.com/@michaelmallari target=_blank>Michael Mallari</a> &nbsp;<i class=fa-substack></i></div>
+<time datetime=2019-01-19 pubdate=pubdate class=byline-time>Wednesday, January 30, 2019</time>
+<div class=byline-notes>
+Updated: <time datetime=2023-08-23>Tuesday, August 1, 2023</time><br>
+Image Credit: <a href=https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ target=_blank>https://unsplash.com/photos/blue-and-gold-can-on-white-table-Bn77cbbbqOQ</a>
+</div>
+</div>
+<p>So, you want to get into data science but don’t want a 10-hour bootcamp or a textbook thicker than the Yellow Pages phone book? (Yes, I’ve dated myself. I’m Gen X.) Let’s go from zero to data-savvy with just 4 essential skills, like building your first IKEA table but with Python.</p>
+<p>We’ll cover:</p>
+<ol style=list-style-type:decimal>
+<li>Importing packages</li>
+<li>Loading data</li>
+<li>Summarizing data</li>
+<li>Visualizing data</li>
+</ol>
+<p>Let’s get into it. No fluff. Just code + vibes.</p>
+<hr>
+<div id=importing-packages-like-adding-apps-to-your-phone class="section level2">
+<h2>Importing Packages (Like Adding Apps to Your Phone)</h2>
+<p>Think of Python packages as apps. You don’t build everything from scratch; you install Instagram to scroll, right? Same thing here. These are your must-haves:</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import pandas  # For data handling
+import numpy  # For math stuff
+import matplotlib  # For plotting
+import seaborn  # For prettier plots</code></pre>
+</div>
+</div>
+<p>In practice, shortcuts are your friends. Use aliases to keep things tidy:</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import pandas as pd  # For data handling
+import numpy as np  # For math stuff
+import matplotlib.pyplot as plt  # For plotting
+import seaborn as sns  # For prettier plots</code></pre>
+</div>
+</div>
+<p>We’ll continue without these shortcuts for clarity, but feel free to use aliases in your own code.</p>
+<hr>
+</div>
+<div id=loading-data-like-opening-a-file-in-google-docs class="section level2">
+<h2>Loading Data (Like Opening a File in Google Docs)</h2>
+<p>You need data. You can use a CSV file, which is like a spreadsheet saved in text form. Let’s load a sample dataset from <a href=https://seaborn.pydata.org/ target=_blank>Seaborn</a> (so you don’t have to download anything).</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code># Load sample dataset
+df = seaborn.load_dataset(&#39;titanic&#39;)  # Info about Titanic passengers</code></pre>
+</div>
+</div>
+<p><strong>Pro Tip:</strong> <code>df</code> is short for DataFrame. Think of it like a smart table (Excel on steroids).</p>
+<hr>
+</div>
+<div id=summarizing-data-like-skimming-a-wikipedia-page class="section level2">
+<h2>Summarizing Data (Like Skimming a Wikipedia Page)</h2>
+<p>You don’t read every tweet in a thread — you skim the highlights. Let’s do that for our dataset:</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>df.head()  # First 5 rows</code></pre>
+<pre><code>   survived  pclass     sex   age  sibsp  parch     fare embarked  class    who  adult_male deck  embark_town alive  alone
+0         0       3    male  22.0      1      0   7.2500        S  Third    man        True  NaN  Southampton    no  False
+1         1       1  female  38.0      1      0  71.2833        C  First  woman       False    C    Cherbourg   yes  False
+2         1       3  female  26.0      0      0   7.9250        S  Third  woman       False  NaN  Southampton   yes   True
+3         1       1  female  35.0      1      0  53.1000        S  First  woman       False    C  Southampton   yes  False
+4         0       3    male  35.0      0      0   8.0500        S  Third    man        True  NaN  Southampton    no   True</code></pre>
+<pre class=python><code>df.shape  # Rows and columns (like saying &quot;this table has 891 rows&quot;)</code></pre>
+<pre><code>(891, 15)</code></pre>
+<pre class=python><code>df.columns  # List of column names</code></pre>
+<pre><code>Index([&#39;survived&#39;, &#39;pclass&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;embarked&#39;, &#39;class&#39;, &#39;who&#39;, &#39;adult_male&#39;, &#39;deck&#39;, &#39;embark_town&#39;, &#39;alive&#39;, &#39;alone&#39;], dtype=&#39;object&#39;)</code></pre>
+<pre class=python><code>df.info()  # Data types + missing values</code></pre>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 15 columns):
+ #   Column       Non-Null Count  Dtype   
+---  ------       --------------  -----   
+ 0   survived     891 non-null    int64   
+ 1   pclass       891 non-null    int64   
+ 2   sex          891 non-null    object  
+ 3   age          714 non-null    float64 
+ 4   sibsp        891 non-null    int64   
+ 5   parch        891 non-null    int64   
+ 6   fare         891 non-null    float64 
+ 7   embarked     889 non-null    object  
+ 8   class        891 non-null    category
+ 9   who          891 non-null    object  
+ 10  adult_male   891 non-null    bool    
+ 11  deck         203 non-null    category
+ 12  embark_town  889 non-null    object  
+ 13  alive        891 non-null    object  
+ 14  alone        891 non-null    bool    
+dtypes: bool(2), category(2), float64(2), int64(4), object(5)
+memory usage: 80.7+ KB</code></pre>
+<pre class=python><code>df.describe()  # Quick stats (mean, std, etc.)</code></pre>
+<pre><code>         survived      pclass         age       sibsp       parch        fare
+count  891.000000  891.000000  714.000000  891.000000  891.000000  891.000000
+mean     0.383838    2.308642   29.699118    0.523008    0.381594   32.204208
+std      0.486592    0.836071   14.526497    1.102743    0.806057   49.693429
+min      0.000000    1.000000    0.420000    0.000000    0.000000    0.000000
+25%      0.000000    2.000000   20.125000    0.000000    0.000000    7.910400
+50%      0.000000    3.000000   28.000000    0.000000    0.000000   14.454200
+75%      1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
+max      1.000000    3.000000   80.000000    8.000000    6.000000  512.329200</code></pre>
+</div>
+</div>
+<p>Wanna see how many survived vs. didn’t?</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>df[&#39;survived&#39;].value_counts()</code></pre>
+<pre><code>survived
+0    549
+1    342
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>Or maybe: How many people per class?</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>df[&#39;pclass&#39;].value_counts()</code></pre>
+<pre><code>pclass
+3    491
+1    216
+2    184
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div id=visualizing-data-like-making-your-spotify-wrapped class="section level2">
+<h2>Visualizing Data (Like Making Your Spotify Wrapped)</h2>
+<p>Graphs hit different. Let’s plot like pros:</p>
+<div id=bar-chart-who-survived class="section level3">
+<h3>Bar chart: Who survived?</h3>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>seaborn.countplot(x=&#39;survived&#39;, data=df)
+matplotlib.pyplot.title(&#39;Survival Count&#39;)
+matplotlib.pyplot.show()</code></pre>
+<p><img src=/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-10-1.png width=672></p>
+</div>
+</div>
+</div>
+<div id=histogram-age-distribution class="section level3">
+<h3>Histogram: Age distribution</h3>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>seaborn.histplot(df[&#39;age&#39;].dropna(), bins=30, kde=True)
+matplotlib.pyplot.title(&#39;Age Distribution&#39;)
+matplotlib.pyplot.xlabel(&#39;Age&#39;)
+matplotlib.pyplot.show()</code></pre>
+<p><img src=/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-11-3.png width=672></p>
+</div>
+</div>
+</div>
+<div id=bonus-heatmap-of-missing-data class="section level3">
+<h3>Bonus: Heatmap of missing data</h3>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>seaborn.heatmap(df.isnull(), cbar=False)
+matplotlib.pyplot.title(&#39;Missing Data Heatmap&#39;)
+matplotlib.pyplot.show()</code></pre>
+<p><img src=/data-science/data-science-101-in-python-a-crash-course-for-the-impatient_files/figure-html/unnamed-chunk-12-5.png width=672></p>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div id=tldr-your-data-science-starter-pack class="section level2">
+<h2>TL;DR (Your Data Science Starter Pack)</h2>
+<p>Here’s your cheat sheet:</p>
+<table>
+<thead>
+<tr class=header>
+<th><strong>Step</strong></th>
+<th><strong>What to Use</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class=odd>
+<td>Import Packages</td>
+<td><code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, <code>seaborn</code></td>
+</tr>
+<tr class=even>
+<td>Load Data</td>
+<td><code>pandas.read_csv()</code> or <code>seaborn.load_dataset()</code></td>
+</tr>
+<tr class=odd>
+<td>Summarize Data</td>
+<td><code>.head()</code>, <code>.info()</code>, <code>.describe()</code></td>
+</tr>
+<tr class=even>
+<td>Visualize Data</td>
+<td><code>seaborn.countplot()</code>, <code>seaborn.histplot()</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+<div id=next-steps class="section level2">
+<h2>Next Steps</h2>
+<ul>
+<li>Try loading your own CSV using <code>pd.read_csv('yourfile.csv')</code></li>
+<li>Play with other datasets: <code>seaborn.get_dataset_names()</code> to browse them</li>
+<li>Experiment with visualizations: change colors, add labels, remix it like a TikTok trend</li>
+</ul>
+<hr>
+</div>
+<div id=final-note class="section level2">
+<h2>Final Note</h2>
+<p>This is your first 5-minute sprint. Don’t try to boil the ocean. Just start messing with data like it’s your sandbox. You’ll pick up more by doing than watching.</p>
+<p>Stay curious. Break stuff. Google errors. That’s the data science way.</p>
+<hr>
+</div>
+<div id=appendix-a-environment-reproducibility-and-coding-style class="section level2">
+<h2>Appendix A: Environment, Reproducibility, and Coding Style</h2>
+<p>If you are interested in reproducing this work, here are the versions of <a href=https://www.python.org/ target=_blank>Python</a> and Python packages that I used.</p>
+<p>Additionally, I used <a href=https://pandas.pydata.org/ target=_blank>Pandas</a> (for data manipulation and analysis), <a href=https://numpy.org/ target=_blank>NumPy</a> (for mathematical operations) and <a href=https://matplotlib.org/ target=_blank>Matplotlib</a> (for data visualization), the absolute minimum packages for data science in Python.</p>
+<p>Finally, my coding style here is verbose (avoiding package aliases), in order to trace back where functions/methods and variables are originating from, and make this a learning experience for everyone—<em>including me</em>.</p>
+<div class=language-tabs>
+<input type=radio checked><label>Python</label>
+<div class=language-output>
+<pre class=python><code>import sys
+import os
+import cpuinfo
+print(
+    &quot;Python&quot;, sys.version,
+    &quot;\nOS Kernel Version:&quot;, os.uname().sysname, os.uname().release,  # Darwin 22.6.0, MacOS Ventura 13.5.0, 2023-07-24 release date
+    &quot;\nCPU:&quot;, os.cpu_count(), &quot;x&quot;, cpuinfo.get_cpu_info()[&quot;brand_raw&quot;]  # Apple MacBookPro15,2
+)</code></pre>
+<pre><code>Python 3.11.4 (v3.11.4:d2340ef257, Jun  6 2023, 19:15:51) [Clang 13.0.0 (clang-1300.0.29.30)] 
+OS Kernel Version: Darwin 24.6.0 
+CPU: 8 x Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz</code></pre>
+<pre class=python><code>!pip install pandas==2.0.3  # 2023-06-28 release date
+!pip install numpy==1.25.2  # 2023-07-31 release date
+!pip install matplotlib==3.7.0  #2023-02-13 release date
+!pip install scikit-learn==1.3.0  # 2023-06-30 release date</code></pre>
+<pre class=python><code>import pandas
+import numpy
+import matplotlib
+import seaborn</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div id=further-readings class="section level2">
+<h2>Further Readings</h2>
+<ul>
+<li>
+Mallari, M. (n.d.). Essential Math for Data Science. GPU-Accelerated AI by Michael Mallari. <a href=/math/>https://michaelmallari.github.io/math/</a>
+</li>
+<li>
+Mallari, M. (n.d.). Fundamental data science with Python. GPU-Accelerated AI by Michael Mallari. <a href=/data-science/>https://michaelmallari.github.io/data-science/</a>
+</li>
+<li>
+McKinney, W. (2017). <em>Python for data analysis: data wrangling with Pandas, Numpy, and IPython</em> (2nd ed.). O’Reilly.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id=aside>
+<div class=container>
+<span class=category>Art of the Possible With AI</span>
+<ul id=aside-posts-recent>
+</div>
+</div>
+</article>
+<footer id=footer>
+<blockquote id=quote>
+<div>
+<div class=container>
+<p>People are going to use more and more AI. Acceleration is going to be the path forward for computing. These [are] fundamental trends.</p>
+<footer><cite>Jensen Huang, Nvidia Co-Founder & CEO, Circa 2025</cite></footer>
+</div>
+</div>
+</blockquote>
+<section id=boilerplate>
+<div class=container>
+<div class=category>NVIDIA CUDA Python Expert</div>
+<h2>Michael Mallari, <span>MS, MBA</span></h2>
+<span class=hr-major></span>
+<p>Michael is an adjunct faculty member at Columbia University—teaching cloud computing, data & analytics, and AI. A computer scientist-by-trade and an MBA, he brings a combined 20+ years of industry hands-on experience in software engineering, product design, product management, and data science—having created and captured business value with AI, 5G, messaging, fintech, martech, mobile, and even Web 1.0 solutions (at the start of his career during the dot-com boom).</p>
+<p>Thriving at the intersection of emerging technologies, business strategy, and product sense, Michael has been entrusted with discovering, defining, delivering, and deploying next-gen solutions for Fortune 500 companies, startups, and not-for-profit organizations, including the&nbsp;following:</p>
+<ul id=brands>
+<li><img src=https://www.michaelmallari.com/img/logo-amex.png alt="American Express" title="American Express" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-schwab.png alt="Charles Schwab" title="Charles Schwab" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-discovery.png alt="Discovery Communications" title="Discovery Communications" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-hasbro.png alt=Hasbro title=Hasbro class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-lincoln.png alt="Lincoln Motor Company" title="Lincoln Motor Company" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-marriott.png alt=Marriott title=Marriott class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-marvel.png alt=Marvel title=Marvel class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-mayoclinic.png alt="Mayo Clinic" title="Mayo Clinic" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-nasdaq.png alt=Nasdaq title=Nasdaq class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-polo.png alt="Polo Ralph Lauren" title="Polo Ralph Lauren" class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-verizon-2.png alt=Verizon title=Verizon class=vertical-middle></li>
+<li><img src=https://www.michaelmallari.com/img/logo-yahoo.png alt=Yahoo title=Yahoo class=vertical-middle></li>
+</ul>
+<p>Michael has been a long-time ACM and SIGGRAPH member—dating back to his undergraduate studies, when he earned his BS in Computer Science from New York Institute of&nbsp;Technology. Subsequently, he earned his MBA from the University of Maryland, College Park, and MS in Applied Analytics from Columbia University. He is NVIDIA certified in GPU-accelerated AI.</p>
+<a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=footer&showWelcomeOnShare=true" target=_blank class="btn btn-primary">Subscribe to Substack newsletter &nbsp;<i class=fa-substack-white></i></a>
+</div>
+</section>
+<section id=badges>
+<div class=container>
+<ul>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-associate-generative-ai-llms.png alt="NVIDIA-Certified Associate: Generative AI and LLMs (NCA-GENL)" title="NVIDIA-Certified Associate: Generative AI and LLMs (NCA-GENL)"></li>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-associate-multimodal-generative-ai.png alt="NVIDIA-Certified Associate: Multimodal Generative AI (NCA-GENM)" title="NVIDIA-Certified Associate: Multimodal Generative AI (NCA-GENM)"></li>
+<li><img src=https://www.michaelmallari.com/img/badge-nvidia-certified-professional-accelerated-data-science.png alt="NVIDIA-Certified Professional: Accelerated Data Science (NCP-ADS)" title="NVIDIA-Certified Professional: Accelerated Data Science (NCP-ADS)"></li>
+</ul>
+</div>
+</section>
+<section id=handcrafted>
+<div class=container>
+<p>Designed and built by Michael Mallari</p>
+</div>
+</section>
+</footer>
+</div>
+<div id=banner>
+<div class=container>
+<p><a href="https://michaelmallari.substack.com/subscribe?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=banner&showWelcomeOnShare=true" target=_blank><span>Discover first-mover advantages based on newly published AI research.</span> <strong>Read&nbsp;case&nbsp;studies&nbsp;&#187;</strong></a></p>
+</div>
+</div>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js crossorigin></script>
+<script src=https://www.michaelmallari.com/js/functions.min.js crossorigin></script>
+<script type=text/javascript>$(document).ready(function(){rssFeed="https://michaelmallari.bitbucket.io/tags/free/index.xml",fetch(rssFeed).then(a=>a.text()).then(a=>(new window.DOMParser).parseFromString(a,"text/xml")).then(b=>{console.log(b);const a=Array.from(b.querySelectorAll("item"));for(let b=a.length-1;b>0;b--){const c=Math.floor(Math.random()*(b+1));[a[b],a[c]]=[a[c],a[b]]}const d=a.slice(0,4);let c=``;d.forEach(a=>{let b=a.querySelector("link").innerHTML,d=b.replace("https://michaelmallari.bitbucket.io/case-study/","https://michaelmallari.substack.com/p/");c+=`
+                                <li><a href="${d}?utm_source=michaelmallari.github.io&utm_medium=microsite&utm_campaign=aside">${a.querySelector("title").innerHTML}</a></li>
+                            `}),document.getElementById("aside-posts-recent").insertAdjacentHTML("afterbegin",c)})}),$(window).resize(function(){}).resize()</script>
+<script src=https://www.michaelmallari.com/js/highlight/highlight.pack.js crossorigin></script>
+<script type=text/javascript>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
